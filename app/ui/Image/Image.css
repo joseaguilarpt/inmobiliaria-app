@@ -1,0 +1,14 @@
+.image__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+.image__img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*# sourceMappingURL=Image.css.map */

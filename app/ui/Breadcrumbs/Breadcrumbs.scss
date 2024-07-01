@@ -1,0 +1,84 @@
+// Breadcrumb.scss
+@import "../../styles/theme";
+
+.breadcrumb {
+  font-size: var(--font-size-medium);
+  color: $font-color-light;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-start;
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__label {
+    text-decoration: none;
+    color: var(--font-color);
+    font-size: var(--font-size-medium);
+    padding: 0 2px;
+    font-family: var(--default-font);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+    text-transform: uppercase;
+  }
+  &__link {
+    font-size: var(--font-size-large);
+
+    text-decoration: none;
+    color: $contrast-color-light;
+    padding: 0 2px;
+    font-family: var(--default-font);
+    font-size: var(--font-size-medium);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+    text-transform: uppercase;
+    color: var(--accent-color-darken);
+
+    &::before {
+      content: "";
+      height: 2px;
+      bottom: -6px;
+      left: 0;
+      background-color: var(--accent-color);
+      position: absolute;
+      width: 0px;
+      transition: all 0.3s ease-in-out 0s;
+    }
+
+    &:hover {
+      &::before {
+        content: "";
+        height: 2px;
+        bottom: -6px;
+        left: 0;
+        background-color: var(--accent-color);
+        position: absolute;
+        width: 100%;
+        transition: all 0.3s ease-in-out 0s;
+      }
+    }
+  }
+}

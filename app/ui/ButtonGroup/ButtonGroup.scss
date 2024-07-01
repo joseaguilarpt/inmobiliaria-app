@@ -1,0 +1,82 @@
+@import '../../styles/theme';
+
+.button-group {
+    display: inline-block;
+    font-family: var(--default-font); /* Use variable for font-family */
+    border-radius: var(--border-radius);
+    width: max-content;
+
+    &__label {
+      display: block;
+      font-weight: bold;
+      color: var(--heading-color);
+    }
+  
+    &__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0; /* Remove default margin */
+      padding: 0; /* Remove default padding */
+  
+      .button-group__button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--font-size-small);
+        padding: var(--input-padding) 1rem;
+        border: 1px solid var(--input-border);
+        background-color: var(--background-color);
+        color: var(--font-color);
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        user-select: none;
+        outline: none;
+        position: relative;
+        border-radius: 0; /* Remove individual border-radius */
+
+        @include media-query(medium) {
+          font-size: var(--input-font-size);
+          padding: var(--input-padding) 1.5rem;
+        }
+  
+        &:first-child {
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+        }
+  
+        &:last-child {
+          border-top-right-radius: var(--input-border-radius);
+          border-bottom-right-radius: var(--input-border-radius);
+        }
+  
+        &:not(:last-child) {
+          margin-right: 0; /* Remove margin between buttons */
+        }
+  
+        &:hover {
+          background-color: var(--default-color);
+          color: var(--font-color);
+        }
+  
+        &--active {
+          background-color: var(--accent-color);
+          color: var(--font-color);
+          border-color: var(--accent-color);
+        }
+  
+        input[type='radio'] {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+  
+        span {
+          display: inline-block;
+          padding: 0 8px;
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+  }

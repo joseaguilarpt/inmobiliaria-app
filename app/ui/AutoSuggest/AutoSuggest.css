@@ -1,0 +1,93 @@
+.auto-suggest {
+  position: relative;
+  width: 100%;
+}
+.auto-suggest__wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.auto-suggest__input {
+  width: 100%;
+  padding: var(--input-padding);
+  font-family: var(--default-font);
+  font-size: var(--input-font-size);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-border-radius);
+  background-color: var(--input-background-color);
+  outline: none;
+}
+.auto-suggest__input.__left-icon {
+  padding-left: 40px;
+}
+.auto-suggest__input:focus {
+  border-color: var(--input-border);
+  box-shadow: 0 0 0 2.5px var(--input-border-active);
+}
+.auto-suggest__input::placeholder {
+  color: var(--placeholder-color);
+}
+.auto-suggest__input:disabled {
+  background-color: var(--placeholder-color);
+  cursor: not-allowed;
+}
+.auto-suggest__input--error {
+  border-color: var(--error-color);
+}
+.auto-suggest__icon {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--default-color);
+}
+.auto-suggest__icon-right {
+  position: absolute;
+  left: initial;
+  right: 0.75rem;
+  color: var(--default-color);
+}
+.auto-suggest__clear-button {
+  position: absolute;
+  right: 0.75rem;
+  background: #f1f4f4 !important;
+  border: none !important;
+  color: var(--default-color) !important;
+  padding: 10px !important;
+  padding-right: 11px !important;
+  width: 15px;
+  cursor: pointer;
+}
+.auto-suggest__clear-button:hover {
+  color: var(--accent-color) !important;
+}
+.auto-suggest .suggestions {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 0 0 4px 4px;
+  background-color: white;
+  z-index: 10;
+  overflow-y: auto;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  max-height: 300px;
+}
+.auto-suggest .suggestions li {
+  padding: var(--input-padding);
+  cursor: pointer;
+  color: var(--default-color);
+}
+.auto-suggest .suggestions li:hover, .auto-suggest .suggestions li.active {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+.auto-suggest .suggestions li.disabled {
+  cursor: not-allowed;
+  font-weight: 400;
+  background-color: white;
+}
+
+/*# sourceMappingURL=AutoSuggest.css.map */

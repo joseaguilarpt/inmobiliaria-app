@@ -1,0 +1,57 @@
+// _vari`ables.scss
+
+// Colors
+$default-font: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$heading-font: "Plus Jakarta Sans", sans-serif;
+$nav-font: "Poppins", sans-serif;
+
+// Font Sizes
+$font-size-small: 12px;
+$font-size-medium: 16px;
+$font-size-large: 20px;
+
+// Light Theme Variables
+$background-color-light: #ffffff;
+$font-color-light: #212121;
+$default-color-light: #757575;
+$heading-color-light: #424242;
+$accent-color-light: #00ffaf; // Base color
+$accent-color-light-darken: #{darken($accent-color-light, 15%)};
+
+$contrast-color-light: #ffffff;
+$shadow-color-light: rgba(0, 0, 0, 0.1);
+$error-color-light: #f44336;
+$carousel-overlay-light: rgb(87 170 144 / 85%);
+
+// Dark Theme Variables
+$background-color-dark: #121212;
+$font-color-dark: #ffffff;
+$default-color-dark: #8e8e8e;
+$heading-color-dark: #ffffff;
+$accent-color-dark: #57AA90; // Base color
+$accent-color-dark-darken: #{darken($accent-color-dark, 15%)};
+$contrast-color-dark: #121212;
+$shadow-color-dark: rgba(0, 0, 0, 0.1);
+$error-color-dark: #cf6679;
+$carousel-overlay-dark: rgb(81 123 110 / 85%);
+
+// Nav Menu Colors
+$nav-color-light: #ffffff;
+$placeholder-color-light: #757575;
+$input-border-light: #e0e0e0;
+$input-border-active-light: #57AA90; // Base color
+$nav-hover-color-light: #eeeeee;
+$nav-dropdown-background-color-light: #ffffff;
+$nav-dropdown-color-light: #212121;
+$nav-dropdown-hover-color-light: #ffffff;
+
+$nav-color-dark: rgba(255, 255, 255, 0.87);
+$placeholder-color-dark: #bdbdbd;
+$input-border-dark: #757575;
+$input-border-active-dark: #03dac6;
+$nav-hover-color-dark: #0d47a1;
+$nav-dropdown-background-color-dark: #121212;
+$nav-dropdown-color-dark: #ffffff;
+$nav-dropdown-hover-color-dark: #ffffff; // Base color

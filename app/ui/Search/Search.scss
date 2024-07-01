@@ -1,0 +1,10 @@
+@import '../../styles/theme';
+
+.search-container {
+    width: 95vw;
+    margin: 0 !important;
+    max-width: 1200px;
+    .grid-item {
+        padding-top: 10px;
+    }
+}

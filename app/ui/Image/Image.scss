@@ -1,0 +1,18 @@
+// src/components/Image/Image.module.scss
+
+.image {
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+    }
+  
+    &__img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  

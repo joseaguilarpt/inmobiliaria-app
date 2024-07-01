@@ -1,0 +1,82 @@
+.map__popup-wrapper {
+  width: 300px;
+  .leaflet-popup-content-wrapper {
+    border-radius: var(--input-border-radius);
+    position: relative;
+  }
+  .leaflet-popup-close-button {
+    font-weight: bolder;
+    font-family: var(--default-font) !important;
+    font-size: 32px !important;
+    padding: 10px !important;
+    border-radius: 50% !important;
+    color: white !important;
+  }
+  .leaflet-popup-content {
+    padding-top: 150px;
+    p {
+        margin: 0;
+    }
+    button, a {
+        padding: 0;
+    }
+
+    .__poput-contact {
+        border-top: 1px solid #c3c3c3;
+    }
+  }
+  button,
+  a {
+    padding: 0;
+    font-weight: bold;
+    font-size: var(--font-size-medium);
+    color: var(--accent-color-darken);
+  }
+
+  svg {
+    color: var(--accent-color-darken);
+    padding-right: 5px;
+  }
+
+  .__card-contact {
+    margin-top: var(--input-padding);
+    padding-top: var(--input-padding);
+    border-top: 2px solid #ddddddbf;
+  }
+
+  .button--link {
+    &.__heading {
+      font-weight: bold;
+      width: 100%;
+      text-align: left;
+
+      h5 {
+        font-size: var(--font-size-large);
+        color: var(--accent-color-darken);
+      }
+    }
+  }
+
+  .image-slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 150px;
+    button {
+      opacity: 0; /* Initially hidden */
+      visibility: hidden; /* Initially hidden */
+      transition: opacity 0.3s ease, visibility 0.3s ease; /* Transition effect */
+    }
+  }
+
+  &:hover {
+    .image-slider {
+      button {
+        opacity: 1; /* Visible on hover */
+        visibility: visible; /* Visible on hover */
+        color: var(--accent-color-darken);
+
+      }
+    }
+  }
+}

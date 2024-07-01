@@ -1,0 +1,71 @@
+@import '../../styles/variables';
+
+.snackbar {
+  position: fixed;
+  bottom: 25px;
+  left: 25px; // Change this to position it to the left side
+  min-width: 300px;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px var(--shadow-color);
+  color: var(--font-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards, fadeOut 0.5s 2.5s forwards;
+  font-family: var(--default-font);
+
+  &__message {
+    flex-grow: 1;
+    color: var(--font-color);
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+
+  &--success {
+    background-color: var(--accent-color);
+  }
+
+  &--error {
+    background-color: var(--error-color);
+
+  }
+
+  &--info {
+    background-color: var(--nav-dropdown-color);
+  }
+
+  &--warning {
+    background-color: var(--nav-dropdown-hover-color);
+
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px); // Adjusted to move from left
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-20px); // Adjusted to move to left
+  }
+}

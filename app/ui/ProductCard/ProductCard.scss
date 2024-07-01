@@ -1,0 +1,94 @@
+@import '../../styles/media-queries';
+
+.product-card {
+  position: relative;
+  padding-top: 135px;
+  width: 100%;
+  height: auto;
+  margin: 0;
+
+  &.horizontal {
+    padding-top: 140px;
+    height: auto;
+
+    .__details {
+      margin-left: 0px;
+    }
+
+    @include media-query(medium) {
+      padding-top: 0px;
+
+      .image-slider {
+        position: relative;
+      }
+      .image-slider, .slides, .slide {
+          height: 100% !important;
+      }
+      .card__content {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+
+        .__slider {
+          flex: 1 0 35%;
+        }
+        .__details {
+          flex: 1 0 55%;
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+  
+  button,
+  a {
+    padding: 0;
+    font-weight: bold;
+    font-size: var(--font-size-medium);
+    color: var(--accent-color-darken);
+  }
+
+  svg {
+    font-size: 16px;
+    color: var(--accent-color-darken);
+    padding-right: 5px;
+  }
+
+  .__card-contact {
+    margin-top: var(--input-padding);
+    padding-top: var(--input-padding);
+    border-top: 2px solid #ddddddbf;
+  }
+
+  .button--link {
+    &.__heading {
+      font-weight: bold;
+      width: 100%;
+      text-align: left;
+
+      h5 {
+        font-size: var(--font-size-large);
+        color: var(--accent-color-darken);
+      }
+    }
+  }
+
+  .image-slider {
+    button {
+      opacity: 0; /* Initially hidden */
+      visibility: hidden; /* Initially hidden */
+      transition: opacity 0.3s ease, visibility 0.3s ease; /* Transition effect */
+    }
+  }
+
+  &:hover {
+    .image-slider {
+      button {
+        opacity: 1; /* Visible on hover */
+        visibility: visible; /* Visible on hover */
+        color: var(--accent-color-darken);
+
+      }
+    }
+  }
+}

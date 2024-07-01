@@ -1,0 +1,37 @@
+// BackToTop.scss
+
+@import '../../styles/theme.scss';
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: var(--font-size-medium);
+    font-family: var(--default-font);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    background-color: $accent-color-light;
+    color: var(--font-color);
+    border: none;
+  
+    &__label {
+      /* Optional: If you want to style the label text separately */
+    }
+  
+    &.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  
+    &:hover {
+      background-color: $accent-color-light;
+      cursor: pointer;
+      box-shadow: 0 4px 8px var(--hover-shadow-color);
+    }
+  }
+  

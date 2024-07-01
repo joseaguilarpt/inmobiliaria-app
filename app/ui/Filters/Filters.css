@@ -1,0 +1,49 @@
+.filters-container .form-field {
+  padding: 0;
+}
+.filters-container .grid-item {
+  padding: 10px;
+}
+
+.modal-filters-container {
+  width: 100%;
+  top: 80px;
+  height: 100%;
+  bottom: unset;
+  overflow: auto;
+}
+@media (min-width: 992px) {
+  .modal-filters-container {
+    overflow: unset;
+  }
+}
+.modal-filters-container .modal-content {
+  margin: auto;
+  width: 100%;
+  height: unset;
+  border: none;
+  border-radius: var(--input-border-radius);
+  margin-bottom: 105px;
+}
+@media (min-width: 992px) {
+  .modal-filters-container .modal-content {
+    margin: auto;
+  }
+}
+.modal-filters-container .modal-close-button {
+  display: none;
+}
+.modal-filters-container .form-field .grid-item {
+  padding: 10px;
+}
+.modal-filters-container .filters-actions {
+  z-index: 100;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: -3px -1px 25px 1px var(--shadow-color);
+  background-color: var(--background-color);
+}
+
+/*# sourceMappingURL=Filters.css.map */

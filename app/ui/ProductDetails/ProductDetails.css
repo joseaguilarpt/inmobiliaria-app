@@ -1,0 +1,40 @@
+.product-details .breadcrumbs-container {
+  padding-top: 80px;
+}
+.product-details .map-container {
+  height: 400px;
+  margin-bottom: 30px;
+}
+.product-details .image-slider {
+  height: 400px;
+}
+.product-details__buttons button {
+  margin-right: 10px;
+  border: 1.8px solid var(--default-color);
+  box-shadow: 0 2px 6px 1px #dbdbdb;
+  padding: 8px;
+}
+.product-details__buttons button:hover {
+  border-color: var(--accent-color-darken);
+}
+.product-details__buttons button:hover svg {
+  color: var(--accent-color-darken);
+}
+.product-details__buttons svg {
+  color: var(--default-color);
+  font-size: 1.5rem;
+}
+.product-details__direction a {
+  margin-left: 6px;
+  color: var(--accent-color-darken);
+  font-size: 1rem;
+}
+.product-details__direction svg {
+  color: var(--accent-color-darken);
+  font-size: 1rem;
+}
+.product-details__contact .form-field {
+  padding-top: 10px;
+}
+
+/*# sourceMappingURL=ProductDetails.css.map */

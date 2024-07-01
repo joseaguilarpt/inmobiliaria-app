@@ -1,0 +1,40 @@
+.image-slider {
+    height: 150px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100%;
+
+      .slide {
+        min-width: 100%;
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+    }
+    }
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      color: var(--accent-color-darken);
+      border: none;
+      cursor: pointer;
+      outline: none;
+      font-size: 20px;
+      padding: 10px;
+      z-index: 1;
+    }
+    .prev {
+      left: 0;
+    }
+    .next {
+      right: 0;
+    }
+  }
+  
