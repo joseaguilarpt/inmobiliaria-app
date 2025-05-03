@@ -56,7 +56,6 @@ const MapWithLocations: React.FC<MapWithLocationsProps> = ({
   locations,
   initialCoordinates,
 }) => {
-  console.log(initialCoordinates ,'initialCoordinates')
   const [position, setPosition] = React.useState<any>({
     lat: initialCoordinates?.lat ?? 9.9281,
     lng: initialCoordinates?.lng ?? -84.0907,

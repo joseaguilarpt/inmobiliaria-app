@@ -14,7 +14,6 @@ export const encodeSearch = (formData: any, restart?: boolean) => {
     ...formData,
   };
 
-  console.log(params, 'params')
   const url = new URLSearchParams("");
   Object.entries(params).forEach(([key, value]) => {
     if (key === 'location') {
