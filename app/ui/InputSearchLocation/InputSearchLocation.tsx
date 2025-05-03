@@ -51,9 +51,9 @@ export function InputSearchLocation({
 
   const queryRef = useRef<string>("");
 
-  const isOutsideBounds = (lat: number, lon: number) => {
+  const isOutsideBounds = (lat: number, lng: number) => {
     const { minLat, maxLat, minLon, maxLon } = clientCountryBounds;
-    return lat < minLat || lat > maxLat || lon < minLon || lon > maxLon;
+    return lat < minLat || lat > maxLat || lng < minLon || lng > maxLon;
   };
 
   const { mutate, isPending } = useMutation({
@@ -80,7 +80,7 @@ export function InputSearchLocation({
   });
 
   const handleSubmit = async (q: string) => {
-    let params: { [key: string]: any } = { q, radius: 1000, limit: 10 };
+    let params: { [key: string]: any } = { q, radius: 20, limit: 10 };
     try {
       const geo = getItem("geo");
       if (
@@ -132,8 +132,10 @@ export function InputSearchLocation({
   ).current;
 
   useEffect(() => {
-    queryRef.current = query;
+    if (query) {
+      queryRef.current = query;
     debouncedHandleSubmit(queryRef.current);
+    }
   }, [query]);
 
   const handleChange = (v: any) => {

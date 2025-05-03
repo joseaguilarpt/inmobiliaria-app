@@ -15,7 +15,7 @@ interface MapWithLocationsProps {
   locations: Property[];
   initialCoordinates?: {
     lat: string;
-    lon: string;
+    lng: string;
   }
 }
 
@@ -26,11 +26,11 @@ const MapWithLocations: React.FC<MapWithLocationsProps> = ({ locations, initialC
 
   const initialPosition = {
     lat: queryParams.lat ? parseFloat(queryParams.lat) : 9.9281,
-    lng: queryParams.lon ? parseFloat(queryParams.lon) : -84.0907,
+    lng: queryParams.lng ? parseFloat(queryParams.lng) : -84.0907,
   };
   if (initialCoordinates) {
     initialPosition.lat = parseFloat(initialCoordinates.lat)
-    initialPosition.lng = parseFloat(initialCoordinates.lon)
+    initialPosition.lng = parseFloat(initialCoordinates.lng)
   }
 
   const MapEvents = () => {
@@ -67,7 +67,7 @@ const MapWithLocations: React.FC<MapWithLocationsProps> = ({ locations, initialC
       {locations && locations?.map((property) => (
         <CustomMarker
           key={property.id}
-          position={[property?.lat ?? 0, property?.lon ?? 0]}
+          position={[property?.lat ?? 0, property?.lng ?? 0]}
           icon="FaHome" // Example icon, you can customize this per property
           size="large"
           color="primary"

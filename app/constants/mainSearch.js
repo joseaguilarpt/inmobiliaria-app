@@ -6,6 +6,7 @@ const inputs = [
     options: [
       { id: "rent", label: "getInTouch_form.radio.option1.label" },
       { id: "buy", label: "getInTouch_form.radio.option2.label" },
+      { id: "share", label: "getInTouch_form.radio.option3.label" },
     ],
     defaultSelectedOption: "rent",
     isLabelVisible: false,

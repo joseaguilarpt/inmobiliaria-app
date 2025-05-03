@@ -380,6 +380,9 @@
       "option2": {
         "label": "Comprar"
       },
+      "option3": {
+        "label": "Compartir"
+      },
       "title": "Operation",
       "label": "Operación"
     },
@@ -451,6 +454,8 @@
     "results": "Resultados",
     "propertiesTobuy": "Propiedades para Comprar",
     "propertiesTorent": "Propiedades para Alquilar",
+    "propertiesToshare": "Propiedades para Compartir",
+    "propertiesTorentOrBuy": "Propiedades para Comprar / Alquilar / Compartir",
     "of": "de"
   },
   "productDetails": {

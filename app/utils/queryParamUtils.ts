@@ -10,12 +10,22 @@ export function parseQueryParams(searchParams: URLSearchParams) {
 
 export const encodeSearch = (formData: any, restart?: boolean) => {
   const params: any = {
-    radius: "1000",
+    radius: "20",
     ...formData,
   };
+
   const url = new URLSearchParams("");
   Object.entries(params).forEach(([key, value]) => {
-    if (typeof value === "object") {
+    if (key === 'location') {
+        const lat = value.lat ?? '';
+        const lng = value.lon ?? '';
+        const location = value?.name ?? value.display_name ?? '';
+        url.append('lat', lat);
+        url.append('lng', lng);
+        url.append('location', location);
+
+    }
+    else if (typeof value === "object") {
       const data = value?.value ?? value?.display_name ?? value?.id ?? value?.label ?? "";
       url.append(key, data);
     } else {

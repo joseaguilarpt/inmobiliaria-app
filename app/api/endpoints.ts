@@ -38,7 +38,7 @@ export async function searchLocation({
 // Haversine Formula Function
 function haversineDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const toRadians = (degrees: number) => degrees * (Math.PI / 180);
-  const R = 6371; // Earth's radius in kilometers
+  const R = 1; // Earth's radius in kilometers
 
   const dLat = toRadians(lat2 - lat1);
   const dLon = toRadians(lon2 - lon1);
@@ -49,6 +49,25 @@ function haversineDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
   return R * c; // Distance in kilometers
+}
+
+const getDistanceFromLatLonInKm = (lat1: number, lon1: number, lat2: number, lon2: number): number => {
+  const R = 6371; // Radius of the earth in km
+  const dLat = (lat2 - lat1) * (Math.PI / 180); // deg2rad
+  const dLon = (lon2 - lon1) * (Math.PI / 180); // deg2rad
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c; // Distance in km
+  return distance;
+}
+
+// Function to check if the point is within 5 kilometers radius
+const isWithinRadius = (centerLat: number, centerLon: number, pointLat: number, pointLon: number, radius: number): boolean => {
+  const distance = getDistanceFromLatLonInKm(centerLat, centerLon, pointLat, pointLon);
+  return distance <= radius;
 }
 
 const sortProperties = (properties: Property[], sortBy: string): Property[] => {
@@ -80,7 +99,7 @@ export interface FilterCriteria {
   city?: string;
   promotional?: boolean;
   lat?: number;
-  lon?: number;
+  lng?: number;
   page?: number;
   size?: number;
   radius?: number; // Radius in kilometers for proximity filtering
@@ -128,7 +147,7 @@ const fakeAxios = {
           city: params.get('city') || undefined,
           promotional: params.get('promotional') ? params.get('promotional') === 'true' : undefined,
           lat: params.get('lat') ? parseFloat(params.get('lat')!) : undefined,
-          lon: params.get('lon') ? parseFloat(params.get('lon')!) : undefined,
+          lng: params.get('lng') ? parseFloat(params.get('lng')!) : undefined,
           radius: params.get('radius') ? parseFloat(params.get('radius')!) : undefined,
           amenities: params.get('amenities') ? params.get('amenities')!.split(',') : undefined,
           sort: params.get('sort') || undefined,
@@ -162,9 +181,10 @@ const fakeAxios = {
           if (criteria.promotional !== undefined && property.promotional !== criteria.promotional) {
             return false;
           }
-          if (criteria.lat !== undefined && criteria.lon !== undefined && criteria.radius !== undefined) {
-            const distance = haversineDistance(criteria.lat, criteria.lon, property.lat, property.lon);
-            if (distance > criteria.radius) {
+       
+          if (criteria.lat !== undefined && criteria.lng !== undefined && criteria.radius !== undefined) {
+            const correctRadius = isWithinRadius(criteria.lat, criteria.lng, property.lat, property.lng, criteria.radius);
+            if (!correctRadius) {
               return false;
             }
           }

@@ -84,10 +84,10 @@ export default function ProductDetails({ product }: { product: Property }) {
   const formId = "get-in-touch-form";
 
   let mapParams: any = {};
-  if (product.lat && product.lon) {
+  if (product.lat && product.lng) {
     mapParams.initialCoords = {
       lat: product.lat,
-      lon: product.lon,
+      lng: product.lng,
     };
   }
 

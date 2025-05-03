@@ -391,6 +391,9 @@
       "option2": {
         "label": "Buy"
       },
+      "option3": {
+        "label": "Share"
+      },
       "title": "Operation",
       "label": "Operation"
     },
@@ -462,6 +465,8 @@
     "results": "Results",
     "propertiesTobuy": "Properties to Buy",
     "propertiesTorent": "Properties to Rent",
+    "propertiesToshare": "Properties to Share",
+    "propertiesTorentOrBuy": "Properties to Rent / Rent",
     "of": "of"
   },
   "productDetails": {

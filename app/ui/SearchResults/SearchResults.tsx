@@ -24,7 +24,10 @@ export default function SearchResults({ data }: { data: any }) {
   const [isMapScreen, setMapScreen] = React.useState(false);
   const [searchParams] = useSearchParams();
   const queryParams: Record<string, string> = parseQueryParams(searchParams);
-  const operationType = queryParams.operation === "buy" ? "buy" : "rent";
+  let operationType = !queryParams.operation
+    ? t(`searchResults.propertiesTorentOrBuy`)
+    : t(`searchResults.propertiesTo${queryParams.operation}`);
+
   const locationType = queryParams.location ?? "";
   const navigate = useNavigate();
 
@@ -36,8 +39,8 @@ export default function SearchResults({ data }: { data: any }) {
     Object.entries(queryParams).forEach(([key, value]) => {
       if (key === "location") {
         params.location = { ...params.location, display_name: value };
-      } else if (key === "lon") {
-        params.location = { ...params.location, lon: value };
+      } else if (key === "lng") {
+        params.location = { ...params.location, lng: value };
       } else if (key === "lat") {
         params.location = { ...params.location, lat: value };
       } else {
@@ -136,7 +139,7 @@ export default function SearchResults({ data }: { data: any }) {
                 <GridContainer justifyContent="space-between">
                   <GridItem xs={12} md={7}>
                     <Heading appearance={6} level={2}>
-                      {t(`searchResults.propertiesTo${operationType}`)}{" "}
+                      {operationType}{" "}
                       {locationType ? ` ${locationType}` : ""}
                     </Heading>
                     <Text>
