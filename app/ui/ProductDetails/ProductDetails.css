@@ -8,16 +8,6 @@
 .product-details .image-slider {
   height: 400px;
 }
-.product-details .image-slider button {
-  opacity: 0; /* Initially hidden */
-  visibility: hidden; /* Initially hidden */
-  transition: opacity 0.3s ease, visibility 0.3s ease; /* Transition effect */
-}
-.product-details .image-slider:hover button {
-  opacity: 1; /* Visible on hover */
-  visibility: visible; /* Visible on hover */
-  color: var(--button-color);
-}
 .product-details__pictures {
   position: relative;
 }
