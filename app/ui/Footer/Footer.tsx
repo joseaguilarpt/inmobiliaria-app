@@ -9,6 +9,7 @@ import GridItem from "../Grid/GridItem";
 import Button from "../Button/Button";
 import Icon, { IconType } from "../Icon/Icon";
 import { useI18n } from "~/context/i18nContext";
+import classNames from "classnames";
 
 type FooterProps = {
   sections: {
@@ -25,6 +26,7 @@ type FooterProps = {
   email: string;
   copyright: string;
   backgroundImageUrl: string;
+  className?: string;
 };
 
 const Footer: React.FC<FooterProps> = ({
@@ -33,13 +35,14 @@ const Footer: React.FC<FooterProps> = ({
   phone,
   email,
   copyright,
+  className,
   backgroundImageUrl,
   socialNetworks = [],
 }) => {
   const { t } = useI18n();
   return (
     <footer
-      className="footer bg-color-dark"
+      className={classNames("footer bg-color-dark", className)}
       style={{ backgroundImage: `url(${backgroundImageUrl})` }}
     >
       <div className="footer__overlay">

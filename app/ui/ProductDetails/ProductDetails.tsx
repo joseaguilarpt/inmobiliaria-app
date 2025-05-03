@@ -319,6 +319,12 @@ export default function ProductDetails({ product }: { product: Property }) {
           </>
         </Modal>
       </ContentContainer>
+      <div>
+        <GridContainer>
+          <GridItem><Button>Contacto</Button></GridItem>
+          <GridItem><Button>Contacto</Button></GridItem>
+        </GridContainer>
+      </div>
     </div>
   );
 }

@@ -17,7 +17,8 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(initialValue);
   const sliderRef = useRef<HTMLDivElement>(null);
-  let slideInterval: NodeJS.Timeout;
+  let startX = 0;
+  let isDragging = false;
 
   // Update currentIndex when initialValue changes
   useEffect(() => {
@@ -25,72 +26,88 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   }, [initialValue]);
 
   // Function to go to the next slide
-  const nextSlide = (e: React.ChangeEvent) => {
-    e.stopPropagation();
+  const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   // Function to go to the previous slide
-  const prevSlide = (e: React.ChangeEvent) => {
-    e.stopPropagation();
+  const prevSlide = () => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
 
-  // Prevent default drag behavior
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-    e.stopPropagation();
+  // Function to go to a specific slide
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
   };
 
-  // Handle slide change on drag end
-  const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
-    const deltaX = e.clientX - e.currentTarget.getBoundingClientRect().left;
+  // Handle mouse down and touch start
+  const handleStart = (e: React.TouchEvent | React.MouseEvent) => {
+    isDragging = true;
+    startX = "touches" in e ? e.touches[0].clientX : e.clientX;
+  };
+
+  // Handle mouse move and touch move
+  const handleMove = (e: React.TouchEvent | React.MouseEvent) => {
+    if (!isDragging) return;
+    const currentX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    const deltaX = currentX - startX;
+
     if (deltaX > 50) {
-      prevSlide(e);
+      prevSlide();
+      isDragging = false;
     } else if (deltaX < -50) {
-      nextSlide(e);
+      nextSlide();
+      isDragging = false;
     }
+  };
+
+  // Handle mouse up and touch end
+  const handleEnd = () => {
+    isDragging = false;
   };
 
   // Set up event listeners for drag events
   useEffect(() => {
     const slider = sliderRef.current;
-    if (slider) {
-      slider.addEventListener("dragstart", handleDragStart);
-      slider.addEventListener("dragend", handleDragEnd);
 
-      return () => {
-        slider.removeEventListener("dragstart", handleDragStart);
-        slider.removeEventListener("dragend", handleDragEnd);
-      };
+    if (slider) {
+      slider.addEventListener("mousedown", handleStart);
+      slider.addEventListener("mousemove", handleMove);
+      slider.addEventListener("mouseup", handleEnd);
+      slider.addEventListener("mouseleave", handleEnd);
+      slider.addEventListener("touchstart", handleStart);
+      slider.addEventListener("touchmove", handleMove);
+      slider.addEventListener("touchend", handleEnd);
     }
+
+    return () => {
+      if (slider) {
+        slider.removeEventListener("mousedown", handleStart);
+        slider.removeEventListener("mousemove", handleMove);
+        slider.removeEventListener("mouseup", handleEnd);
+        slider.removeEventListener("mouseleave", handleEnd);
+        slider.removeEventListener("touchstart", handleStart);
+        slider.removeEventListener("touchmove", handleMove);
+        slider.removeEventListener("touchend", handleEnd);
+      }
+    };
   }, []);
 
   // Automatic slide change interval
   useEffect(() => {
-    slideInterval = setInterval(nextSlide, autoSlideInterval);
+    const slideInterval = setInterval(nextSlide, autoSlideInterval);
 
     return () => {
       clearInterval(slideInterval);
     };
   }, [currentIndex, autoSlideInterval]);
 
-  // Clear interval on component unmount and update
-  useEffect(() => {
-    clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, autoSlideInterval);
-
-    return () => {
-      clearInterval(slideInterval);
-    };
-  }, [autoSlideInterval]);
-
   return (
-    <div className="image-slider" ref={sliderRef}>
+    <div className="image-slider" ref={sliderRef} style={{ backgroundColor: defaultBackgroundColor }}>
       <div
         className="slides"
         style={{ transform: `translateX(${-currentIndex * 100}%)` }}
@@ -112,6 +129,18 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
       <button className="next" onClick={nextSlide}>
         &#10095;
       </button>
+      <div className="dots">
+        {images.map((_, index) => (
+          <span
+            key={index}
+            className={`dot ${currentIndex === index ? "active" : ""}`}
+            onClick={(e) => {
+              e.preventDefault()
+              goToSlide(index)
+            }}
+          ></span>
+        ))}
+      </div>
     </div>
   );
 };

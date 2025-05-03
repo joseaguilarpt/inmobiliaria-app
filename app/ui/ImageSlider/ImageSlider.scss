@@ -15,6 +15,7 @@
       background-position: center;
       height: 100%;
     }
+
     &__image-item {
       height: 100%;
       flex: 1 0 100%;
@@ -54,5 +55,26 @@
 
   .next {
     right: 0;
+  }
+
+  .dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+
+      &.active {
+        background-color: rgba(255, 255, 255, 1);
+      }
+    }
   }
 }

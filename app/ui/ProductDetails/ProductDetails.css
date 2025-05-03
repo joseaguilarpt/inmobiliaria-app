@@ -55,10 +55,21 @@
   margin-top: 50px;
   height: 85%;
   max-width: 1200px !important;
+  background-color: transparent;
+  border: none;
 }
 .pictures-modal .modal-content .image-slider {
   margin-top: 30px;
   height: 80%;
+}
+
+.product-details__footer {
+  display: none;
+}
+@media (min-width: 768px) {
+  .product-details__footer {
+    display: block;
+  }
 }
 
 /*# sourceMappingURL=ProductDetails.css.map */

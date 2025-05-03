@@ -50,5 +50,23 @@
 .image-slider .next {
   right: 0;
 }
+.image-slider .dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+}
+.image-slider .dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.image-slider .dots .dot.active {
+  background-color: rgb(255, 255, 255);
+}
 
 /*# sourceMappingURL=ImageSlider.css.map */

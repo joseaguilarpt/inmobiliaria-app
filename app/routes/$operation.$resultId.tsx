@@ -61,6 +61,7 @@ export default function ProductPage() {
       <BackToTop />
       <Footer
         {...FOOTER}
+        className='product-details__footer'
         backgroundImageUrl={image}
         socialNetworks={[
           { label: "Facebook", icon: "FaFacebook", href: "#" },
