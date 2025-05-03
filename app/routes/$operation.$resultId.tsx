@@ -8,7 +8,7 @@ import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Property } from "~/constants/mockData";
 import ProductDetails from "~/ui/ProductDetails/ProductDetails";
-import image from '../img/hero-carousel/hero-carousel-3.jpg';
+import image from '../img/real-state.jpg';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);

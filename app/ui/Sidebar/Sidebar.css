@@ -4,7 +4,7 @@
   right: 0;
   width: 85vw;
   height: 100%;
-  background-color: var(--sidebar-background-color, #f8f9fa);
+  background-color: var(--background-color, #f8f9fa);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: var(--spacing-base, 1rem);
   transform: translateX(100%);

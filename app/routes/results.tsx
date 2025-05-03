@@ -7,7 +7,7 @@ import { queryClient } from "~/root";
 import ResultsSection from "./ResultsPage/ResultSection";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import image from '../img/hero-carousel/hero-carousel-3.jpg';
+import image from '../img/real-state.jpg';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);

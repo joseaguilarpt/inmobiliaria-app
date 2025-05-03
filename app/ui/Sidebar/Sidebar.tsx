@@ -3,6 +3,7 @@ import { IconType } from "react-icons";
 import * as Icons from "react-icons/fa";
 import classNames from "classnames";
 import "./Sidebar.scss";
+import { useI18n } from "~/context/i18nContext";
 
 export interface SidebarItem {
   value: string;
@@ -20,6 +21,7 @@ export interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ items, isOpen, onClose, className }) => {
   const sidebarRef = useRef<HTMLDivElement>(null);
 
+  const { t} = useI18n();
   const handleClickOutside = (event: MouseEvent) => {
     if (sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
       onClose();
@@ -61,7 +63,7 @@ const Sidebar: React.FC<SidebarProps> = ({ items, isOpen, onClose, className }) 
               <li key={index} className="sidebar__item">
                 <a href={item.href} className="sidebar__link">
                   {IconComponent && <IconComponent className="sidebar__icon" />}
-                  <span className="sidebar__label">{item.value}</span>
+                  <span className="sidebar__label">{t(item.value)}</span>
                 </a>
               </li>
             );

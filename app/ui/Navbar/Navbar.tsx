@@ -75,7 +75,7 @@ const Navbar = ({
             <Heading
               level={1}
               appearance={6}
-              color={!keepScrolled ? "dark" : "default"}
+              color={"white"}
             >
               {t("pageName")}
             </Heading>
