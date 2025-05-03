@@ -2,6 +2,7 @@
   width: 300px;
 }
 .map__popup-wrapper .leaflet-popup-content-wrapper {
+  background-color: var(--background-color);
   border-radius: var(--input-border-radius);
   position: relative;
 }
