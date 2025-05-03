@@ -61,7 +61,7 @@
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 0 0 4px 4px;
-  background-color: white;
+  background-color: var(--input-background-color);
   z-index: 10;
   overflow-y: auto;
   list-style: none;
@@ -77,13 +77,13 @@
   color: var(--default-color);
 }
 .multiselect__suggestions li:hover, .multiselect__suggestions li.active {
-  background-color: #f0f0f0;
+  background-color: var(--accent-color);
   font-weight: 600;
 }
 .multiselect__suggestions li.disabled {
   cursor: not-allowed;
   font-weight: 400;
-  background-color: white;
+  background-color: var(--background-color);
 }
 .multiselect__selected-options {
   display: flex;

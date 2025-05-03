@@ -7,7 +7,7 @@
 
 .modal-filters-container {
   width: 100%;
-  top: 80px;
+  top: 0;
   height: 100%;
   bottom: unset;
   overflow: auto;

@@ -71,12 +71,6 @@ const fakeAxios = {
     if (url.includes('/properties')) {
       const urlParts = url.split('/');
       const propertyId = urlParts[urlParts.length - 1];
-      console.log(propertyId, 'vwcv')
-      console.log(propertyId, 'vwcv')
-      console.log(propertyId, 'vwcv')
-      console.log(propertyId, 'vwcv')
-      console.log(propertyId, 'vwcv')
-      console.log(propertyId, 'vwcv')
       if (propertyId !== 'properties' && propertyId !== 'filter') {
         const property = properties.find(prop => prop.id === parseFloat(propertyId));
         if (property) {
