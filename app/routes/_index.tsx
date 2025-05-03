@@ -16,9 +16,56 @@ import React from "react";
 import GetInTouchSection from "./IndexPage/GetInTouchSection";
 import OfferSection from "./IndexPage/OffersSection";
 import CompanyBlogSection from "./IndexPage/CompanyBlogSection";
-import image from '../img/real-state.jpg';
+import image from "../img/real-state.jpg";
+import { MetaFunction } from "@remix-run/node";
 
-export default function MapPage() {
+const generateMeta = (data: any) => {
+  return [
+    {
+      name: "title",
+      content: `Real Estate Agency - Encuentra tu Propiedad ideal`,
+    },
+    {
+      name: "description",
+      content:
+        "lorem ispu dolor sitem est lorem ispu dolor sitem est lorem ispu dolor sitem est lorem ispu dolor sitem est",
+    },
+    {
+      name: "keywords",
+      content: [
+        "real estate",
+        "costa rica",
+        "san jose",
+        "casa",
+        "apartamento",
+        "garage",
+        "comprar",
+        "alquilar",
+      ],
+    },
+    {
+      property: "og:title",
+      content: `Real Estate Agency - Encuentra tu Propiedad ideal`,
+    },
+    {
+      property: "og:description",
+      content:
+        "lorem ispu dolor sitem est lorem ispu dolor sitem est lorem ispu dolor sitem est lorem ispu dolor sitem est",
+    },
+    { property: "og:type", content: "article" },
+    {
+      property: "og:url",
+      content: `https://cr-real-estate.netlify.app`,
+    },
+  ];
+};
+
+export let meta: MetaFunction = ({ data }) => {
+  const { results } = data;
+  return generateMeta(results);
+};
+
+export default function IndexPage() {
   const { t } = useI18n();
 
   const slides: CarouselSlide[] = [
@@ -69,7 +116,13 @@ export default function MapPage() {
         <Carousel slides={slides} hideArrows className="__half">
           <div>
             <GridContainer justifyContent="center" className="u-mb4 u-mt4">
-              <Heading align="center" color="white" underline appearance={4} level={1}>
+              <Heading
+                align="center"
+                color="white"
+                underline
+                appearance={4}
+                level={1}
+              >
                 {t("heading")}
               </Heading>
             </GridContainer>

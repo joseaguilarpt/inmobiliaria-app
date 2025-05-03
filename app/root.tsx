@@ -12,6 +12,7 @@ import {
   // useSubmit,
 } from "@remix-run/react";
 import { cssBundleHref } from "@remix-run/css-bundle";
+import { HelmetProvider } from 'react-helmet-async';
 
 // import { json } from "@remix-run/node";
 // import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
