@@ -1,68 +1,75 @@
-# Welcome to Remix!
+# inmobiliaria-app
 
-- [Remix Docs](https://remix.run/docs)
-- [Netlify Functions Overview](https://docs.netlify.com/functions/overview)
+**Next-generation AI-powered real estate search and management**
 
-## Netlify Setup
+_inmobiliaria-app_ is a web platform built with React, Remix, Vite, and deployed on Netlify. It is designed to revolutionize the way users search for, discover, and manage real estate properties. The app features an intelligent AI-driven search engine that understands your needs and helps you find the perfect property quickly, accurately, and personally.
 
-1. Install the [Netlify CLI](https://docs.netlify.com/cli/get-started/):
+---
 
-```sh
-npm i -g netlify-cli
-```
+## Key Features
 
-If you have previously installed the Netlify CLI, you should update it to the latest version:
+- **AI-Powered Smart Search**  
+  Find properties by describing what you need in natural language-no more rigid filters. The AI understands your preferences and shows you relevant results, whether you’re looking for a “pet-friendly apartment with a balcony downtown” or a “house with a garden and pool near the park.”
+- **Automatic Property Type & Location Recognition**  
+  The engine identifies property types (house, apartment, duplex, commercial space, etc.) and desired locations, enabling precise searches by city, neighborhood, postal code, or address.
+- **Real-Time Insights & Trends**  
+  Access up-to-date market data: prices, high-demand areas, new listings, and trends to make better investment decisions.
+- **Comprehensive Property Management**  
+  Easily publish, edit, and manage your listings. View statistics on visits, contacts, and ad performance.
+- **Smart Alerts & Notifications**  
+  Save custom searches and receive automatic notifications when properties matching your criteria are listed.
+- **Modern, Responsive Interface**  
+  Smooth navigation and an optimized experience on any device, with ultra-fast load times thanks to Jamstack architecture and Netlify deployment.
 
-```sh
-npm i -g netlify-cli@latest
-```
+---
 
-2. Sign up and log in to Netlify:
+## Architecture
 
-```sh
-netlify login
-```
+- **Frontend:** React + Remix + Vite  
+- **Backend:** Serverless functions (Netlify Functions or Edge Functions)  
+- **Deployment:** Netlify  
+- **AI Search & Recommendations:** Custom algorithms for personalized and accurate results.
 
-3. Create a new site:
+---
 
-```sh
-netlify init
-```
+## Why AI in Real Estate?
 
-## Development
+- Enables more human and personalized searches, simplifying the process for users.
+- Reduces the time to find the ideal property, even with complex or uncommon criteria.
+- Provides real-time market analysis and recommendations, helping users make better purchase, rental, or investment decisions.
 
-Ensure all packages are installed by running:
+---
 
-```sh
+## Local Development
+
+1. Clone the repository:
+git clone https://github.com/yourusername/inmobiliaria-app.git
+cd inmobiliaria-app
+
+
+2. Install dependencies:
 npm install
-```
 
-Run
 
-```sh
-netlify dev
-```
+3. Start the development server:
+npm run dev
 
-Open up [http://localhost:8888](http://localhost:8888), and you're ready to go!
 
-### Serve your site locally
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-To serve your site locally in a production-like environment, run
-
-```sh
-netlify serve
-```
-
-Your site will be available at [http://localhost:8888](http://localhost:8888). Note that it will not auto-reload when you make changes.
+---
 
 ## Deployment
 
-There are two ways to deploy your app to Netlify, you can either link your app to your git repo and have it auto deploy changes to Netlify, or you can deploy your app manually. If you've followed the setup instructions already, all you need to do is run this:
+This app is optimized for Netlify. Simply connect your repository and Netlify will automatically detect the Vite and Remix configuration for seamless deployment.
 
-```sh
-# preview deployment
-netlify deploy --build
+---
 
-# production deployment
-netlify deploy --build --prod
-```
+## Support
+
+Questions or suggestions?  
+Contact us: support@inmobiliaria-app.com
+
+---
+
+**Discover a new way to search, compare, and manage properties with the AI-powered inmobiliaria-app.**
