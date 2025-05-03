@@ -15,6 +15,7 @@ import classNames from "classnames";
 import GridItem from "../Grid/GridItem";
 import { InputSearchLocation } from '../InputSearchLocation/InputSearchLocation';
 import Multiselect from '../Multiselect/Multiselect';
+import InputPassword from '../InputPassword/InputPassword';
 
 interface RadioOption {
   id: string;
@@ -23,7 +24,7 @@ interface RadioOption {
 
 interface InputField {
   id: string;
-  type: "text" | "phone" | "email" | "area";
+  type: "text" | "phone" | "email" | "area" | "password";
   size?: { xs?: number; sm?: number; md?: number; lg?: number; xl?: number };
   label: string;
   isLabelVisible: boolean;
@@ -76,6 +77,16 @@ const DynamicField = ({
           onChange={(value) => onChange(input.id, value)}
         />
       );
+      case "password":
+        return (
+          <InputPassword
+            key={input.id}
+            autoComplete={autoComplete}
+            {...input}
+            value={formData[input.id]}
+            onChange={(value) => onChange(input.id, value)}
+          />
+        );
     case "phone":
       return (
         <InputPhone

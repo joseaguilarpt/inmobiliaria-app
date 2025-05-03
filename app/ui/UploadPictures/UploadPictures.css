@@ -1,0 +1,67 @@
+.upload-pictures {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.upload-pictures__label {
+  font-family: var(--default-font);
+  font-size: 0.86rem;
+  margin-bottom: 0.5rem;
+  color: var(--default-color);
+  font-weight: bold;
+}
+.upload-pictures__label--hidden {
+  display: none;
+}
+.upload-pictures__input {
+  width: 100%;
+  padding: var(--input-padding);
+  font-family: var(--default-font);
+  font-size: var(--input-font-size);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-border-radius);
+  background-color: var(--input-background-color);
+  outline: none;
+  color: var(--default-color);
+}
+.upload-pictures__input:focus {
+  border-color: var(--input-border);
+  box-shadow: 0 0 0 2.5px var(--input-border-active);
+}
+.upload-pictures__input::placeholder {
+  color: var(--placeholder-color);
+}
+.upload-pictures__input:disabled {
+  background-color: var(--placeholder-color);
+  cursor: not-allowed;
+}
+.upload-pictures__input--error {
+  border-color: var(--error-color);
+}
+.upload-pictures__previews {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.upload-pictures__preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-border-radius);
+}
+.upload-pictures__error {
+  font-family: var(--default-font);
+  font-size: 0.875rem;
+  color: var(--error-color);
+  margin-top: 0.5rem;
+}
+.upload-pictures__hint {
+  font-family: var(--default-font);
+  font-size: 0.875rem;
+  color: var(--default-color);
+  margin-top: 0.5rem;
+}
+
+/*# sourceMappingURL=UploadPictures.css.map */

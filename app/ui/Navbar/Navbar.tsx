@@ -13,8 +13,9 @@ import Button from "../Button/Button";
 import InputSelect from "../InputSelect/InputSelect";
 import { useI18n } from "~/context/i18nContext";
 import Sidebar from "../Sidebar/Sidebar";
+import { IconType } from "react-icons";
 
-const options = [
+const defaultOptions = [
   {
     value: "home",
     href: "/",
@@ -22,16 +23,23 @@ const options = [
   },
 ];
 
-
-const Navbar = ({ autoScrolled }: { autoScrolled?: boolean; }) => {
+const Navbar = ({
+  autoScrolled,
+  items,
+}: {
+  autoScrolled?: boolean;
+  items?: { value: string; href?: string; icon: IconType }[];
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { setLocale, locale, t } = useI18n();
 
+  const options = items ?? defaultOptions;
+
   const dropdownOptions = [
     { id: 1, value: "es", label: t("spanish") },
-    { id: 2, value: "en", label: t("english" )},
+    { id: 2, value: "en", label: t("english") },
   ];
 
   useEffect(() => {
@@ -61,7 +69,7 @@ const Navbar = ({ autoScrolled }: { autoScrolled?: boolean; }) => {
               appearance={6}
               color={!keepScrolled ? "dark" : "default"}
             >
-              {t('pageName')}
+              {t("pageName")}
             </Heading>
           </GridItem>
           <GridContainer justifyContent="flex-end">
@@ -102,7 +110,11 @@ const Navbar = ({ autoScrolled }: { autoScrolled?: boolean; }) => {
             </div>
           </GridContainer>
         </GridContainer>
-        <Sidebar items={options} isOpen={isOpen} onClose={() => setIsOpen(false)} />
+        <Sidebar
+          items={options}
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+        />
       </ContentContainer>
     </nav>
   );

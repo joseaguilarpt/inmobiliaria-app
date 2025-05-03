@@ -1,0 +1,93 @@
+@import '../../styles/theme';
+
+.admin-account {
+    padding-top: 80px;
+}
+
+.account-home {
+    margin-left: 0;
+    @include media-query(large) {
+        margin-left: 40px;
+    }   
+    .product-card {
+        padding-top: 0;
+    }
+    .filters-button__wrapper {
+        text-align: right;
+    }
+
+    .filters-button {
+        padding: var(--input-padding);
+        font-size: var(--font-size-medium);
+        font-weight: bold;
+        color: var(--accent-color);
+        svg {
+            padding-right: 5px;
+            color: var(--accent-color);
+        }
+
+        &:hover {
+            color: var(--accent-color-darken);
+            border-color: var(--accent-color-darken);
+            svg {
+                padding-right: 5px;
+                color: var(--accent-color);
+            }
+            svg {
+                padding-right: 5px;
+                color: var(--accent-color-darken);
+            }   
+        }
+    }
+}
+
+.account-home-card {
+    &:hover {
+        background-color: var(--accent-color);
+        svg, p {
+            color: var(--contrast-color);
+        }
+        transition: all 0.3s ease;
+    }
+}
+
+.modal-filters-container {
+    width: 100%;
+    top: 0;
+    height: 100%;
+    bottom: unset;
+    overflow: auto;
+
+    @include media-query(large) {
+        overflow: unset;   
+    }
+    .modal-content {
+        margin: auto;
+        width: 100%;
+        height: unset;
+        border: none;
+        border-radius: var(--input-border-radius);
+        margin-bottom: 105px;
+        @include media-query(large) {
+            margin: auto;
+        }
+    }
+    .modal-close-button {
+        display: none;
+    }
+    .form-field {
+        .grid-item {
+            padding: 10px;
+        }
+    }
+    .filters-actions {
+        z-index: 100;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        box-shadow: -3px -1px 25px 1px var(--shadow-color);
+        background-color: var(--background-color);
+
+    }
+}

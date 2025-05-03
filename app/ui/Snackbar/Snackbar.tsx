@@ -31,10 +31,10 @@ const Snackbar = () => {
   return (
     <div className={classNames("snackbar", `snackbar--${snackbar.type}`)}>
       <div>
-        <Text textWeight="bold">{title[snackbar.type]}:</Text>
+        <Text color="secondary" textWeight="bold">{title[snackbar.type]}:</Text>
         <div>
           {" "}
-          <Text>{snackbar.message}</Text>
+          <Text color="secondary">{snackbar.message}</Text>
         </div>
       </div>
       <button className="snackbar__close" onClick={hideSnackbar}>

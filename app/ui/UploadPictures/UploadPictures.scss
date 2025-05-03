@@ -1,0 +1,78 @@
+@import '../../styles/variables'; // Import your SCSS variables
+
+.upload-pictures {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  &__label {
+    font-family: var(--default-font);
+    font-size: .86rem;
+    margin-bottom: 0.5rem;
+    color: var(--default-color);
+    font-weight: bold;
+  }
+
+  &__label--hidden {
+    display: none;
+  }
+
+  &__input {
+    width: 100%;
+    padding: var(--input-padding);
+    font-family: var(--default-font);
+    font-size: var(--input-font-size);
+    border: 1px solid var(--input-border);
+    border-radius: var(--input-border-radius);
+    background-color: var(--input-background-color);
+    outline: none;
+    color: var(--default-color);
+
+    &:focus {
+      border-color: var(--input-border);
+      box-shadow: 0 0 0 2.5px var(--input-border-active);
+    }
+
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+
+    &:disabled {
+      background-color: var(--placeholder-color);
+      cursor: not-allowed;
+    }
+
+    &--error {
+      border-color: var(--error-color);
+    }
+  }
+
+  &__previews {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  &__preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 1px solid var(--input-border);
+    border-radius: var(--input-border-radius);
+  }
+
+  &__error {
+    font-family: var(--default-font);
+    font-size: 0.875rem;
+    color: var(--error-color);
+    margin-top: 0.5rem;
+  }
+
+  &__hint {
+    font-family: var(--default-font);
+    font-size: 0.875rem;
+    color: var(--default-color);
+    margin-top: 0.5rem;
+  }
+}

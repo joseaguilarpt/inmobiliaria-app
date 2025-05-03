@@ -384,6 +384,10 @@
   height: 100%;
 }
 
+.full-screen-height {
+  min-height: 100vh !important;
+}
+
 .button {
   font-family: var(--heading-font);
   font-size: var(--input-font-size, 1rem);

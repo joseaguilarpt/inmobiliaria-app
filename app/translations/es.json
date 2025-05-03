@@ -470,5 +470,15 @@
   },
   "contactCall": {
     "call": "Llamar"
+  },
+  "login": {
+    "resetButton": "Olvidaste tu contraseña?",
+    "heading": "Admin",
+    "name": "Nombre de usuario/Email",
+    "loginButton": "Iniciar sesión",
+    "password": "Contraseña",
+    "resetLabel": "Reiniciar tu contraseña",
+    "backToLogin": "Volver al inicio de sesión"
+
   }
 }

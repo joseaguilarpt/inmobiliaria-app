@@ -8,12 +8,17 @@ import GridContainer from "~/ui/Grid/Grid";
 import Card from "~/ui/Card/Card";
 import classNames from "classnames";
 import { useI18n } from "~/context/i18nContext";
+import { ReactNode } from "react";
 
 export const ProductCard = ({
   property,
   layout = "vertical",
+  hideButtons = false,
+  customActions,
 }: {
   property: Property;
+  hideButtons?: boolean;
+  customActions?: ReactNode;
   layout: "vertical" | "horizontal";
 }) => {
   const { t } = useI18n();
@@ -42,29 +47,33 @@ export const ProductCard = ({
           {property.city}, {property.state}
         </Text>
         <Text size="small">
-          {t("productCard.rooms")}: {property.rooms}. {t("productCard.area")}: {property.area}m²
+          {t("productCard.rooms")}: {property.rooms}. {t("productCard.area")}:{" "}
+          {property.area}m²
         </Text>
         <Text className="u-pt1 u-pb1" size="large" textWeight="bold">
           ${property.price.toLocaleString()}
         </Text>
-        <GridContainer
-          className="u-pt1 __card-contact"
-          justifyContent="space-between"
-        >
-          <Button
-            onClick={() => handleClick(property.phone)}
-            leftIcon="FaWhatsapp"
-            appareance="link"
+        {!hideButtons && (
+          <GridContainer
+            className="u-pt1 __card-contact"
+            justifyContent="space-between"
           >
-            {t("productCard.contactButton")}
-          </Button>
-          <Button
-            href={`/${property.operation}/${property.id}`}
-            appareance="link"
-          >
-            {t("productCard.viewMoreButton")}
-          </Button>
-        </GridContainer>
+            <Button
+              onClick={() => handleClick(property.phone)}
+              leftIcon="FaWhatsapp"
+              appareance="link"
+            >
+              {t("productCard.contactButton")}
+            </Button>
+            <Button
+              href={`/${property.operation}/${property.id}`}
+              appareance="link"
+            >
+              {t("productCard.viewMoreButton")}
+            </Button>
+          </GridContainer>
+        )}
+        {customActions && customActions}
       </div>
     </Card>
   );

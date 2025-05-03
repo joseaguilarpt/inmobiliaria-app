@@ -384,6 +384,10 @@
   height: 100%;
 }
 
+.full-screen-height {
+  min-height: 100vh !important;
+}
+
 .breadcrumb {
   font-size: var(--font-size-medium);
   color: #212121;

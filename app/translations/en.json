@@ -468,7 +468,6 @@
     "contactAdvertiser": "You can contact the advertiser through:",
     "sendEmail": "Or send an email:",
     "photos": "Property photos"
-
   },
   "mapPopup": {
     "contact": "Contact",
@@ -482,5 +481,14 @@
   },
   "contactCall": {
     "call": "Call Now"
+  },
+  "login": {
+    "resetButton": "Forgot your Password?",
+    "heading": "Admin",
+    "name": "Username/Email",
+    "loginButton": "Log In",
+    "password": "Password",
+    "resetLabel": "Reset Password",
+"backToLogin": "Back to Login"
   }
 }

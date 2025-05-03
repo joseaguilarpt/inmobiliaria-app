@@ -384,4 +384,8 @@
   height: 100%;
 }
 
+.full-screen-height {
+  min-height: 100vh !important;
+}
+
 /*# sourceMappingURL=theme.css.map */
