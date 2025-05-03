@@ -9,7 +9,7 @@
     }
     .submit-button {
         padding: var(--input-padding);
-        color: var(--font-color);
+        color: var(--button-color);
         font-size: var(--input-font-size);
         background-color: var(--accent-color);
         border-color: var(--accent-color);
@@ -17,6 +17,7 @@
         &:hover {
             background-color: var(--accent-color-darken);
             border-color: transparent;
+            font-weight: 500;
         }
     }
 }

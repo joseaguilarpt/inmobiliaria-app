@@ -9,8 +9,8 @@ $nav-font: "Poppins", sans-serif;
 
 // Font Sizes
 $font-size-small: 12px;
-$font-size-medium: 16px;
-$font-size-large: 20px;
+$font-size-medium: 14px;
+$font-size-large: 18px;
 
 // Light Theme Variables
 $background-color-light: #ffffff;
@@ -18,26 +18,31 @@ $input-background-color-light: #F2F4F4;;
 $font-color-light: #212121;
 $default-color-light: #757575;
 $heading-color-light: #424242;
-$accent-color-light: #51b293; // Base color
+$accent-color-light: #004137; // Base color
 $accent-color-light-darken: #{darken($accent-color-light, 15%)};
+$button-color-light: #eebd57;
+$image-background-light: #d1d1d1;
 
 $contrast-color-light: #ffffff;
 $shadow-color-light: rgba(0, 0, 0, 0.1);
 $error-color-light: #f44336;
-$carousel-overlay-light: rgb(87 170 144 / 85%);
+$carousel-overlay-light: #004137db;
 
 // Dark Theme Variables
-$background-color-dark: #2d372d;
+$background-color-dark: rgba(50,50,58,1);
 $input-background-color-dark: #2d372d;
 $font-color-dark: #ffffff;
 $default-color-dark: #cfcfcf;
 $heading-color-dark: #ffffff;
-$accent-color-dark: #438973; // Base color
+$accent-color-dark: #007a68; // Base color
 $accent-color-dark-darken: #{lighten($accent-color-dark, 10%)};
 $contrast-color-dark: #2d372d;
 $shadow-color-dark: rgba(0, 0, 0, 0.1);
 $error-color-dark: #cf6679;
-$carousel-overlay-dark: rgb(81 123 110 / 85%);
+//$carousel-overlay-dark: #004137;
+$carousel-overlay-dark: #004137db;
+$button-color-dark: #eebd57;
+$image-background-dark: #373737;
 
 
 // Nav Menu Colors

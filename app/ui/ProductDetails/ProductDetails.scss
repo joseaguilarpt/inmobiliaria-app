@@ -1,15 +1,35 @@
-@import '../../styles/media-queries';
+@import "../../styles/media-queries";
 
 .product-details {
   .breadcrumbs-container {
     padding-top: 80px;
   }
   .map-container {
-    height: 400px;
+    height: 500px;
     margin-bottom: 30px;
   }
   .image-slider {
     height: 400px;
+    button {
+      opacity: 0; /* Initially hidden */
+      visibility: hidden; /* Initially hidden */
+      transition: opacity 0.3s ease, visibility 0.3s ease; /* Transition effect */
+    }
+
+    &:hover {
+      button {
+        opacity: 1; /* Visible on hover */
+        visibility: visible; /* Visible on hover */
+        color: var(--button-color);
+      }
+    }
+  }
+
+  &__pictures {
+    position: relative;
+    .image-slider {
+      cursor: pointer;
+    }
   }
   &__buttons {
     button {
@@ -18,10 +38,10 @@
       box-shadow: 0 2px 6px 1px #dbdbdb;
       padding: 8px;
       &:hover {
-        border-color: var(--accent-color-darken);
+        border-color: var(--accent-color);
 
         svg {
-          color: var(--accent-color-darken);
+          color: var(--accent-color);
         }
       }
     }
@@ -33,11 +53,11 @@
   &__direction {
     a {
       margin-left: 6px;
-      color: var(--accent-color-darken);
+      color: var(--accent-color);
       font-size: 1rem;
     }
     svg {
-      color: var(--accent-color-darken);
+      color: var(--accent-color);
       font-size: 1rem;
     }
   }
@@ -54,11 +74,13 @@
 .pictures-modal {
   padding-top: 50px;
   .modal-content {
-    margin-top: 60px;
+    margin-top: 50px;
     height: 85%;
+    max-width: 1200px !important;
+
     .image-slider {
       margin-top: 30px;
-      height: 90%;
+      height: 80%;
     }
   }
 }

@@ -25,8 +25,8 @@
     }
   
     &--primary &__circle {
-      border-color: var(--default-color);
-      border-top-color: var(--accent-color);
+      border-color: var(--accent-color);
+      border-top-color: var(--button-color);
     }
   
     &--secondary &__circle {

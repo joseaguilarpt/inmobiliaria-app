@@ -12,9 +12,13 @@
   align-items: center;
   justify-content: center;
 
+  svg {
+    padding-right: 5px;
+  }
+
   &--primary {
     background-color: var(--accent-color);
-    color: var(--font-color);
+    color: var(--button-color);
     padding: var(--input-padding);
     text-decoration: none;
 
@@ -132,5 +136,9 @@
   &--large {
     font-size: var(--font-size-large);
     padding: 0.75rem 1.5rem;
+  }
+
+  &.fit-container {
+    width: 100%;
   }
 }

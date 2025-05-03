@@ -30,8 +30,8 @@ body {
   --heading-font: #{$heading-font};
   --nav-font: #{$nav-font};
   --border-radius: 4px;
-  --input-border-radius: 0px;
-  --input-font-size: 1.15rem;
+  --input-border-radius: 4px;
+  --input-font-size: 1rem;
   --input-padding: 0.65rem;
 
   /* Font Sizes */
@@ -51,7 +51,8 @@ body {
   --error-color: #{$error-color-light};
   --carousel-overlay: #{$carousel-overlay-light};
   --input-background-color: #{$input-background-color-light};
-
+  --button-color: #{$button-color-light};
+  --image-background: #{$image-background-light};
 
   /* Nav Menu Colors */
   --nav-color: #{$nav-color-light};
@@ -76,6 +77,8 @@ body.dark-mode {
   --shadow-color: #{$shadow-color-dark};
   --error-color: #{$error-color-dark};
   --carousel-overlay: #{$carousel-overlay-dark};
+  --button-color: #{$button-color-dark};
+  --image-background: #{$image-background-dark};
 
 
   /* Nav Menu Colors */

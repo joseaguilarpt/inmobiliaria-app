@@ -8,30 +8,92 @@ import Breadcrumb from "../Breadcrumbs/Breadcrumbs";
 import Filters from "../Filters/Filters";
 import Image from "../Image/Image";
 import Heading from "../Heading/Heading";
-import { useSearchParams } from "@remix-run/react";
-import { parseQueryParams } from "~/utils/queryParamUtils";
+import { useNavigate, useSearchParams } from "@remix-run/react";
+import { encodeSearch, parseQueryParams } from "~/utils/queryParamUtils";
 import Text from "../Text/Text";
 import { ProductCard } from "../ProductCard/ProductCard";
 import Pagination from "../Pagination/Pagination";
 import MapWithLocations from "~/ui/Map/Map.client";
 import { useI18n } from "~/context/i18nContext"; // Assuming you have an i18nContext for translation
-import { Property } from "~/constants/mockData";
-import mapImage from '../../img/map-layer.jpg';
+import mapImage from "../../img/map-layer.jpg";
+import InputSelect from "../InputSelect/InputSelect";
+import omit from "lodash/omit";
 
-export default function SearchResults({
-  properties,
-}: {
-  properties: Property[];
-}) {
+export default function SearchResults({ data }: { data: any }) {
   const { t } = useI18n(); // Hook for accessing translations
   const [isMapScreen, setMapScreen] = React.useState(false);
   const [searchParams] = useSearchParams();
   const queryParams: Record<string, string> = parseQueryParams(searchParams);
-
   const operationType = queryParams.operation === "buy" ? "buy" : "rent";
   const locationType = queryParams.location ?? "";
-  const resultCount = properties.length;
+  const navigate = useNavigate();
 
+  const [formData, setFormData] = React.useState({});
+  const [initialValue, setInitialValue] = React.useState({});
+
+  function initialize() {
+    let params = {};
+    Object.entries(queryParams).forEach(([key, value]) => {
+      if (key === "location") {
+        params.location = { ...params.location, display_name: value };
+      } else if (key === "lon") {
+        params.location = { ...params.location, lon: value };
+      } else if (key === "lat") {
+        params.location = { ...params.location, lat: value };
+      } else {
+        params = { ...params, [key]: value };
+      }
+    });
+    setInitialValue(params);
+  }
+
+  React.useEffect(() => {
+    initialize();
+  }, []);
+
+  const handleSort = (p: any) => {
+    const updatedParams = new URLSearchParams(searchParams);
+    updatedParams.delete("sort");
+    updatedParams.append("sort", p);
+    updatedParams.delete("page");
+    const url = updatedParams.toString();
+    navigate(`/results?${url}`);
+  };
+
+  const handlePageChange = (p: number) => {
+    const updatedParams = new URLSearchParams(searchParams);
+    updatedParams.delete("page");
+    updatedParams.append("page", String(p));
+    const url = updatedParams.toString();
+    navigate(`/results?${url}`);
+  };
+
+  const handleSubmit = (p: any) => {
+    const url = encodeSearch(formData, true);
+    navigate(`/results?${url}`);
+  };
+
+  const handleClear = () => {
+    setInitialValue({});
+    setFormData({});
+    navigate(`/results`);
+  };
+
+  const handleChange = (v: any) => {
+    setFormData({ ...formData, ...v });
+  };
+
+  const handleRemoveFilter = (filter: string) => {
+    const updated = omit(formData, [filter]);
+    setFormData(updated);
+    const url = encodeSearch(updated, true);
+    navigate(`/results?${url}`);
+  };
+
+  const properties = data?.results ?? [];
+
+  const initialProduct = data.size * data.page - data.size;
+  const finalProduct = data.size * data.page;
   return (
     <div className="search-results">
       {!isMapScreen && (
@@ -44,12 +106,21 @@ export default function SearchResults({
               ]}
             />
             <div>
-              <Filters />
+              <Filters
+                onClear={handleClear}
+                onFormDataChange={handleChange}
+                onSubmit={handleSubmit}
+                formData={formData}
+                onRemoveFilter={handleRemoveFilter}
+                initialValue={initialValue}
+                onToggleMap={() => setMapScreen(true)}
+                isMapOpen={isMapScreen}
+              />
             </div>
           </ContentContainer>
           <ContentContainer>
             <GridContainer>
-              <GridItem xs={12} lg={3}>
+              <GridItem className="search-results__map--desktop" xs={12} lg={3}>
                 <div className="search-results__map-trigger u-pt2">
                   <Image alt="Open Map" src={mapImage} />
 
@@ -63,17 +134,35 @@ export default function SearchResults({
               </GridItem>
               <GridItem className="search-results__list" xs={12} lg={9}>
                 <GridContainer justifyContent="space-between">
-                  <GridItem xs={12}>
+                  <GridItem xs={12} md={7}>
                     <Heading appearance={6} level={2}>
                       {t(`searchResults.propertiesTo${operationType}`)}{" "}
                       {locationType ? ` ${locationType}` : ""}
                     </Heading>
                     <Text>
-                      {properties.length}{" "}
-                      {t("searchResults.of")} 100 {t("searchResults.results")}
+                      {initialProduct === 0 ? 1 : initialProduct} -{" "}
+                      {finalProduct > data.total ? data.total : finalProduct}{" "}
+                      {t("searchResults.of")} {data.total}{" "}
+                      {t("searchResults.results")}
                     </Text>
                   </GridItem>
+                  <GridItem className="u-pt2" xs={12} md={4}>
+                    <InputSelect
+                      placeholder={t("filters.sort")}
+                      onSelect={handleSort}
+                      label={t("filters.sort")}
+                      initialValue={queryParams?.sort}
+                      options={[
+                        { label: t("sort1.label"), value: "price-asc", id: 0 },
+                        { label: t("sort2.label"), value: "relevant", id: 1 },
+                        { label: t("sort3.label"), value: "newest", id: 2 },
+                        { label: t("sort4.label"), value: "smallest", id: 3 },
+                        { label: t("sort5.label"), value: "biggest", id: 4 },
+                      ]}
+                    />
+                  </GridItem>
                 </GridContainer>
+
                 <GridContainer
                   justifyContent="flex-end"
                   className="u-mt4 u-mb4"
@@ -84,9 +173,9 @@ export default function SearchResults({
                     </GridItem>
                   ))}
                   <Pagination
-                    totalPages={Math.ceil(100 / 10)}
-                    currentPage={1}
-                    onPageChange={() => {}}
+                    totalPages={Math.ceil(data.total / data.size)}
+                    currentPage={data.page}
+                    onPageChange={handlePageChange}
                   />
                 </GridContainer>
               </GridItem>
@@ -104,7 +193,16 @@ export default function SearchResults({
               ]}
             />
             <div>
-              <Filters />
+              <Filters
+                onClear={handleClear}
+                onFormDataChange={handleChange}
+                onSubmit={handleSubmit}
+                formData={formData}
+                onRemoveFilter={handleRemoveFilter}
+                initialValue={initialValue}
+                onToggleMap={() => setMapScreen(false)}
+                isMapOpen={isMapScreen}
+              />
             </div>
           </ContentContainer>
           <div className="search-results__map-container">

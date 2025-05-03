@@ -97,6 +97,9 @@
       &.active {
         background-color: var(--accent-color);
         font-weight: 600;
+        p {
+          color: var(--nav-color) !important;
+        }
       }
 
       &.disabled {

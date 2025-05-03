@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import "./InputSelect.scss";
 import Button from "../Button/Button";
 import useOutsideClick from '../../utils/useOutsideClick'; // Adjust the path based on your project structure
+import Icon from '../Icon/Icon';
 
 interface Option {
   id: number;
@@ -13,6 +14,7 @@ interface InputSelectProps {
   options: Option[];
   onSelect: (value: string) => void;
   label: string;
+  placeholder?: string;
   initialValue?: string; // For uncontrolled initial value
   value?: string; // For controlled value
   className?: string; // Optional className prop
@@ -22,12 +24,13 @@ const InputSelect: React.FC<InputSelectProps> = ({
   options,
   onSelect,
   label,
+  placeholder,
   initialValue,
   value: controlledValue,
   className = "", // Default value if className is not provided
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(initialValue ?? "");
+  const [selectedOption, setSelectedOption] = useState(initialValue);
   const selectRef = useRef<HTMLDivElement>(null);
 
   // Update selectedOption when controlledValue changes
@@ -53,7 +56,7 @@ const InputSelect: React.FC<InputSelectProps> = ({
   };
 
   const current = options.find((item) => item.value === selectedOption);
-  let selected = initialValue || ""; // Use initialValue for uncontrolled or controlledValue for controlled
+  let selected = initialValue; // Use initialValue for uncontrolled or controlledValue for controlled
   if (current) {
     selected = current.label;
   }
@@ -61,8 +64,10 @@ const InputSelect: React.FC<InputSelectProps> = ({
   return (
     <div className={`input-select ${className}`} ref={selectRef}>
       <button onClick={toggleDropdown}>
-        {selected}
-        <span className="input-select__arrow">&#9660;</span>
+        {selected ?? placeholder}
+        <span className="input-select__arrow">
+          <Icon size='small' icon='FaChevronDown' />
+        </span>
       </button>
       {isOpen && (
         <div className="input-select__options">

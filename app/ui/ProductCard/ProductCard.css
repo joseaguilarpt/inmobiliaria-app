@@ -12,6 +12,14 @@
 }
 .product-card.horizontal .__details {
   margin-left: 0px;
+  padding-top: 150px;
+}
+.product-card.horizontal .__slider {
+  position: absolute;
+  top: 0;
+  height: 150px;
+  left: 0;
+  width: 100%;
 }
 @media (min-width: 768px) {
   .product-card.horizontal {
@@ -20,7 +28,9 @@
   .product-card.horizontal .image-slider {
     position: relative;
   }
-  .product-card.horizontal .image-slider, .product-card.horizontal .slides, .product-card.horizontal .slide {
+  .product-card.horizontal .image-slider,
+  .product-card.horizontal .slides,
+  .product-card.horizontal .slide {
     height: 100% !important;
   }
   .product-card.horizontal .card__content {
@@ -30,10 +40,16 @@
   }
   .product-card.horizontal .card__content .__slider {
     flex: 1 0 35%;
+    position: relative;
+    top: 0;
+    height: 175px;
+    left: 0;
+    width: 100%;
   }
   .product-card.horizontal .card__content .__details {
     flex: 1 0 55%;
     margin-left: 20px;
+    padding-top: 0px;
   }
 }
 .product-card button,
@@ -41,11 +57,11 @@
   padding: 0;
   font-weight: bold;
   font-size: var(--font-size-medium);
-  color: var(--accent-color-darken);
+  color: var(--accent-color);
 }
 .product-card svg {
   font-size: 16px;
-  color: var(--accent-color-darken);
+  color: var(--accent-color);
   padding-right: 5px;
 }
 .product-card .__card-contact {
@@ -60,7 +76,7 @@
 }
 .product-card .button--link.__heading h5 {
   font-size: var(--font-size-large);
-  color: var(--accent-color-darken);
+  color: var(--accent-color);
 }
 .product-card .image-slider button {
   opacity: 0; /* Initially hidden */
@@ -70,7 +86,7 @@
 .product-card:hover .image-slider button {
   opacity: 1; /* Visible on hover */
   visibility: visible; /* Visible on hover */
-  color: var(--accent-color-darken);
+  color: var(--button-color);
 }
 
 /*# sourceMappingURL=ProductCard.css.map */

@@ -20,17 +20,19 @@ import ContactWithWhatsapp from "../ContactWhatsapp/ContactWhatsapp";
 import { useI18n } from "~/context/i18nContext"; // Assuming you have an i18nContext for translation
 import { useNavigate } from "@remix-run/react";
 import Modal from "../Modal/Modal";
+import ThumbnailSlider from "../ThumbnailSlider/ThumbnailSlider";
 
 export default function ProductDetails({ product }: { product: Property }) {
   const { t } = useI18n(); // Hook for accessing translations
   const [isClient, setIsClient] = React.useState(false);
+  const [selectedImage, setSelectedImage] = React.useState(0);
   const [isOpenPictures, setOpenPictures] = React.useState(false);
 
   const navigate = useNavigate();
   const breadcrumbs = [
     { label: t("home"), href: "/" },
     {
-      label: t("productDetails.operation"),
+      label: product.operation,
       href: `/results?operation=${product.operation}`,
     },
     {
@@ -85,6 +87,12 @@ export default function ProductDetails({ product }: { product: Property }) {
     };
   }
 
+  const handleImageSelect = (v: number) => {
+    setSelectedImage(v);
+  };
+
+  const pictures = product.pictures ?? [];
+
   return (
     <div className="product-details">
       <ContentContainer className="bg-color-secondary">
@@ -96,9 +104,18 @@ export default function ProductDetails({ product }: { product: Property }) {
         <GridContainer>
           <GridItem xs={12} md={8}>
             {product.pictures && (
-              <ImageSlider images={product.pictures ?? []} />
+              <div  className="product-details__pictures">
+                <div  onClick={() => setOpenPictures(true)}>
+                <ImageSlider initialValue={selectedImage} images={pictures} />
+
+                </div>
+                <ThumbnailSlider
+                  onSelect={handleImageSelect}
+                  images={pictures}
+                />
+              </div>
             )}
-            <GridContainer className="u-pt2" justifyContent="space-between">
+            <GridContainer className="u-pt1" justifyContent="space-between">
               <GridItem xs={12} md={8}>
                 <Heading level={1} appearance={6}>
                   {product.name}
@@ -108,8 +125,7 @@ export default function ProductDetails({ product }: { product: Property }) {
                     <Button
                       onClick={() => setOpenPictures(true)}
                       appareance="outlined"
-                      ariaLabel={t('productDetails.photos')}
-
+                      ariaLabel={t("productDetails.photos")}
                     >
                       <Icon icon="FaPhotoVideo" size="medium" color="primary" />
                     </Button>
@@ -135,8 +151,7 @@ export default function ProductDetails({ product }: { product: Property }) {
                   <GridItem>
                     <Button
                       onClick={() => navigate("#map")}
-                      ariaLabel={t('productDetails.map')}
-
+                      ariaLabel={t("productDetails.map")}
                       appareance="outlined"
                     >
                       <Icon icon="FaMap" size="medium" color="primary" />
@@ -152,7 +167,7 @@ export default function ProductDetails({ product }: { product: Property }) {
                     onClick={() => navigate("#map")}
                     appareance="link"
                     leftIcon="FaMapPin"
-                    ariaLabel={t('productDetails.map')}
+                    ariaLabel={t("productDetails.map")}
                   >
                     {t("productDetails.viewMap")}
                   </Button>
@@ -298,7 +313,10 @@ export default function ProductDetails({ product }: { product: Property }) {
           isOpen={isOpenPictures}
           onClose={() => setOpenPictures(false)}
         >
-          <ImageSlider images={product.pictures} />
+          <>
+            <ImageSlider initialValue={selectedImage} images={pictures} />
+            <ThumbnailSlider onSelect={handleImageSelect} images={pictures} />
+          </>
         </Modal>
       </ContentContainer>
     </div>

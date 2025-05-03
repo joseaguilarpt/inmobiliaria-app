@@ -420,8 +420,12 @@
   text-transform: uppercase;
   margin-left: 20px;
 }
+.navbar .navbar__select .input-select__arrow {
+  right: 0px;
+  top: 2px;
+}
 .navbar .navbar__select.--contrast button {
-  color: var(--default-color);
+  color: var(--nav-color);
 }
 .navbar__menu {
   list-style: none;
@@ -458,20 +462,20 @@
   height: 2px;
   bottom: -6px;
   left: 0;
-  background-color: var(--accent-color);
+  background-color: var(--button-color);
   position: absolute;
   width: 0px;
   transition: all 0.3s ease-in-out 0s;
 }
 .navbar__menu-item a:hover {
-  color: var(--accent-color);
+  color: var(--button-color);
 }
 .navbar__menu-item a:hover::before {
   content: "";
   height: 2px;
   bottom: -6px;
   left: 0;
-  background-color: var(--accent-color);
+  background-color: var(--button-color);
   position: absolute;
   width: 100%;
   transition: all 0.3s ease-in-out 0s;
@@ -496,20 +500,23 @@
   height: 2px;
   bottom: -6px;
   left: 0;
-  background-color: var(--accent-color);
+  background-color: var(--button-color);
   position: absolute;
   width: 100%;
   transition: all 0.3s ease-in-out 0s;
-}
-.navbar__menu-item.--active a:hover {
-  color: var(--nav-dropdown-hover-color);
 }
 .navbar__menu-item.--contrast a {
   color: var(--default-color);
 }
 .navbar.scrolled {
-  background-color: var(--background-color);
+  background-color: var(--accent-color);
   box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+.navbar.scrolled h1 {
+  color: var(--nav-color);
+}
+.navbar.scrolled a, .navbar.scrolled button {
+  color: var(--nav-color);
 }
 
 .navbar__menu--mobile {
@@ -530,7 +537,7 @@
 .navbar__select--mobile button {
   text-decoration: none;
   color: var(--default-color);
-  font-size: 16px;
+  font-size: 14px;
   padding: 0 2px;
   font-family: var(--nav-font);
   font-weight: 500;

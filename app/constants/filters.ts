@@ -9,7 +9,7 @@ const filters = [
     ],
     defaultSelectedOption: "rent",
     isLabelVisible: false,
-    label: "getInTouch_form.radio.title",
+    label: "getInTouch_form.radio.label",
   },
   {
     id: "location",
@@ -24,7 +24,7 @@ const filters = [
     showSuggestionsOnFocus: true,
     clearButton: true,
     placeholder: "getInTouch_form.locationInput.placeholder",
-    label: "getInTouch_form.radio.title",
+    label: "getInTouch_form.locationInput.label",
   },
   {
     id: "category",
@@ -41,11 +41,11 @@ const filters = [
     showSuggestionsOnFocus: true,
     placeholder: "getInTouch_form.categoryInput.placeholder",
     rightIcon: 'FaChevronDown',
-    label: "getInTouch_form.radio.title",
+    label: "getInTouch_form.categoryInput.label",
   },
   {
     id: "price_from",
-    label: "getInTouch_form.nameInput",
+    label: "getInTouch_form.priceFromInput.label",
     size: { xs: 12, lg: 3 },
     isLabelVisible: false,
     placeholder: "getInTouch_form.priceFromInput.placeholder",
@@ -66,7 +66,7 @@ const filters = [
   },
   {
     id: "price_to",
-    label: "getInTouch_form.nameInput",
+    label: "getInTouch_form.priceToInput.label",
     size: { xs: 12, lg: 3 },
     isLabelVisible: false,
     placeholder: "getInTouch_form.priceToInput.placeholder",
@@ -87,7 +87,7 @@ const filters = [
   },
   {
     id: "area_from",
-    label: "getInTouch_form.nameInput",
+    label: "getInTouch_form.areaFromInput.label",
     type: "text",
     size: { xs: 12, lg: 3 },
     isLabelVisible: false,
@@ -95,7 +95,7 @@ const filters = [
   },
   {
     id: "area_to",
-    label: "getInTouch_form.nameInput",
+    label: "getInTouch_form.areaToInput.label",
     type: "text",
     size: { xs: 12, lg: 3 },
     isLabelVisible: false,
@@ -103,7 +103,7 @@ const filters = [
   },
   {
     id: "amenities",
-    label: "getInTouch_form.nameInput",
+    label: "getInTouch_form.amenities.label",
     size: { xs: 12, lg: 6 },
     isLabelVisible: false,
     placeholder: "getInTouch_form.amenities.placeholder",
@@ -128,7 +128,7 @@ const filters = [
   },
   {
     id: "description",
-    label: "getInTouch_form.nameInput",
+    label: "getInTouch_form.inputDescription.label",
     type: "text",
     size: { xs: 12, lg: 6 },
     isLabelVisible: false,

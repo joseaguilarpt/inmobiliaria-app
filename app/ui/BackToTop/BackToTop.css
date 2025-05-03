@@ -401,19 +401,18 @@
   transition: opacity 0.3s, visibility 0.3s;
   border-radius: var(--border-radius);
   box-shadow: 0 2px 4px var(--shadow-color);
-  background-color: #51b293;
-  color: var(--font-color);
+  background-color: #004137;
   border: none;
 }
-.back-to-top__label {
-  /* Optional: If you want to style the label text separately */
+.back-to-top svg {
+  color: var(--button-color);
 }
 .back-to-top.visible {
   opacity: 1;
   visibility: visible;
 }
 .back-to-top:hover {
-  background-color: #51b293;
+  background-color: #004137;
   cursor: pointer;
   box-shadow: 0 4px 8px var(--hover-shadow-color);
 }

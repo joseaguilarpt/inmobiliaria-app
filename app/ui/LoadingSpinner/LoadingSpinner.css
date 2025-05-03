@@ -21,8 +21,8 @@
   height: 48px;
 }
 .loading-spinner--primary .loading-spinner__circle {
-  border-color: var(--default-color);
-  border-top-color: var(--accent-color);
+  border-color: var(--accent-color);
+  border-top-color: var(--button-color);
 }
 .loading-spinner--secondary .loading-spinner__circle {
   border-color: var(--default-color);

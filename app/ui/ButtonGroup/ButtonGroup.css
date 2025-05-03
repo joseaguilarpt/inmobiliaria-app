@@ -444,7 +444,7 @@
 }
 .button-group__buttons .button-group__button--active {
   background-color: var(--accent-color);
-  color: var(--font-color);
+  color: var(--button-color);
   border-color: var(--accent-color);
 }
 .button-group__buttons .button-group__button input[type=radio] {

@@ -380,25 +380,32 @@
       "option2": {
         "label": "Comprar"
       },
-      "title": "Operación"
+      "title": "Operation",
+      "label": "Operación"
     },
     "locationInput": {
-      "placeholder": "Escriba una ubicación..."
+      "placeholder": "Escribe una ubicación...",
+      "label": "Ubicación"
     },
     "categoryInput": {
-      "placeholder": "¿Qué estás buscando?"
+      "placeholder": "Tipo de Inmueble...",
+      "label": "Categoria"
     },
     "priceFromInput": {
-      "placeholder": "Precio desde:"
+      "placeholder": "Precio desde:",
+      "label": "Precio desde"
     },
     "priceToInput": {
-      "placeholder": "Precio hasta:"
+      "placeholder": "Precio hasta:",
+      "label": "Precio hasta"
     },
     "areaFromInput": {
-      "placeholder": "Área m2 desde:"
+      "placeholder": "Area m2 desde:",
+      "label": "Area desde"
     },
     "areaToInput": {
-      "placeholder": "Área m2 hasta:"
+      "placeholder": "Area m2 hasta:",
+      "label": "Area hasta"
     },
     "buttonLabel": "Buscar",
     "amenities": {
@@ -423,6 +430,8 @@
     "viewMoreButton": "Ver más"
   },
   "filters": {
+    "sort": "Ordenar",
+    "filters": "Filtros",
     "clearFilters": "Limpiar Filtros",
     "moreFilters": "Más Filtros",
     "lessFilters": "Menos Filtros",
@@ -480,5 +489,10 @@
     "resetLabel": "Reiniciar tu contraseña",
     "backToLogin": "Volver al inicio de sesión"
 
-  }
+  },
+  "sort1": { "label": "Más Barato", "value": "price-asc", "id": 0 },
+  "sort2": { "label": "Relevante", "value": "relevant", "id": 1 },
+  "sort3": { "label": "Más Reciente", "value": "newest", "id": 2 },
+  "sort4": { "label": "Más Pequeño", "value": "smallest", "id": 3 },
+  "sort5": { "label": "Más Grande", "value": "biggest", "id": 4 }
 }

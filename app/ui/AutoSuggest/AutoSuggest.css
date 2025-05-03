@@ -85,6 +85,9 @@
   background-color: var(--accent-color);
   font-weight: 600;
 }
+.auto-suggest .suggestions li:hover p, .auto-suggest .suggestions li.active p {
+  color: var(--nav-color) !important;
+}
 .auto-suggest .suggestions li.disabled {
   cursor: not-allowed;
   font-weight: 400;

@@ -390,7 +390,7 @@
 }
 
 .icon--primary {
-  color: var(--default-color);
+  color: var(--button-color);
 }
 .icon--secondary {
   color: var(--font-color);

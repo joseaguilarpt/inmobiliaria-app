@@ -26,7 +26,7 @@ export async function searchLocation({
 }) {
   try {
     const { data } = await axios.get(
-      `https://nominatim.openstreetmap.org/search?&countrycodes=pt&format=jsonv2&accept-language=es%2C%20en&${params}`,
+      `https://nominatim.openstreetmap.org/search?&countrycodes=cr&format=jsonv2&${params}`,
       { signal }
     );
     return data ?? [];
@@ -51,6 +51,25 @@ function haversineDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
   return R * c; // Distance in kilometers
 }
 
+const sortProperties = (properties: Property[], sortBy: string): Property[] => {
+  switch (sortBy) {
+    case "price-asc":
+      return properties.sort((a, b) => a.price - b.price);
+    case "relevant":
+      // Implement your relevance criteria sorting here, if applicable
+      return properties; // Example: return properties.sort(...);
+    case "newest":
+      return properties.sort((a, b) => b.updated_at.getTime() - a.updated_at.getTime());
+    case "smallest":
+      return properties.sort((a, b) => a.area - b.area);
+    case "biggest":
+      return properties.sort((a, b) => b.area - a.area);
+    default:
+      return properties; // Default to returning unsorted properties
+  }
+};
+
+// Interface for filter criteria
 export interface FilterCriteria {
   category?: string;
   operation?: string;
@@ -62,15 +81,21 @@ export interface FilterCriteria {
   promotional?: boolean;
   lat?: number;
   lon?: number;
+  page?: number;
+  size?: number;
   radius?: number; // Radius in kilometers for proximity filtering
   amenities?: string[];
+  sort?: string;
 }
 
+// Mock Axios instance
 const fakeAxios = {
   get: async (url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<Property | Property[]>> => {
     if (url.includes('/properties')) {
       const urlParts = url.split('/');
       const propertyId = urlParts[urlParts.length - 1];
+      
+      // Handling single property request by ID
       if (propertyId !== 'properties' && propertyId !== 'filter') {
         const property = properties.find(prop => prop.id === parseFloat(propertyId));
         if (property) {
@@ -91,6 +116,7 @@ const fakeAxios = {
           };
         }
       } else {
+        // Handling filtered list of properties
         const params = new URLSearchParams(config?.params as string);
         const criteria: FilterCriteria = {
           category: params.get('category') || undefined,
@@ -105,9 +131,13 @@ const fakeAxios = {
           lon: params.get('lon') ? parseFloat(params.get('lon')!) : undefined,
           radius: params.get('radius') ? parseFloat(params.get('radius')!) : undefined,
           amenities: params.get('amenities') ? params.get('amenities')!.split(',') : undefined,
+          sort: params.get('sort') || undefined,
+          page: params.get('page') ? parseFloat(params.get('page')!) : 1,
+          size: params.get('size') ? parseFloat(params.get('size')!) : 10, // Default size of 10 if not provided
         };
 
-        const filteredProperties = properties.filter(property => {
+        let filteredProperties = properties.filter(property => {
+          // Apply filtering based on criteria
           if (criteria.category && property.category !== criteria.category) {
             return false;
           }
@@ -144,8 +174,30 @@ const fakeAxios = {
           return true;
         });
 
+        // Apply sorting if specified
+        if (criteria.sort) {
+          filteredProperties = sortProperties(filteredProperties, criteria.sort);
+        }
+
+        const totalResults = filteredProperties.length; // Total results before pagination
+
+
+        // Pagination logic
+        const startIndex = (criteria.page - 1) * criteria.size;
+        const endIndex = startIndex + criteria.size;
+        filteredProperties = filteredProperties.slice(startIndex, endIndex);
+
+        // Prepare response object with pagination info
+        const totalPages = Math.ceil(totalResults / criteria.size); // Total pages
+        const responseObj = {
+          page: criteria.page,
+          size: criteria.size,
+          total: totalResults,
+          results: filteredProperties,
+        };
+
         return {
-          data: filteredProperties,
+          data: responseObj,
           status: 200,
           statusText: 'OK',
           headers: {},
@@ -164,6 +216,7 @@ const fakeAxios = {
     };
   }
 };
+
 export async function getSearchResults({
   params,
   signal,

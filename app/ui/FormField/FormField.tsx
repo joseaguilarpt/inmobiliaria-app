@@ -118,11 +118,10 @@ const DynamicField = ({
         />
       );
     case "radio":
-      const radioInput = input as RadioInput;
       return (
         <ButtonGroup
           key={input.id}
-          selectedValue={formData[input.id] ?? radioInput.defaultSelectedOption}
+          selectedValue={formData[input.id]}
           onChange={(selectedId) => onChange(input.id, selectedId)}
           {...input}
         />

@@ -1,8 +1,31 @@
+.filters-container__desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .filters-container__desktop {
+    display: block;
+  }
+}
 .filters-container .form-field {
   padding: 0;
 }
 .filters-container .grid-item {
   padding: 10px;
+}
+.filters-container__mobile {
+  display: block;
+}
+.filters-container__mobile .grid-item {
+  padding: 0px;
+  padding-bottom: 10px;
+}
+@media (min-width: 768px) {
+  .filters-container__mobile {
+    display: none;
+  }
+}
+.filters-container__mobile .filters-button {
+  padding: var(--input-padding);
 }
 
 .modal-filters-container {

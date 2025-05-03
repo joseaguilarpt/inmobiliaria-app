@@ -4,6 +4,7 @@ import Text from "../Text/Text";
 import classNames from "classnames";
 import { useI18n } from "~/context/i18nContext";
 import Icon, { IconType } from "../Icon/Icon";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 type Option = {
   id: string;
@@ -25,6 +26,7 @@ export type AutoSuggestProps = {
   clearButton?: boolean;
   showSuggestionsOnFocus?: boolean;
   isLoading?: boolean;
+  filterData?: boolean;
   detailedOption?: boolean;
 };
 
@@ -41,10 +43,9 @@ const AutoSuggest: React.FC<AutoSuggestProps> = ({
   clearButton,
   rightIcon,
   isLoading,
-  detailedOption = false,
+  filterData = true,
   showSuggestionsOnFocus = false,
 }) => {
-
   const { t } = useI18n();
   const [query, setQuery] = useState(value || "");
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -52,9 +53,9 @@ const AutoSuggest: React.FC<AutoSuggestProps> = ({
   const suggestionsRef = useRef<HTMLUListElement>(null);
 
   React.useEffect(() => {
-    const current = options.find((item) => item.id === value)
-    setQuery(current?.label  ?? value?.label ?? value ?? '')
-  }, [value])
+    const current = options.find((item) => item.id === value);
+    setQuery(current?.label ?? value?.label ?? value ?? "");
+  }, [value]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -110,7 +111,7 @@ const AutoSuggest: React.FC<AutoSuggestProps> = ({
     setActiveIndex(index);
   };
 
-  const filteredOptions = query
+  const filteredOptions = query && filterData
     ? options.filter((option) =>
         option.label.toLowerCase().includes(query.toLowerCase())
       )
@@ -140,7 +141,7 @@ const AutoSuggest: React.FC<AutoSuggestProps> = ({
           id={id + "-autosugget"}
           name={label + "-autosugget"}
           type="text"
-          placeholder={t(placeholder ?? '')}
+          placeholder={t(placeholder ?? "")}
           aria-label={placeholder ?? label}
           value={query}
           onChange={handleChange}
@@ -150,16 +151,17 @@ const AutoSuggest: React.FC<AutoSuggestProps> = ({
           }
           onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
         />
-        {showSuggestions || query && clearButton && (
-          <button
-            type="button"
-            className="auto-suggest__clear-button"
-            onClick={handleClear}
-            aria-label="Clear text input"
-          >
-            <Icon size="small" icon="FaTimes" />
-          </button>
-        )}
+        {showSuggestions ||
+          (query && clearButton && (
+            <button
+              type="button"
+              className="auto-suggest__clear-button"
+              onClick={handleClear}
+              aria-label="Clear text input"
+            >
+              <Icon size="small" icon="FaTimes" />
+            </button>
+          ))}
         {rightIcon && (
           <div className="auto-suggest__icon-right">
             <Icon icon={rightIcon} size="small" />
@@ -168,7 +170,8 @@ const AutoSuggest: React.FC<AutoSuggestProps> = ({
       </div>
       {showSuggestions && (
         <ul className="suggestions" ref={suggestionsRef}>
-          {filteredOptions.length > 0 &&
+          {!isLoading &&
+            filteredOptions.length > 0 &&
             filteredOptions.map((option, index) => (
               <li
                 key={option.id}
@@ -177,12 +180,25 @@ const AutoSuggest: React.FC<AutoSuggestProps> = ({
                 onMouseEnter={() => handleMouseEnter(index)}
               >
                 <Text>{option.label}</Text>
-                {option?.details && <Text textWeight="bold" size="small">{option?.details}</Text>}
+                {option?.details && (
+                  <Text textWeight="bold" size="small">
+                    {option?.details}
+                  </Text>
+                )}
               </li>
             ))}
           {filteredOptions.length === 0 && !isLoading && (
-            <li  className='disabled' key="no-results">
+            <li className="disabled" key="no-results">
               <Text>{!query ? "Type something..." : "No Results.."}</Text>
+            </li>
+          )}
+          {isLoading && (
+            <li
+              className="disabled"
+              style={{ textAlign: "center" }}
+              key="no-results"
+            >
+              <LoadingSpinner size="small" />
             </li>
           )}
         </ul>

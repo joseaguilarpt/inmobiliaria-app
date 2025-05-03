@@ -68,8 +68,8 @@ export default function MapPage() {
         <Navbar />
         <Carousel slides={slides} hideArrows className="__half">
           <div>
-            <GridContainer justifyContent="center" className="u-mt4">
-              <Heading align="center" color="white" appearance={4} level={1}>
+            <GridContainer justifyContent="center" className="u-mb4 u-mt4">
+              <Heading align="center" color="white" underline appearance={4} level={1}>
                 {t("heading")}
               </Heading>
             </GridContainer>

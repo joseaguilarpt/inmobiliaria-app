@@ -25,8 +25,8 @@ const MapWithLocations: React.FC<MapWithLocationsProps> = ({ locations, initialC
   const [position, setPosition] = React.useState<L.LatLng | null>(null);
 
   const initialPosition = {
-    lat: queryParams.lat ? parseFloat(queryParams.lat) : 39.3999,
-    lng: queryParams.lon ? parseFloat(queryParams.lon) : -8.2245,
+    lat: queryParams.lat ? parseFloat(queryParams.lat) : 9.9281,
+    lng: queryParams.lon ? parseFloat(queryParams.lon) : -84.0907,
   };
   if (initialCoordinates) {
     initialPosition.lat = parseFloat(initialCoordinates.lat)

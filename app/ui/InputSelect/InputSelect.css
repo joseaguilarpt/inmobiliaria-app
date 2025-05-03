@@ -391,6 +391,19 @@
 .input-select {
   position: relative;
   cursor: pointer;
+  width: 100%;
+}
+.input-select button {
+  width: 100%;
+  padding: var(--input-padding);
+  font-family: var(--default-font);
+  font-size: var(--input-font-size);
+  border: 1px solid var(--input-border);
+  border-radius: var(--input-border-radius);
+  background-color: var(--input-background-color);
+  outline: none;
+  color: var(--default-color);
+  text-align: left;
 }
 .input-select__toggle {
   display: flex;
@@ -405,7 +418,9 @@
   font-size: 16px;
 }
 .input-select__arrow {
-  margin-left: 10px;
+  position: absolute;
+  right: 10px;
+  top: 35%;
 }
 .input-select__options {
   position: absolute;
@@ -420,7 +435,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
   min-width: 200px;
 }

@@ -16,12 +16,12 @@
     border-radius: var(--border-radius);
     box-shadow: 0 2px 4px var(--shadow-color);
     background-color: $accent-color-light;
-    color: var(--font-color);
     border: none;
   
-    &__label {
-      /* Optional: If you want to style the label text separately */
-    }
+   svg {
+    color: var(--button-color);
+
+   }
   
     &.visible {
       opacity: 1;

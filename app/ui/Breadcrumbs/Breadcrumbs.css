@@ -456,12 +456,6 @@
   }
 }
 @media (max-width: 480px) {
-  .breadcrumb {
-    justify-content: center;
-  }
-  .breadcrumb__list {
-    justify-content: center;
-  }
   .breadcrumb__label, .breadcrumb__link {
     font-size: var(--font-size-x-small);
     padding: 0;

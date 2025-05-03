@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import "./Navbar.scss";
-import { Link, useLocation } from "@remix-run/react";
+import { Link, useLocation, useNavigate } from "@remix-run/react";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import GridContainer from "../Grid/Grid";
 import GridItem from "../Grid/GridItem";
@@ -21,6 +21,11 @@ const defaultOptions = [
     href: "/",
     icon: "FaHome",
   },
+  {
+    value: "about",
+    href: "/about",
+    icon: "FaHome",
+  },
 ];
 
 const Navbar = ({
@@ -34,6 +39,8 @@ const Navbar = ({
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const { setLocale, locale, t } = useI18n();
+
+  const navigate = useNavigate();
 
   const options = items ?? defaultOptions;
 
@@ -64,6 +71,7 @@ const Navbar = ({
       <ContentContainer>
         <GridContainer alignItems="center" justifyContent="space-between">
           <GridItem>
+            <Button appareance="link" onClick={() => navigate('/')}>
             <Heading
               level={1}
               appearance={6}
@@ -71,6 +79,7 @@ const Navbar = ({
             >
               {t("pageName")}
             </Heading>
+            </Button>
           </GridItem>
           <GridContainer justifyContent="flex-end">
             <ul className="navbar__menu">

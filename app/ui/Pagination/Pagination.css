@@ -15,13 +15,13 @@
   font-size: var(--font-size-large);
 }
 .pagination__item:hover {
-  background-color: var(--accent-color-darken);
-  color: white;
+  background-color: var(--accent-color);
+  color: var(--button-color);
 }
 .pagination__item--active {
-  background-color: var(--accent-color-darken);
-  color: white;
-  border-color: var(--accent-color-darken);
+  background-color: var(--accent-color);
+  color: var(--button-color);
+  border-color: var(--accent-color);
 }
 
 /*# sourceMappingURL=Pagination.css.map */

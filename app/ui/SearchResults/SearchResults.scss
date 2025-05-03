@@ -12,11 +12,27 @@
     }
   }
 
+  &__map--desktop {
+    display: none;
+     
+    @include media-query(medium) {
+      display: block;
+    }
+  }
+
   &__map-trigger {
     border-radius: var(--input-border-radius);
     position: relative;
     box-shadow: 0 2px 10px var(--shadow-color);
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    max-height: 300px;
+
     button {
       position: absolute;
       bottom: 0;
@@ -24,11 +40,9 @@
       transform: translate(-50%, -50%);
     }
 
-    .image__container {
-      max-height: 200px;
-      @include media-query(large) {
-        max-height: 100%;
-      }
+    .image__img {
+      max-width: 100%;
+      height: auto;
     }
   }
 

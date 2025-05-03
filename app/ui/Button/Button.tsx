@@ -21,6 +21,7 @@ export interface ButtonProps {
   ariaLabel?: string;
   isLoading?: boolean;
   isDisabled?: boolean;
+  fitContainer?: boolean;
   className?: string;
   leftIcon?: IconType; // New prop for left icon
   size?: "small" | "medium" | "large"; // New prop for size
@@ -37,6 +38,7 @@ const Button: React.FC<ButtonProps> = ({
   className,
   isLoading = false,
   isDisabled = false,
+  fitContainer = false,
   leftIcon, // Destructure leftIcon prop
   size = "medium", // Destructure size prop with default value
 }) => {
@@ -49,7 +51,8 @@ const Button: React.FC<ButtonProps> = ({
     color && `button--${color}`,
     size && `button--${size}`,
     className,
-    { "button--disabled": isDisabled || isLoading }
+    { "button--disabled": isDisabled || isLoading },
+    fitContainer && 'fit-container'
   );
 
   if (isLink) {

@@ -413,25 +413,27 @@ body {
   --heading-font: Plus Jakarta Sans, sans-serif;
   --nav-font: Poppins, sans-serif;
   --border-radius: 4px;
-  --input-border-radius: 0px;
-  --input-font-size: 1.15rem;
+  --input-border-radius: 4px;
+  --input-font-size: 1rem;
   --input-padding: 0.65rem;
   /* Font Sizes */
   --font-size-small: 12px;
-  --font-size-medium: 16px;
-  --font-size-large: 20px;
+  --font-size-medium: 14px;
+  --font-size-large: 18px;
   /* Light Theme Variables */
   --background-color: #ffffff;
   --font-color: #212121;
   --default-color: #757575;
   --heading-color: #424242;
-  --accent-color: #51b293;
-  --accent-color-darken: #387f68;
+  --accent-color: #004137;
+  --accent-color-darken: black;
   --contrast-color: #ffffff;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --error-color: #f44336;
-  --carousel-overlay: rgba(87, 170, 144, 0.85);
+  --carousel-overlay: rgba(0, 65, 55, 0.8588235294);
   --input-background-color: #F2F4F4;
+  --button-color: #eebd57;
+  --image-background: #d1d1d1;
   /* Nav Menu Colors */
   --nav-color: #ffffff;
   --placeholder-color: #757575;
@@ -445,16 +447,18 @@ body {
 
 /* Dark Mode */
 body.dark-mode {
-  --background-color: #2d372d;
+  --background-color: rgb(50, 50, 58);
   --font-color: #ffffff;
   --default-color: #cfcfcf;
   --heading-color: #ffffff;
-  --accent-color: #438973;
-  --accent-color-darken: #54ab90;
+  --accent-color: #007a68;
+  --accent-color-darken: #00ad93;
   --contrast-color: #2d372d;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --error-color: #cf6679;
-  --carousel-overlay: rgba(81, 123, 110, 0.85);
+  --carousel-overlay: rgba(0, 65, 55, 0.8588235294);
+  --button-color: #eebd57;
+  --image-background: #373737;
   /* Nav Menu Colors */
   --nav-color: rgba(255, 255, 255, 0.87);
   --placeholder-color: #bdbdbd;

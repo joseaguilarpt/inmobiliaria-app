@@ -519,7 +519,7 @@
   display: block;
   width: 80px;
   height: 4px;
-  background: var(--accent-color);
+  background: var(--button-color);
   left: 0;
   right: 0;
   bottom: -15px;
@@ -542,7 +542,7 @@
   color: var(--default-color);
 }
 .heading--accent {
-  color: var(--accent-color);
+  color: var(--button-color);
 }
 .heading--accent-dark {
   color: var(--accent-color-dark);

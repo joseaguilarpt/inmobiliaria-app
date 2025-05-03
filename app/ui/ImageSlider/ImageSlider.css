@@ -15,19 +15,34 @@
   background-position: center;
   height: 100%;
 }
+.image-slider .slides__image-item {
+  height: 100%;
+  flex: 1 0 100%;
+  justify-content: center;
+  display: flex;
+  background-color: var(--image-background);
+}
+.image-slider .slides__image-item .image {
+  display: flex;
+  align-items: center;
+}
 .image-slider .prev,
 .image-slider .next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: transparent;
-  color: var(--accent-color-darken);
+  background-color: var(--accent-color);
+  color: var(--button-color);
   border: none;
   cursor: pointer;
   outline: none;
   font-size: 20px;
   padding: 10px;
   z-index: 1;
+}
+.image-slider .prev:hover,
+.image-slider .next:hover {
+  background-color: var(--accent-color);
 }
 .image-slider .prev {
   left: 0;

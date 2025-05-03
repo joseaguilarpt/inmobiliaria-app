@@ -119,7 +119,7 @@
       display: block;
       width: 80px;
       height: 4px;
-      background: var(--accent-color);
+      background: var(--button-color);
       left: 0;
       right: 0;
       bottom: -15px;
@@ -151,7 +151,7 @@
   }
 
   &--accent {
-    color: var(--accent-color);
+    color: var(--button-color);
   }
 
   &--accent-dark {

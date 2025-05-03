@@ -1,11 +1,33 @@
 @import '../../styles/media-queries';
 
 .filters-container {
+
+    &__desktop {
+        display: none;
+        @include media-query(medium) {
+            display: block;
+        }
+    }
     .form-field {
         padding: 0;
     }
     .grid-item {
         padding: 10px;
+    }
+
+    &__mobile {
+        display: block;
+        .grid-item {
+            padding: 0px;
+            padding-bottom: 10px;
+        }
+        @include media-query(medium) {
+            display: none;
+        }
+
+        .filters-button {
+            padding: var(--input-padding);
+        }
     }
 
 }

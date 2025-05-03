@@ -391,25 +391,32 @@
       "option2": {
         "label": "Buy"
       },
-      "title": "Operation"
+      "title": "Operation",
+      "label": "Operation"
     },
     "locationInput": {
-      "placeholder": "Type a location..."
+      "placeholder": "Type a location...",
+      "label": "Location"
     },
     "categoryInput": {
-      "placeholder": "What are you looking..."
+      "placeholder": "What are you looking...",
+      "label": "Category"
     },
     "priceFromInput": {
-      "placeholder": "Price from:"
+      "placeholder": "Price from:",
+      "label": "Price from"
     },
     "priceToInput": {
-      "placeholder": "Price to:"
+      "placeholder": "Price to:",
+      "label": "Price to"
     },
     "areaFromInput": {
-      "placeholder": "Area m2 from:"
+      "placeholder": "Area m2 from:",
+      "label": "Area From"
     },
     "areaToInput": {
-      "placeholder": "Area m2 to:"
+      "placeholder": "Area m2 to:",
+      "label": "Area To"
     },
     "buttonLabel": "Search",
     "amenities": {
@@ -434,6 +441,8 @@
     "viewMoreButton": "View More"
   },
   "filters": {
+    "sort": "Sort",
+    "filters": "Filters",
     "clearFilters": "Clear Filters",
     "moreFilters": "More Filters",
     "lessFilters": "Less Filters",
@@ -489,6 +498,11 @@
     "loginButton": "Log In",
     "password": "Password",
     "resetLabel": "Reset Password",
-"backToLogin": "Back to Login"
-  }
+    "backToLogin": "Back to Login"
+  },
+  "sort1": { "label": "Cheapest", "value": "price-asc", "id": 0 },
+  "sort2": { "label": "Relevant", "value": "relevant", "id": 1 },
+  "sort3": { "label": "Newest", "value": "newest", "id": 2 },
+  "sort4": { "label": "Smallest", "value": "smallest", "id": 3 },
+  "sort5": { "label": "Biggest", "value": "biggest", "id": 4 }
 }

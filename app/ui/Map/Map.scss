@@ -30,11 +30,11 @@
     padding: 0;
     font-weight: bold;
     font-size: var(--font-size-medium);
-    color: var(--accent-color-darken);
+    color: var(--accent-color);
   }
 
   svg {
-    color: var(--accent-color-darken);
+    color: var(--accent-color);
     padding-right: 5px;
   }
 
@@ -52,7 +52,7 @@
 
       h5 {
         font-size: var(--font-size-large);
-        color: var(--accent-color-darken);
+        color: var(--accent-color);
       }
     }
   }
@@ -62,6 +62,7 @@
     top: 0;
     left: 0;
     height: 150px;
+    color: var(--button-color);
     button {
       opacity: 0; /* Initially hidden */
       visibility: hidden; /* Initially hidden */
@@ -74,7 +75,8 @@
       button {
         opacity: 1; /* Visible on hover */
         visibility: visible; /* Visible on hover */
-        color: var(--accent-color-darken);
+        color: var(--button-color);
+        padding: 10px;
 
       }
     }

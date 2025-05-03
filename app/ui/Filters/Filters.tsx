@@ -7,80 +7,137 @@ import GridContainer from "../Grid/Grid";
 import GridItem from "../Grid/GridItem";
 import Modal from "../Modal/Modal";
 import ContentContainer from "../ContentContainer/ContentContainer";
-import { encodeSearch, parseQueryParams } from "~/utils/queryParamUtils";
-import { useNavigate, useSearchParams } from "@remix-run/react";
-import { useI18n } from "~/context/i18nContext"; // Assuming you have an i18nContext for translation
+import { useI18n } from "~/context/i18nContext";
+import Pills from "../Pills/Pills";
+import omit from "lodash/omit";
+import isEmpty from 'lodash/isEmpty';
 
-export default function Filters() {
+export default function Filters({
+  onToggleMap,
+  isMapOpen,
+  onSubmit,
+  formData,
+  initialValue,
+  onClear,
+  onFormDataChange,
+  onRemoveFilter,
+}: {
+  isMapOpen: boolean;
+  onToggleMap: () => void;
+  onSubmit: (v: any) => void;
+  formData: any;
+  initialValue: any;
+  onClear: (v: any) => void;
+  onFormDataChange: (v: any) => void;
+  onRemoveFilter: (v: any) => void;
+}) {
   const { t } = useI18n(); // Hook for accessing translations
-  const [formData, setFormData] = React.useState({});
-  const [searchParams] = useSearchParams();
-  const [initialValue, setInitialValue] = React.useState({});
-  const queryParams: any = parseQueryParams(searchParams);
+  const [filters, setFilters] = React.useState([]);
+  const [isOpenModal, setIsOpenModal] = React.useState(false);
 
-  function initialize() {
-    let params = { location: {} };
-    Object.entries(queryParams).forEach(([key, value]) => {
-      if (key === "location") {
-        params.location = { ...params.location, display_name: value };
-      } else if (key === "lon") {
-        params.location = { ...params.location, lon: value };
-      } else if (key === "lat") {
-        params.location = { ...params.location, lat: value };
-      } else {
-        params = { ...params, [key]: value };
-      }
-    });
-    setInitialValue(params);
-  }
+  const handleSetFilters = (p: any) => {
+    const query = omit(p, ["radius"]);
+    const params: any = Object.keys(query).map((key) => {
+      const current = FILTERS.inputs.find((item) => item.id === key);
+      return {
+        label: current?.label ?? current?.placeholder ?? "",
+        id: current?.id ?? current?.placeholder ?? "",
+      };
+    }).filter((v) => !isEmpty(v.label));
+    setFilters(params);
+  };
 
   React.useEffect(() => {
-    initialize();
-  }, []);
+    handleSetFilters(initialValue)
+  }, [initialValue])
 
-  const navigate = useNavigate();
-
-  const handleSubmit = (p: any) => {
-    const url = encodeSearch(formData);
+  const handleSubmit = () => {
+    handleSetFilters(formData);
     setIsOpenModal(false);
-      navigate(`/results?${url}`);
+    if (onSubmit) {
+      onSubmit(formData);
+    }
   };
 
   const handleClear = () => {
-    setInitialValue({});
-    setFormData({});
-    navigate(`/results?operation=rent`);
+    setFilters([]);
+    if (onClear) {
+      onClear(formData);
+    }
   };
 
   const handleChange = (v: any) => {
-    setFormData({ ...formData, ...v });
+    onFormDataChange({ ...formData, ...v });
   };
 
-  const [isOpenModal, setIsOpenModal] = React.useState(false);
+  const handleRemoveFilter = (filter: string) => {
+    const filtersData = filters.filter((v) => v.id !== filter);
+    setFilters(filtersData);
+    onRemoveFilter(filter);
+  };
+
 
   return (
     <div className="filters-container">
-      <FormField
-        {...FILTERS}
-        inputs={FILTERS.inputs.slice(0, 7)}
-        initialValue={initialValue}
-        onChange={handleChange}
-      />
-      <GridContainer justifyContent="flex-end">
-        <GridItem>
-          <Button appareance="link" onClick={handleClear}>
-            {t("filters.clearFilters")}
-          </Button>
-        </GridItem>
-        <GridItem>
-          <Button appareance="secondary" onClick={() => setIsOpenModal(true)}>
-            {t("filters.moreFilters")}
-          </Button>
-        </GridItem>
-        <GridItem>
-          <Button onClick={handleSubmit}>{t("filters.search")}</Button>
-        </GridItem>
-      </GridContainer>
+      <div className="filters-container__desktop">
+        <FormField
+          {...FILTERS}
+          inputs={FILTERS.inputs.slice(0, 7)}
+          initialValue={initialValue}
+          onChange={handleChange}
+        />
+        <GridContainer justifyContent="flex-end">
+          <GridItem>
+            <Button appareance="link" onClick={handleClear}>
+              {t("filters.clearFilters")}
+            </Button>
+          </GridItem>
+          <GridItem>
+            <Button appareance="secondary" onClick={() => setIsOpenModal(true)}>
+              {t("filters.moreFilters")}
+            </Button>
+          </GridItem>
+          <GridItem>
+            <Button onClick={handleSubmit}>{t("filters.search")}</Button>
+          </GridItem>
+        </GridContainer>
+      </div>
+      <div className="filters-container__mobile u-mt3">
+        <GridContainer className="u-mb2">
+          <GridItem className="filters-button__wrapper" xs={6}>
+            <div className="u-mr1">
+              <Button
+                className="filters-button"
+                appareance="primary"
+                size="small"
+                leftIcon="FaFilter"
+                fitContainer
+                onClick={() => setIsOpenModal(true)}
+              >
+                {t("filters.filters")}
+              </Button>
+            </div>
+          </GridItem>
+          <GridItem className="filters-button__wrapper" xs={6}>
+            <div className="u-mr1">
+              <Button
+                className="filters-button"
+                appareance="primary"
+                size="small"
+                leftIcon={isMapOpen ? "FaList" : "FaMap"}
+                fitContainer
+                onClick={onToggleMap}
+              >
+                {isMapOpen ? t("filters.backToList") : t("productDetails.map")}
+              </Button>
+            </div>
+          </GridItem>
+        </GridContainer>
+        <Pills
+          items={filters}
+          onPillRemove={handleRemoveFilter}
+        />
+      </div>
       <Modal
         className="modal-filters-container"
         size="full"
@@ -88,7 +145,11 @@ export default function Filters() {
         isOpen={isOpenModal}
       >
         <ContentContainer>
-          <FormField {...FILTERS} initialValue={initialValue} onChange={handleChange} />
+          <FormField
+            {...FILTERS}
+            initialValue={initialValue}
+            onChange={handleChange}
+          />
         </ContentContainer>
         <div className="filters-actions">
           <ContentContainer>
@@ -99,7 +160,10 @@ export default function Filters() {
                 </Button>
               </GridItem>
               <GridItem className="u-pr1">
-                <Button appareance="secondary" onClick={() => setIsOpenModal(false)}>
+                <Button
+                  appareance="secondary"
+                  onClick={() => setIsOpenModal(false)}
+                >
                   {t("filters.lessFilters")}
                 </Button>
               </GridItem>

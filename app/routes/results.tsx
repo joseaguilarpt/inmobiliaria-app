@@ -7,27 +7,26 @@ import { queryClient } from "~/root";
 import ResultsSection from "./ResultsPage/ResultSection";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
-import { Property } from "~/constants/mockData";
 import image from '../img/hero-carousel/hero-carousel-3.jpg';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
   const params = url.searchParams;
-  const results: Property[] = await queryClient.fetchQuery(
+  const data: any = await queryClient.fetchQuery(
     getSearchResultsQuery({ params })
   );
   await queryClient.invalidateQueries({
     queryKey: [SEARCH_RESULTS],
   });
-  return { results };
+  return { data };
 };
 
 export default function ResultsPage() {
-  const { results } = useLoaderData<typeof loader>();
+  const { data } = useLoaderData<typeof loader>();
   return (
     <>
       <Navbar autoScrolled />
-      <ResultsSection properties={results} />
+      <ResultsSection data={data} />
       <BackToTop />
       <Footer
         {...FOOTER}

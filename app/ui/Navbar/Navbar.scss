@@ -38,9 +38,13 @@ $font-color: #333;
       text-transform: uppercase;
       margin-left: 20px;
     }
+    .input-select__arrow {
+      right: 0px;
+      top: 2px;
+    }
     &.--contrast {
       button {
-        color: var(--default-color);
+        color: var(--nav-color);
       }
     }
   }
@@ -78,21 +82,21 @@ $font-color: #333;
           height: 2px;
           bottom: -6px;
           left: 0;
-          background-color: var(--accent-color);
+          background-color: var(--button-color);
           position: absolute;
           width: 0px;
           transition: all 0.3s ease-in-out 0s;
         }
 
         &:hover {
-          color: var(--accent-color);
+          color: var(--button-color);
 
           &::before {
             content: "";
             height: 2px;
             bottom: -6px;
             left: 0;
-            background-color: var(--accent-color);
+            background-color: var(--button-color);
             position: absolute;
             width: 100%;
             transition: all 0.3s ease-in-out 0s;
@@ -121,15 +125,12 @@ $font-color: #333;
             height: 2px;
             bottom: -6px;
             left: 0;
-            background-color: var(--accent-color);
+            background-color: var(--button-color);
             position: absolute;
             width: 100%;
             transition: all 0.3s ease-in-out 0s;
           }
 
-          &:hover {
-            color: var(--nav-dropdown-hover-color);
-          }
         }
       }
 
@@ -142,8 +143,15 @@ $font-color: #333;
   }
 
   &.scrolled {
-    background-color: var(--background-color);
+    background-color: var(--accent-color);
     box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+    
+    h1 {
+      color: var(--nav-color);
+    }
+    a, button {
+      color: var(--nav-color);
+    }
   }
 }
 
@@ -161,7 +169,7 @@ $font-color: #333;
   button {
     text-decoration: none;
       color: var(--default-color);
-      font-size: 16px;
+      font-size: 14px;
       padding: 0 2px;
       font-family: var(--nav-font);
       font-weight: 500;

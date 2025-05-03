@@ -9,7 +9,7 @@ import { ProductCard } from "~/ui/ProductCard/ProductCard";
 export default function OffersSection() {
   const filtered = properties.filter(
     (item) => item.operation === "buy" && item.promotional
-  );
+  ).splice(0, 8);
   const { t } = useI18n();
   const slides = filtered.map((item) => ({
     title: item.name,
