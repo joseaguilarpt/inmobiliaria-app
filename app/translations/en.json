@@ -39,7 +39,6 @@
   "companyObjectives": {
     "title": "Company Goals",
     "description": "Unlock new opportunities with our cutting-edge technologies and strategic partnerships.",
-
     "option1": {
       "title": "Increase Customer Satisfaction",
       "content": "Deliver exceptional service and products that exceed customer expectations, ensuring high satisfaction levels."
@@ -138,7 +137,6 @@
       "imageUrl": "https://via.placeholder.com/150"
     }
   },
-
   "companyPortfolio": {
     "title": "Our Portfolio",
     "description": "Explore our diverse range of projects showcasing our expertise and commitment to excellence.",
@@ -244,7 +242,6 @@
       "rating": 4
     }
   },
-
   "companyBlog": {
     "title": "Company Blog",
     "description": "Explore our insights and articles covering the latest trends in technology, business strategies, and more.",
@@ -291,11 +288,18 @@
       "imageUrl": "https://via.placeholder.com/150"
     }
   },
-
   "footer": {
     "socialNetworks": [
-      { "label": "Facebook", "icon": "FaFacebook", "href": "#" },
-      { "label": "Twitter", "icon": "FaTwitter", "href": "#" }
+      {
+        "label": "Facebook",
+        "icon": "FaFacebook",
+        "href": "#"
+      },
+      {
+        "label": "Twitter",
+        "icon": "FaTwitter",
+        "href": "#"
+      }
     ],
     "title": "Useful Links and More",
     "description": "Explore our services and find helpful resources.",
@@ -430,12 +434,30 @@
     },
     "rooms": "Habitaciones",
     "bathrooms": "Baños",
-    "roomsOptions": ["0", "1+", "2+", "3+", "4+", "5+"],
-    "bathroomsOptions": ["0", "1+", "2+", "3+", "4+", "5+"]
+    "roomsOptions": [
+      "0",
+      "1+",
+      "2+",
+      "3+",
+      "4+",
+      "5+"
+    ],
+    "bathroomsOptions": [
+      "0",
+      "1+",
+      "2+",
+      "3+",
+      "4+",
+      "5+"
+    ]
   },
   "offersSection": {
     "heading": "Property Offer Deals",
     "subheading": "These properties are new and have an awesome discount"
+  },
+  "rentSection": {
+    "heading": "Rent: Top Properties",
+    "subheading": "Find the correct property for your needs"
   },
   "productCard": {
     "rooms": "Rooms",
@@ -505,9 +527,29 @@
     "resetLabel": "Reset Password",
     "backToLogin": "Back to Login"
   },
-  "sort1": { "label": "Cheapest", "value": "price-asc", "id": 0 },
-  "sort2": { "label": "Relevant", "value": "relevant", "id": 1 },
-  "sort3": { "label": "Newest", "value": "newest", "id": 2 },
-  "sort4": { "label": "Smallest", "value": "smallest", "id": 3 },
-  "sort5": { "label": "Biggest", "value": "biggest", "id": 4 }
+  "sort1": {
+    "label": "Cheapest",
+    "value": "price-asc",
+    "id": 0
+  },
+  "sort2": {
+    "label": "Relevant",
+    "value": "relevant",
+    "id": 1
+  },
+  "sort3": {
+    "label": "Newest",
+    "value": "newest",
+    "id": 2
+  },
+  "sort4": {
+    "label": "Smallest",
+    "value": "smallest",
+    "id": 3
+  },
+  "sort5": {
+    "label": "Biggest",
+    "value": "biggest",
+    "id": 4
+  }
 }

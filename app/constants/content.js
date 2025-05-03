@@ -308,38 +308,7 @@ export const COMPANY_BLOG = [
 // },
 
 export const FOOTER = {
-  sections: [
-    {
-      title: "footer.option1.title",
-      links: [
-        { name: "footer.option1.link1.name", url: "footer.option1.link1.url" },
-        { name: "footer.option1.link2.name", url: "footer.option1.link2.url" },
-        { name: "footer.option1.link3.name", url: "footer.option1.link3.url" },
-        { name: "footer.option1.link4.name", url: "footer.option1.link4.url" },
-        { name: "footer.option1.link5.name", url: "footer.option1.link5.url" },
-      ],
-    },
-    {
-      title: "footer.option2.title",
-      links: [
-        { name: "footer.option2.link1.name", url: "footer.option2.link1.url" },
-        { name: "footer.option2.link2.name", url: "footer.option2.link2.url" },
-        { name: "footer.option2.link3.name", url: "footer.option2.link3.url" },
-        { name: "footer.option2.link4.name", url: "footer.option2.link4.url" },
-        { name: "footer.option2.link5.name", url: "footer.option2.link5.url" },
-      ],
-    },
-    {
-      title: "footer.option3.title",
-      links: [
-        { name: "footer.option3.link1.name", url: "footer.option3.link1.url" },
-        { name: "footer.option3.link2.name", url: "footer.option3.link2.url" },
-        { name: "footer.option3.link3.name", url: "footer.option3.link3.url" },
-        { name: "footer.option3.link4.name", url: "footer.option3.link4.url" },
-        { name: "footer.option3.link5.name", url: "footer.option3.link5.url" },
-      ],
-    },
-  ],
+  sections: [],
   address: "footer.address",
   phone: "footer.phone",
   email: "footer.email",

@@ -426,6 +426,10 @@
     "heading": "Ofertas de Propiedades",
     "subheading": "Estas propiedades son nuevas y tienen un descuento increíble"
   },
+  "rentSection": {
+    "heading": "Propiedades Destacadas",
+    "subheading": "Encuentra la propiedad para alquilar que mejor se adapta a tus necesidades"
+  },
   "productCard": {
     "rooms": "Habitaciones",
     "area": "Área",

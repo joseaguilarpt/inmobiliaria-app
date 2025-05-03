@@ -84,8 +84,7 @@ export default function IndexPage() {
           </div>
         </Carousel>
         <OfferSection />
-        <CompanyBlogSection />
-        <GetInTouchSection />
+        <OfferSection title={'rentSection.heading'} description={'rentSection.subheading'} />
       </div>
       <BackToTop />
       <Footer

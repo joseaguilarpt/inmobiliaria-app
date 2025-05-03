@@ -6,7 +6,7 @@ import { useI18n } from "~/context/i18nContext";
 import properties from "~/constants/mockData";
 import { ProductCard } from "~/ui/ProductCard/ProductCard";
 
-export default function OffersSection() {
+export default function OffersSection({ title, description }) {
   const filtered = properties.filter(
     (item) => item.operation === "buy" && item.promotional
   ).splice(0, 8);
@@ -20,11 +20,11 @@ export default function OffersSection() {
   return (
     <ContentContainer className="bg-color-secondary u-pb3 overflow-hidden">
       <Heading align="center" level={2} appearance={4} underline>
-        {t("offersSection.heading")}
+        {t( title ?? "offersSection.heading")}
       </Heading>
       <div className="u-pt2 u-pr4 u-pb2">
         <Text size="small" align="center" color="primary">
-          {t("offersSection.subheading")}
+          {t(description ?? "offersSection.subheading")}
         </Text>
       </div>
       <Slider slides={slides} slidesToShow={3} />
