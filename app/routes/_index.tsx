@@ -22,7 +22,7 @@ export default function MapPage() {
 
   const slides: CarouselSlide[] = [
     {
-      backgroundImage: t("carouselSlide1.backgroundImage"),
+      backgroundImage: "../../img/real-state.jpg",
     },
   ];
 
