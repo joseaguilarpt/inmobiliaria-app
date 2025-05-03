@@ -14,6 +14,9 @@
   margin-left: 0px;
   padding-top: 150px;
 }
+.product-card.horizontal .__details a {
+  padding-left: 0;
+}
 .product-card.horizontal .__slider {
   position: absolute;
   top: 0;
@@ -52,22 +55,22 @@
     padding-top: 0px;
   }
 }
-.product-card button,
-.product-card a {
+.product-card .__card-contact {
+  margin-top: var(--input-padding);
+  padding-top: var(--input-padding);
+  border-top: 2px solid rgba(221, 221, 221, 0.7490196078);
+}
+.product-card .__card-contact button,
+.product-card .__card-contact a {
   padding: 0;
   font-weight: bold;
   font-size: var(--font-size-medium);
   color: var(--accent-color);
 }
-.product-card svg {
+.product-card .__card-contact svg {
   font-size: 16px;
   color: var(--accent-color);
   padding-right: 5px;
-}
-.product-card .__card-contact {
-  margin-top: var(--input-padding);
-  padding-top: var(--input-padding);
-  border-top: 2px solid rgba(221, 221, 221, 0.7490196078);
 }
 .product-card .button--link.__heading {
   font-weight: bold;

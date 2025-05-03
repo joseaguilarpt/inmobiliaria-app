@@ -31,7 +31,7 @@ export const ProductCard = ({
   return (
     <Card shadow className={classNames("product-card", layout)}>
       <div className="__slider">
-        <ImageSlider showTotal images={property.pictures} />
+        <ImageSlider images={property.pictures} />
       </div>
       <div className="__details">
         <Button

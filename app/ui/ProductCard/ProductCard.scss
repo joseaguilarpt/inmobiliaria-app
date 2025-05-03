@@ -15,6 +15,10 @@
     .__details {
       margin-left: 0px;
       padding-top: 150px;
+
+      a {
+        padding-left: 0;
+      }
     }
     .__slider {
       position: absolute;
@@ -57,24 +61,24 @@
     }
   }
 
-  button,
-  a {
-    padding: 0;
-    font-weight: bold;
-    font-size: var(--font-size-medium);
-    color: var(--accent-color);
-  }
-
-  svg {
-    font-size: 16px;
-    color: var(--accent-color);
-    padding-right: 5px;
-  }
-
   .__card-contact {
     margin-top: var(--input-padding);
     padding-top: var(--input-padding);
     border-top: 2px solid #ddddddbf;
+
+    button,
+    a {
+      padding: 0;
+      font-weight: bold;
+      font-size: var(--font-size-medium);
+      color: var(--accent-color);
+    }
+  
+    svg {
+      font-size: 16px;
+      color: var(--accent-color);
+      padding-right: 5px;
+    }
   }
 
   .button--link {
