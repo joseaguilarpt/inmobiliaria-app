@@ -19,52 +19,6 @@ import CompanyBlogSection from "./IndexPage/CompanyBlogSection";
 import image from "../img/real-state.jpg";
 import { MetaFunction } from "@remix-run/node";
 
-const generateMeta = (data: any) => {
-  return [
-    {
-      name: "title",
-      content: `Real Estate Agency - Encuentra tu Propiedad ideal`,
-    },
-    {
-      name: "description",
-      content:
-        "lorem ispu dolor sitem est lorem ispu dolor sitem est lorem ispu dolor sitem est lorem ispu dolor sitem est",
-    },
-    {
-      name: "keywords",
-      content: [
-        "real estate",
-        "costa rica",
-        "san jose",
-        "casa",
-        "apartamento",
-        "garage",
-        "comprar",
-        "alquilar",
-      ],
-    },
-    {
-      property: "og:title",
-      content: `Real Estate Agency - Encuentra tu Propiedad ideal`,
-    },
-    {
-      property: "og:description",
-      content:
-        "lorem ispu dolor sitem est lorem ispu dolor sitem est lorem ispu dolor sitem est lorem ispu dolor sitem est",
-    },
-    { property: "og:type", content: "article" },
-    {
-      property: "og:url",
-      content: `https://cr-real-estate.netlify.app`,
-    },
-  ];
-};
-
-export let meta: MetaFunction = ({ data }) => {
-  const { results } = data;
-  return generateMeta(results);
-};
-
 export default function IndexPage() {
   const { t } = useI18n();
 
