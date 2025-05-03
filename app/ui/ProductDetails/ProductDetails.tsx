@@ -31,6 +31,7 @@ export default function ProductDetails({ product }: { product: Property }) {
   const [isCallFormOpen, setIsCallFormOpen] = React.useState(false);
   const [isContactFormOpen, setIsContactFormOpen] = React.useState(false);
 
+  console.log(product, 'product')
   const navigate = useNavigate();
   const breadcrumbs = [
     { label: t("home"), href: "/" },
@@ -44,7 +45,7 @@ export default function ProductDetails({ product }: { product: Property }) {
     },
     {
       label: product.city,
-      href: `/results?${product.operation}&category=${product.category}&location=${product.city}`,
+      href: `/results?operation=${product.operation}&category=${product.category}&location=${product.city}`,
     },
     { label: product.name },
   ];
