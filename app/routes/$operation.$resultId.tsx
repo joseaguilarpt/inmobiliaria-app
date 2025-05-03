@@ -5,11 +5,10 @@ import { FOOTER } from "~/constants/content";
 import { getProductByIdQuery } from "~/api/queries";
 import { queryClient } from "~/root";
 import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
-import { Meta, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { Property } from "~/constants/mockData";
 import ProductDetails from "~/ui/ProductDetails/ProductDetails";
 import image from "../img/real-state.jpg";
-import { useI18n } from "~/context/i18nContext";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
