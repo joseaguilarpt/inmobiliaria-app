@@ -18,15 +18,16 @@ import OfferSection from "./IndexPage/OffersSection";
 import CompanyBlogSection from "./IndexPage/CompanyBlogSection";
 
 export default function MapPage() {
+  const { t } = useI18n();
+
   const slides: CarouselSlide[] = [
     {
-      backgroundImage: "../../img/real-state.jpg",
+      backgroundImage: t("carouselSlide1.backgroundImage"),
     },
   ];
 
   const [isClient, setIsClient] = React.useState(false);
 
-  const { t } = useI18n();
   // @ts-ignore
   const params: GetInTouchForm = MAIN_SEARCH;
   const formId = "get-in-touch-form";
@@ -41,10 +42,10 @@ export default function MapPage() {
       await queryClient.invalidateQueries({
         queryKey: [POST_DATA],
       });
-      showSnackbar(t("getInTouch_form.successDescription"), "success");
+      showSnackbar(t("getInTouch.successDescription"), "success");
     },
     onError: () => {
-      showSnackbar(t("getInTouch_form.errorDescription"), "error");
+      showSnackbar(t("getInTouch.errorDescription"), "error");
     },
   });
 
@@ -68,7 +69,7 @@ export default function MapPage() {
           <div>
             <GridContainer justifyContent="center" className="u-mt4">
               <Heading align="center" color="white" appearance={4} level={1}>
-                Find your perfect place now
+                {t("heading")}
               </Heading>
             </GridContainer>
             <Search params={MAIN_SEARCH} />
@@ -81,7 +82,7 @@ export default function MapPage() {
       <BackToTop />
       <Footer
         {...FOOTER}
-        backgroundImageUrl="../../img/hero-carousel/hero-carousel-3.jpg"
+        backgroundImageUrl={t("footer.backgroundImageUrl")}
         socialNetworks={[
           { label: "Facebook", icon: "FaFacebook", href: "#" },
           { label: "Twitter", icon: "FaTwitter", href: "#" },

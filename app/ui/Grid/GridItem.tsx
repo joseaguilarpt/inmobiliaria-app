@@ -5,6 +5,7 @@ import FadeInComponent from "../FadeIn/FadeIn";
 
 interface GridItemProps {
   children: React.ReactNode;
+  id?: string;
   xs?: number;
   sm?: number;
   md?: number;
@@ -40,7 +41,8 @@ const GridItem: React.FC<GridItemProps> = ({
   spacing,
   animation,
   justifyContent,
-  alignItems
+  alignItems,
+  id
 }) => {
   const itemClasses = classNames("grid-item", className, {
     [`grid-item--xs-${xs}`]: xs !== undefined,
@@ -54,14 +56,14 @@ const GridItem: React.FC<GridItemProps> = ({
 
   if (animation) {
     return (
-      <div className={itemClasses} style={{ gap: spacing }}>
+      <div  id={id} className={itemClasses} style={{ gap: spacing }}>
         <FadeInComponent className="max-height" animation={animation}>{children}</FadeInComponent>
       </div>
     );
   }
 
   return (
-    <div className={itemClasses} style={{ gap: spacing }}>
+    <div id={id} className={itemClasses} style={{ gap: spacing }}>
       {children}
     </div>
   );

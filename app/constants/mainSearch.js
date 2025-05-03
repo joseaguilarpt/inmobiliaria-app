@@ -2,7 +2,7 @@ const inputs = [
   {
     id: "operation",
     type: "radio",
-    size: { xs: 12, lg: 2 }, 
+    size: { xs: 12, lg: 3 }, 
     options: [
       { id: "rent", label: "getInTouch_form.radio.option1.label" },
       { id: "buy", label: "getInTouch_form.radio.option2.label" },
@@ -13,7 +13,7 @@ const inputs = [
   },
   {
     id: "location",
-    size: { xs: 12, lg: 6 },
+    size: { xs: 12, lg: 5 },
     type: "searchLocation",
     options: [
       { id: "rent", label: "getInTouch_form.radio.option1.label" },
@@ -23,13 +23,12 @@ const inputs = [
     leftIcon: 'FaSearch',
     showSuggestionsOnFocus: true,
     clearButton: true,
-    placeholder: "Type a location...",
+    placeholder: "getInTouch_form.locationInput.placeholder",
     label: "getInTouch_form.radio.title",
   },
   {
     id: "category",
     size: { xs: 12, lg: 4},
-
     type: "autosuggest",
     options: [
       { id: "department", label: "Department" },
@@ -37,11 +36,10 @@ const inputs = [
       { id: "garage", label: "Garage" },
       { id: "office", label: "Office" },
       { id: "yard", label: "Yard" },
-
     ],
     isLabelVisible: false,
     showSuggestionsOnFocus: true,
-    placeholder: "What are you looking...",
+    placeholder: "getInTouch_form.categoryInput.placeholder",
     rightIcon: 'FaChevronDown',
     label: "getInTouch_form.radio.title",
   },
@@ -50,7 +48,7 @@ const inputs = [
     label: "getInTouch_form.nameInput",
     size: { xs: 0, lg: 3 },
     isLabelVisible: false,
-    placeholder: "Price from:",
+    placeholder: "getInTouch_form.priceFromInput.placeholder",
     type: "autosuggest",
     clearButton: true,
     showSuggestionsOnFocus: true,
@@ -71,7 +69,7 @@ const inputs = [
     label: "getInTouch_form.nameInput",
     size: { xs: 0, lg: 3 },
     isLabelVisible: false,
-    placeholder: "Price To:",
+    placeholder: "getInTouch_form.priceToInput.placeholder",
     showSuggestionsOnFocus: true,
     clearButton: true,
     type: "autosuggest",
@@ -93,7 +91,7 @@ const inputs = [
     type: "text",
     size: { xs: 0, lg: 3 },
     isLabelVisible: false,
-    placeholder: "Area m2 from:",
+    placeholder: "getInTouch_form.areaFromInput.placeholder",
   },
   {
     id: "area_to",
@@ -101,7 +99,7 @@ const inputs = [
     type: "text",
     size: { xs: 0, lg: 3 },
     isLabelVisible: false,
-    placeholder: "Area m2 To:",
+    placeholder: "getInTouch_form.areaToInput.placeholder",
   },
 ];
 
@@ -109,5 +107,5 @@ export const MAIN_SEARCH = {
   type: "post",
   inputs,
   hasSubmit: true,
-  buttonLabel: "Search",
+  buttonLabel: "getInTouch_form.buttonLabel",
 };

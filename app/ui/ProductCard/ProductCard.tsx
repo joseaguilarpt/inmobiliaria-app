@@ -1,14 +1,13 @@
 import "./ProductCard.scss";
 import Heading from "~/ui/Heading/Heading";
 import Text from "~/ui/Text/Text";
-
 import { Property } from "~/constants/mockData";
 import ImageSlider from "~/ui/ImageSlider/ImageSlider";
 import Button from "~/ui/Button/Button";
 import GridContainer from "~/ui/Grid/Grid";
 import Card from "~/ui/Card/Card";
-import GridItem from "../Grid/GridItem";
 import classNames from "classnames";
+import { useI18n } from "~/context/i18nContext";
 
 export const ProductCard = ({
   property,
@@ -17,10 +16,13 @@ export const ProductCard = ({
   property: Property;
   layout: "vertical" | "horizontal";
 }) => {
+  const { t } = useI18n();
+
   const handleClick = (phoneNumber: string) => {
     const callUrl = `tel:${phoneNumber}`;
     window.open(callUrl, "_self");
   };
+
   return (
     <Card shadow className={classNames("product-card", layout)}>
       <div className="__slider">
@@ -40,7 +42,7 @@ export const ProductCard = ({
           {property.city}, {property.state}
         </Text>
         <Text size="small">
-          Rooms: {property.rooms}. Area: {property.area}m²
+          {t("productCard.rooms")}: {property.rooms}. {t("productCard.area")}: {property.area}m²
         </Text>
         <Text className="u-pt1 u-pb1" size="large" textWeight="bold">
           ${property.price.toLocaleString()}
@@ -54,13 +56,13 @@ export const ProductCard = ({
             leftIcon="FaWhatsapp"
             appareance="link"
           >
-            Contact
+            {t("productCard.contactButton")}
           </Button>
           <Button
             href={`/${property.operation}/${property.id}`}
             appareance="link"
           >
-            View More
+            {t("productCard.viewMoreButton")}
           </Button>
         </GridContainer>
       </div>

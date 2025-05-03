@@ -29,6 +29,10 @@
   &__wrapper {
     display: flex;
     transition: transform 0.5s ease;
+
+    .product-card {
+      height: fit-content;
+    }
   }
 
   .slider__image {

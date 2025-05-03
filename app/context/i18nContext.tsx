@@ -20,7 +20,7 @@ const translationsMap: { [key: string]: Translations } = {
   es: esTranslations,
 };
 
-const defaultLocale = 'en'; // Default language
+const defaultLocale = 'es'; // Default language
 
 const I18nContext = createContext<I18nContextType | undefined>(undefined);
 

@@ -28,28 +28,13 @@
       "buttonText": "Join Us"
     }
   },
-  "getInTouch_heading": "Get in Touch",
-  "getInTouch_description": "Fill out the form below to contact us.",
-  "getInTouch_form": {
-    "title": "Contact Form",
-    "description": "Please fill out the fields below.",
-    "nameInput": "Full Name",
-    "phoneInput": "Phone Number",
-    "emailInput": "Email Address",
-    "commentsInput": "Comments",
-    "errorDescription": "Error, please try again later.",
-    "successDescription": "We will be in touch soon!",
-    "button": "Submit",
-    "radio": {
-      "option1": {
-        "label": "Rent",
-        "id": "rent"
-      },
-      "option2": {
-        "label": "Buy",
-        "id": "buy"
-      }
-    }
+  "carouselSlide1": {
+    "backgroundImage": "../../img/real-state.jpg"
+  },
+  "heading": "Find your perfect place now",
+  "getInTouch": {
+    "successDescription": "Form submitted successfully!",
+    "errorDescription": "There was an error submitting the form."
   },
   "companyObjectives": {
     "title": "Company Goals",
@@ -308,6 +293,10 @@
   },
 
   "footer": {
+    "socialNetworks": [
+      { "label": "Facebook", "icon": "FaFacebook", "href": "#" },
+      { "label": "Twitter", "icon": "FaTwitter", "href": "#" }
+    ],
     "title": "Useful Links and More",
     "description": "Explore our services and find helpful resources.",
     "option1": {
@@ -384,5 +373,114 @@
     "email": "info@example.com",
     "copyright": "© Copyright UpConstruction. All Rights Reserved",
     "backgroundImageUrl": "../../img/hero-carousel/hero-carousel-3.jpg"
+  },
+  "getInTouch_form": {
+    "title": "Contact Form",
+    "description": "Please fill out the fields below.",
+    "nameInput": "Full Name",
+    "phoneInput": "Phone Number",
+    "emailInput": "Email Address",
+    "commentsInput": "Comments",
+    "errorDescription": "Error, please try again later.",
+    "successDescription": "We will be in touch soon!",
+    "button": "Submit",
+    "radio": {
+      "option1": {
+        "label": "Rent"
+      },
+      "option2": {
+        "label": "Buy"
+      },
+      "title": "Operation"
+    },
+    "locationInput": {
+      "placeholder": "Type a location..."
+    },
+    "categoryInput": {
+      "placeholder": "What are you looking..."
+    },
+    "priceFromInput": {
+      "placeholder": "Price from:"
+    },
+    "priceToInput": {
+      "placeholder": "Price to:"
+    },
+    "areaFromInput": {
+      "placeholder": "Area m2 from:"
+    },
+    "areaToInput": {
+      "placeholder": "Area m2 to:"
+    },
+    "buttonLabel": "Search",
+    "amenities": {
+      "placeholder": "Servicios:"
+    },
+    "inputDescription": {
+      "placeholder": "Parte de la descripción:"
+    },
+    "rooms": "Habitaciones",
+    "bathrooms": "Baños",
+    "roomsOptions": ["0", "1+", "2+", "3+", "4+", "5+"],
+    "bathroomsOptions": ["0", "1+", "2+", "3+", "4+", "5+"]
+  },
+  "offersSection": {
+    "heading": "Property Offer Deals",
+    "subheading": "These properties are new and have an awesome discount"
+  },
+  "productCard": {
+    "rooms": "Rooms",
+    "area": "Area",
+    "contactButton": "Contact",
+    "viewMoreButton": "View More"
+  },
+  "filters": {
+    "clearFilters": "Clear Filters",
+    "moreFilters": "More Filters",
+    "lessFilters": "Less Filters",
+    "search": "Search",
+    "viewMap": "View Map",
+    "backToList": "Back to list"
+  },
+  "modal": {
+    "title": "More Filters"
+  },
+  "form": {
+    "location": {
+      "placeholder": "Type a location..."
+    }
+  },
+  "searchResults": {
+    "results": "Results",
+    "propertiesTobuy": "Properties to Buy",
+    "propertiesTorent": "Properties to Rent",
+    "of": "of"
+  },
+  "productDetails": {
+    "viewMap": "View Map",
+    "area": "Area",
+    "rooms": "Rooms",
+    "bathrooms": "Bathrooms",
+    "operation": "Operation",
+    "description": "Description",
+    "propertyDetails": "Property Details",
+    "propertyAmenities": "Property Amenities",
+    "map": "Map",
+    "contactAdvertiser": "You can contact the advertiser through:",
+    "sendEmail": "Or send an email:",
+    "photos": "Property photos"
+
+  },
+  "mapPopup": {
+    "contact": "Contact",
+    "viewMore": "View More",
+    "rooms": "Rooms",
+    "area": "Area",
+    "bathrooms": "Bathrooms"
+  },
+  "contactWithWhatsapp": {
+    "contactOnWhatsApp": "Contact on WhatsApp"
+  },
+  "contactCall": {
+    "call": "Call Now"
   }
 }

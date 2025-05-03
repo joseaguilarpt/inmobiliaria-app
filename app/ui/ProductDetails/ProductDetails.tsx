@@ -1,5 +1,4 @@
 import "./ProductDetails.scss";
-
 import { Property } from "~/constants/mockData";
 import ContentContainer from "~/ui/ContentContainer/ContentContainer";
 import Breadcrumb from "~/ui/Breadcrumbs/Breadcrumbs";
@@ -18,14 +17,20 @@ import FormField, { GetInTouchForm } from "../FormField/FormField";
 import { GET_IN_TOUCH_FORM } from "~/constants/getInTouchForm";
 import ContactWithCall from "../ContactCall/ContactCall";
 import ContactWithWhatsapp from "../ContactWhatsapp/ContactWhatsapp";
+import { useI18n } from "~/context/i18nContext"; // Assuming you have an i18nContext for translation
+import { useNavigate } from "@remix-run/react";
+import Modal from "../Modal/Modal";
 
 export default function ProductDetails({ product }: { product: Property }) {
+  const { t } = useI18n(); // Hook for accessing translations
   const [isClient, setIsClient] = React.useState(false);
+  const [isOpenPictures, setOpenPictures] = React.useState(false);
 
+  const navigate = useNavigate();
   const breadcrumbs = [
-    { label: "Home", href: "/" },
+    { label: t("home"), href: "/" },
     {
-      label: product.operation,
+      label: t("productDetails.operation"),
       href: `/results?operation=${product.operation}`,
     },
     {
@@ -41,14 +46,28 @@ export default function ProductDetails({ product }: { product: Property }) {
 
   const details = [
     [
-      { label: "Area:", icon: "FaMap", value: product.area },
-      { label: "Rooms:", icon: "FaMoon", value: product.rooms },
+      { label: t("productDetails.area"), icon: "FaMap", value: product.area },
+      {
+        label: t("productDetails.rooms"),
+        icon: "FaMoon",
+        value: product.rooms,
+      },
     ],
     [
-      { label: "Bathrooms:", icon: "FaSun", value: 3 },
-      { label: "Type of Property:", icon: "FaSearch", value: product.category },
+      { label: t("productDetails.bathrooms"), icon: "FaSun", value: 3 },
+      {
+        label: t("productDetails.operation"),
+        icon: "FaSearch",
+        value: product.category,
+      },
     ],
-    [{ label: "Operation:", icon: "FaTimes", value: product.operation }],
+    [
+      {
+        label: t("productDetails.operation"),
+        icon: "FaTimes",
+        value: product.operation,
+      },
+    ],
   ];
 
   React.useEffect(() => {
@@ -58,13 +77,14 @@ export default function ProductDetails({ product }: { product: Property }) {
   const params: GetInTouchForm = GET_IN_TOUCH_FORM;
   const formId = "get-in-touch-form";
 
-  let mapParams: any  = {}
+  let mapParams: any = {};
   if (product.lat && product.lon) {
     mapParams.initialCoords = {
       lat: product.lat,
       lon: product.lon,
-    }
+    };
   }
+
   return (
     <div className="product-details">
       <ContentContainer className="bg-color-secondary">
@@ -75,7 +95,9 @@ export default function ProductDetails({ product }: { product: Property }) {
       <ContentContainer>
         <GridContainer>
           <GridItem xs={12} md={8}>
-            {product.pictures && <ImageSlider images={product.pictures ?? []} />}
+            {product.pictures && (
+              <ImageSlider images={product.pictures ?? []} />
+            )}
             <GridContainer className="u-pt2" justifyContent="space-between">
               <GridItem xs={12} md={8}>
                 <Heading level={1} appearance={6}>
@@ -83,22 +105,40 @@ export default function ProductDetails({ product }: { product: Property }) {
                 </Heading>
                 <GridContainer className="product-details__buttons">
                   <GridItem>
-                    <Button appareance="outlined">
+                    <Button
+                      onClick={() => setOpenPictures(true)}
+                      appareance="outlined"
+                      ariaLabel={t('productDetails.photos')}
+
+                    >
                       <Icon icon="FaPhotoVideo" size="medium" color="primary" />
                     </Button>
                   </GridItem>
                   <GridItem>
-                    <Button appareance="outlined">
-                      <Icon icon="FaDirections" size="medium" color="primary" />
+                    <Button
+                      onClick={() => navigate("#amenities")}
+                      appareance="outlined"
+                      ariaLabel={t("productDetails.propertyAmenities")}
+                    >
+                      <Icon icon="FaInfoCircle" size="medium" color="primary" />
                     </Button>
                   </GridItem>
                   <GridItem>
-                    <Button appareance="outlined">
+                    <Button
+                      ariaLabel={t("productDetails.propertyDetails")}
+                      onClick={() => navigate("#details")}
+                      appareance="outlined"
+                    >
                       <Icon icon="FaFaucet" size="medium" color="primary" />
                     </Button>
                   </GridItem>
                   <GridItem>
-                    <Button appareance="outlined">
+                    <Button
+                      onClick={() => navigate("#map")}
+                      ariaLabel={t('productDetails.map')}
+
+                      appareance="outlined"
+                    >
                       <Icon icon="FaMap" size="medium" color="primary" />
                     </Button>
                   </GridItem>
@@ -108,23 +148,32 @@ export default function ProductDetails({ product }: { product: Property }) {
                   alignItems="baseline"
                 >
                   <Text className="u-pt2">{product.address}</Text>
-                  <Button appareance="link" leftIcon="FaMapPin">
-                    View Map
+                  <Button
+                    onClick={() => navigate("#map")}
+                    appareance="link"
+                    leftIcon="FaMapPin"
+                    ariaLabel={t('productDetails.map')}
+                  >
+                    {t("productDetails.viewMap")}
                   </Button>
                 </GridContainer>
                 <GridContainer>
-                  <Text>Area: {product.area} m2</Text>
+                  <Text>
+                    {t("productDetails.area")}: {product.area} m2
+                  </Text>
                   <Text className="u-pl2 u-pr2">|</Text>
-                  <Text>Rooms: {product.rooms}</Text>
+                  <Text>
+                    {t("productDetails.rooms")}: {product.rooms}
+                  </Text>
                   <Text className="u-pl2 u-pr2">|</Text>
-                  <Text>Bathrooms: 2</Text>
+                  <Text>{t("productDetails.bathrooms")}: 2</Text>
                 </GridContainer>
               </GridItem>
               <GridItem>
                 <Heading appearance={6} level={5}>
                   {Intl.NumberFormat("en-US", {
                     style: "currency",
-                    currency: "usd",
+                    currency: "USD",
                   }).format(product.price)}
                 </Heading>
               </GridItem>
@@ -132,23 +181,18 @@ export default function ProductDetails({ product }: { product: Property }) {
             <GridContainer className="u-pt4">
               <GridItem xs={12}>
                 <Heading level={4} appearance={6}>
-                  Description
+                  {t("productDetails.description")}
                 </Heading>
                 <div className="u-pt1 u-pb2">
                   <Divider />
                 </div>
-                <Text>
-                  {product.description} ;Lorem ipsum dolor sit amet consectetur
-                  adipisicing elit. Quos quaerat, nesciunt ipsum odio quam iusto
-                  temporibus illum voluptates placeat. Temporibus explicabo ut
-                  eius! Officia, accusantium. Fugiat non incidunt quos atque.
-                </Text>
+                <Text>{product.description}</Text>
               </GridItem>
             </GridContainer>
             <GridContainer className="u-pt4">
-              <GridItem xs={12}>
+              <GridItem id="details" xs={12}>
                 <Heading level={4} appearance={6}>
-                  Property Details
+                  {t("productDetails.propertyDetails")}
                 </Heading>
                 <div className="u-pt1 u-pb2">
                   <Divider />
@@ -186,9 +230,9 @@ export default function ProductDetails({ product }: { product: Property }) {
               </GridItem>
             </GridContainer>
             <GridContainer className="u-pt4">
-              <GridItem xs={12}>
+              <GridItem id="amenities" xs={12}>
                 <Heading level={4} appearance={6}>
-                  Property Amenities
+                  {t("productDetails.propertyAmenities")}
                 </Heading>
                 <div className="u-pt1 u-pb1">
                   <Divider />
@@ -205,17 +249,14 @@ export default function ProductDetails({ product }: { product: Property }) {
             <GridContainer className="u-pt1">
               <GridItem xs={12}>
                 <Heading level={4} appearance={6}>
-                  Map
+                  {t("productDetails.map")}
                 </Heading>
                 <div className="u-pt1 u-pb1">
                   <Divider />
                 </div>
                 {Boolean(product) && isClient && (
-                  <div className="u-pt2 map-container">
-                    <MapWithLocations
-                      locations={[product]}
-                      {...mapParams}
-                    />
+                  <div id="map" className="u-pt2 map-container">
+                    <MapWithLocations locations={[product]} {...mapParams} />
                   </div>
                 )}
               </GridItem>
@@ -225,7 +266,7 @@ export default function ProductDetails({ product }: { product: Property }) {
             <Box className="product-details__contact">
               <div>
                 <Text className="u-pb3">
-                  You can contact the advertiser through:
+                  {t("productDetails.contactAdvertiser")}
                 </Text>
                 <GridContainer>
                   <GridItem className="u-pb2" xs={12}>
@@ -234,12 +275,12 @@ export default function ProductDetails({ product }: { product: Property }) {
                   <GridItem xs={12}>
                     <ContactWithWhatsapp
                       phoneNumber={product.phone}
-                      message="Hi, I would like to know more about your services."
+                      message={t("productDetails.defaultMessage")}
                     />
                   </GridItem>
                 </GridContainer>
               </div>
-              <Text className="u-pt3">Or send an email:</Text>
+              <Text className="u-pt3">{t("productDetails.sendEmail")}</Text>
 
               <FormField
                 id={formId}
@@ -251,6 +292,14 @@ export default function ProductDetails({ product }: { product: Property }) {
             </Box>
           </GridItem>
         </GridContainer>
+        <Modal
+          className="pictures-modal"
+          size="full"
+          isOpen={isOpenPictures}
+          onClose={() => setOpenPictures(false)}
+        >
+          <ImageSlider images={product.pictures} />
+        </Modal>
       </ContentContainer>
     </div>
   );

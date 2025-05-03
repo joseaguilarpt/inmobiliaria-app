@@ -1,6 +1,7 @@
 {
   "pageName": "Real State Agency",
   "home": "Inicio",
+  "heading": "Encuentra tu lugar perfecto ahora",
   "contact": "Contacto",
   "about": "Sobre Nosotros",
   "spanish": "Español",
@@ -30,25 +31,6 @@
   },
   "getInTouch_heading": "Ponte en Contacto",
   "getInTouch_description": "Completa el formulario a continuación para contactarnos.",
-  "getInTouch_form": {
-    "title": "Formulario de Contacto",
-    "description": "Por favor, complete los campos a continuación.",
-    "nameInput": "Nombre Completo",
-    "phoneInput": "Número de Teléfono",
-    "emailInput": "Correo Electrónico",
-    "commentsInput": "Comentarios",
-    "button": "Enviar",
-    "radio": {
-      "option1": {
-        "label": "Alquilar",
-        "id": "rent"
-      },
-      "option2": {
-        "label": "Comprar",
-        "id": "buy"
-      }
-    }
-  },
   "companyObjectives": {
     "title": "Objetivos de la Empresa",
     "description": "Desbloquea nuevas oportunidades con nuestras tecnologías de vanguardia y alianzas estratégicas.",
@@ -381,5 +363,112 @@
     "email": "info@example.com",
     "copyright": "© Derechos de Autor UpConstruction. Todos los derechos reservados",
     "backgroundImageUrl": "../../img/hero-carousel/hero-carousel-3.jpg"
+  },
+
+  "getInTouch_form": {
+    "title": "Formulario de Contacto",
+    "description": "Por favor, complete los campos a continuación.",
+    "nameInput": "Nombre Completo",
+    "phoneInput": "Número de Teléfono",
+    "emailInput": "Correo Electrónico",
+    "commentsInput": "Comentarios",
+    "button": "Enviar",
+    "radio": {
+      "option1": {
+        "label": "Alquilar"
+      },
+      "option2": {
+        "label": "Comprar"
+      },
+      "title": "Operación"
+    },
+    "locationInput": {
+      "placeholder": "Escriba una ubicación..."
+    },
+    "categoryInput": {
+      "placeholder": "¿Qué estás buscando?"
+    },
+    "priceFromInput": {
+      "placeholder": "Precio desde:"
+    },
+    "priceToInput": {
+      "placeholder": "Precio hasta:"
+    },
+    "areaFromInput": {
+      "placeholder": "Área m2 desde:"
+    },
+    "areaToInput": {
+      "placeholder": "Área m2 hasta:"
+    },
+    "buttonLabel": "Buscar",
+    "amenities": {
+      "placeholder": "Servicios:"
+    },
+    "inputDescription": {
+      "placeholder": "Parte de la descripción:"
+    },
+    "rooms": "Habitaciones",
+    "bathrooms": "Baños",
+    "roomsOptions": ["0", "1+", "2+", "3+", "4+", "5+"],
+    "bathroomsOptions": ["0", "1+", "2+", "3+", "4+", "5+"]
+  },
+  "offersSection": {
+    "heading": "Ofertas de Propiedades",
+    "subheading": "Estas propiedades son nuevas y tienen un descuento increíble"
+  },
+  "productCard": {
+    "rooms": "Habitaciones",
+    "area": "Área",
+    "contactButton": "Contactar",
+    "viewMoreButton": "Ver más"
+  },
+  "filters": {
+    "clearFilters": "Limpiar Filtros",
+    "moreFilters": "Más Filtros",
+    "lessFilters": "Menos Filtros",
+    "search": "Buscar",
+    "viewMap": "Ver Mapa",
+    "backToList": "Volver a la lista"
+  },
+  "modal": {
+    "title": "Más Filtros"
+  },
+  "form": {
+    "location": {
+      "placeholder": "Escribe una ubicación..."
+    }
+  },
+  "searchResults": {
+    "results": "Resultados",
+    "propertiesTobuy": "Propiedades para Comprar",
+    "propertiesTorent": "Propiedades para Alquilar",
+    "of": "de"
+  },
+  "productDetails": {
+    "viewMap": "Ver Mapa",
+    "area": "Área",
+    "rooms": "Habitaciones",
+    "bathrooms": "Baños",
+    "operation": "Operación",
+    "description": "Descripción",
+    "propertyDetails": "Detalles de la Propiedad",
+    "propertyAmenities": "Servicios de la Propiedad",
+    "map": "Mapa",
+    "contactAdvertiser": "Puede contactar al anunciante a través de:",
+    "sendEmail": "O envíe un correo electrónico:",
+    "photos": "Fotos de la propiedad"
+  },
+  "mapPopup": {
+    "contact": "Contacto",
+    "viewMore": "Ver más",
+    "rooms": "Habitaciones",
+    "bathrooms": "Baños",
+    "area": "Área"
+  },
+  "contactWithWhatsapp": {
+    "contactOnWhatsApp": "Contactar por WhatsApp"
+  },
+  "contactCall": {
+    "call": "Llamar"
   }
 }

@@ -4,8 +4,8 @@
     display: inline-block;
     font-family: var(--default-font); /* Use variable for font-family */
     border-radius: var(--border-radius);
-    width: max-content;
-
+    width: 100%;
+    
     &__label {
       display: block;
       font-weight: bold;
@@ -23,7 +23,7 @@
         align-items: center;
         justify-content: center;
         font-size: var(--font-size-small);
-        padding: var(--input-padding) 1rem;
+        padding: var(--input-padding);
         border: 1px solid var(--input-border);
         background-color: var(--background-color);
         color: var(--font-color);
@@ -36,7 +36,7 @@
 
         @include media-query(medium) {
           font-size: var(--input-font-size);
-          padding: var(--input-padding) 1.5rem;
+          padding: var(--input-padding);
         }
   
         &:first-child {

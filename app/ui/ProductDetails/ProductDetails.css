@@ -37,4 +37,16 @@
   padding-top: 10px;
 }
 
+.pictures-modal {
+  padding-top: 50px;
+}
+.pictures-modal .modal-content {
+  margin-top: 60px;
+  height: 85%;
+}
+.pictures-modal .modal-content .image-slider {
+  margin-top: 30px;
+  height: 90%;
+}
+
 /*# sourceMappingURL=ProductDetails.css.map */

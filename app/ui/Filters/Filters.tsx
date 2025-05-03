@@ -1,5 +1,4 @@
 import "./Filters.scss";
-
 import React from "react";
 import FormField from "../FormField/FormField";
 import { FILTERS } from "~/constants/filters";
@@ -10,8 +9,10 @@ import Modal from "../Modal/Modal";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import { encodeSearch, parseQueryParams } from "~/utils/queryParamUtils";
 import { useNavigate, useSearchParams } from "@remix-run/react";
+import { useI18n } from "~/context/i18nContext"; // Assuming you have an i18nContext for translation
 
 export default function Filters() {
+  const { t } = useI18n(); // Hook for accessing translations
   const [formData, setFormData] = React.useState({});
   const [searchParams] = useSearchParams();
   const [initialValue, setInitialValue] = React.useState({});
@@ -21,11 +22,11 @@ export default function Filters() {
     let params = { location: {} };
     Object.entries(queryParams).forEach(([key, value]) => {
       if (key === "location") {
-        params.location = {...params.location, display_name: value };
+        params.location = { ...params.location, display_name: value };
       } else if (key === "lon") {
-        params.location = {...params.location, lon: value };
+        params.location = { ...params.location, lon: value };
       } else if (key === "lat") {
-        params.location = {...params.location, lat: value };
+        params.location = { ...params.location, lat: value };
       } else {
         params = { ...params, [key]: value };
       }
@@ -34,10 +35,8 @@ export default function Filters() {
   }
 
   React.useEffect(() => {
-    initialize()
-  }, [])
-
- 
+    initialize();
+  }, []);
 
   const navigate = useNavigate();
 
@@ -52,34 +51,34 @@ export default function Filters() {
     setFormData({});
     navigate(`/results?operation=rent`);
   };
+
   const handleChange = (v: any) => {
-    setFormData({ ...formData, ...v })
-  }
+    setFormData({ ...formData, ...v });
+  };
 
   const [isOpenModal, setIsOpenModal] = React.useState(false);
+
   return (
     <div className="filters-container">
       <FormField
         {...FILTERS}
         inputs={FILTERS.inputs.slice(0, 7)}
         initialValue={initialValue}
-        onChange={handleChange} 
+        onChange={handleChange}
       />
       <GridContainer justifyContent="flex-end">
         <GridItem>
-          {" "}
           <Button appareance="link" onClick={handleClear}>
-            Clear Filters
+            {t("filters.clearFilters")}
           </Button>
         </GridItem>
         <GridItem>
-          {" "}
           <Button appareance="secondary" onClick={() => setIsOpenModal(true)}>
-            More Filters
+            {t("filters.moreFilters")}
           </Button>
         </GridItem>
         <GridItem>
-          <Button onClick={handleSubmit}>Search</Button>
+          <Button onClick={handleSubmit}>{t("filters.search")}</Button>
         </GridItem>
       </GridContainer>
       <Modal
@@ -95,22 +94,17 @@ export default function Filters() {
           <ContentContainer>
             <GridContainer justifyContent="flex-end">
               <GridItem className="u-pr1">
-                {" "}
                 <Button appareance="link" onClick={handleClear}>
-                  Clear Filters
+                  {t("filters.clearFilters")}
                 </Button>
               </GridItem>
               <GridItem className="u-pr1">
-                {" "}
-                <Button
-                  appareance="secondary"
-                  onClick={() => setIsOpenModal(false)}
-                >
-                  Less Filters
+                <Button appareance="secondary" onClick={() => setIsOpenModal(false)}>
+                  {t("filters.lessFilters")}
                 </Button>
               </GridItem>
               <GridItem>
-                <Button onClick={handleSubmit}>Search</Button>
+                <Button onClick={handleSubmit}>{t("filters.search")}</Button>
               </GridItem>
             </GridContainer>
           </ContentContainer>

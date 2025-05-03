@@ -388,7 +388,7 @@
   display: inline-block;
   font-family: var(--default-font); /* Use variable for font-family */
   border-radius: var(--border-radius);
-  width: max-content;
+  width: 100%;
 }
 .button-group__label {
   display: block;
@@ -406,7 +406,7 @@
   align-items: center;
   justify-content: center;
   font-size: var(--font-size-small);
-  padding: var(--input-padding) 1rem;
+  padding: var(--input-padding);
   border: 1px solid var(--input-border);
   background-color: var(--background-color);
   color: var(--font-color);
@@ -420,7 +420,7 @@
 @media (min-width: 768px) {
   .button-group__buttons .button-group__button {
     font-size: var(--input-font-size);
-    padding: var(--input-padding) 1.5rem;
+    padding: var(--input-padding);
   }
 }
 .button-group__buttons .button-group__button:first-child {

@@ -1,7 +1,4 @@
 import "./SearchResults.scss";
-
-import { Property } from "~/constants/mockData";
-import MapWithLocations from "~/ui/Map/Map.client";
 import React from "react";
 import Button from "~/ui/Button/Button";
 import ContentContainer from "../ContentContainer/ContentContainer";
@@ -16,18 +13,24 @@ import { parseQueryParams } from "~/utils/queryParamUtils";
 import Text from "../Text/Text";
 import { ProductCard } from "../ProductCard/ProductCard";
 import Pagination from "../Pagination/Pagination";
+import MapWithLocations from "~/ui/Map/Map.client";
+import { useI18n } from "~/context/i18nContext"; // Assuming you have an i18nContext for translation
+import { Property } from "~/constants/mockData";
 
 export default function SearchResults({
   properties,
 }: {
   properties: Property[];
 }) {
+  const { t } = useI18n(); // Hook for accessing translations
   const [isMapScreen, setMapScreen] = React.useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const queryParams: Record<string, string> = parseQueryParams(searchParams);
 
-  const operationType = queryParams.operation === "buy" ? "Buy" : "Rent";
+  const operationType = queryParams.operation === "buy" ? "buy" : "rent";
   const locationType = queryParams.location ?? "";
+  const resultCount = properties.length;
+
   return (
     <div className="search-results">
       {!isMapScreen && (
@@ -35,8 +38,8 @@ export default function SearchResults({
           <ContentContainer className="bg-color-secondary">
             <Breadcrumb
               paths={[
-                { label: "Home", href: "/" },
-                { label: "Search Results" },
+                { label: t("home"), href: "/" },
+                { label: t("searchResults.results") },
               ]}
             />
             <div>
@@ -53,7 +56,7 @@ export default function SearchResults({
                     onClick={() => setMapScreen(true)}
                     appareance="secondary"
                   >
-                    View Map
+                    {t("filters.viewMap")}
                   </Button>
                 </div>
               </GridItem>
@@ -61,13 +64,19 @@ export default function SearchResults({
                 <GridContainer justifyContent="space-between">
                   <GridItem xs={12}>
                     <Heading appearance={6} level={2}>
-                      Properties to {operationType}{" "}
-                      {locationType ? `in ${locationType}` : ""}
+                      {t(`searchResults.propertiesTo${operationType}`)}{" "}
+                      {locationType ? ` ${locationType}` : ""}
                     </Heading>
-                    <Text>{properties.length} of 100 Results</Text>
+                    <Text>
+                      {properties.length}{" "}
+                      {t("searchResults.of")} 100 {t("searchResults.results")}
+                    </Text>
                   </GridItem>
                 </GridContainer>
-                <GridContainer justifyContent="flex-end" className="u-mt4 u-mb4">
+                <GridContainer
+                  justifyContent="flex-end"
+                  className="u-mt4 u-mb4"
+                >
                   {properties.map((item) => (
                     <GridItem key={item.id} xs={12} className="u-mb2">
                       <ProductCard layout="horizontal" property={item} />
@@ -89,8 +98,8 @@ export default function SearchResults({
           <ContentContainer className="bg-color-secondary">
             <Breadcrumb
               paths={[
-                { label: "Home", href: "/" },
-                { label: "Search Results" },
+                { label: t("home"), href: "/" },
+                { label: t("searchResults.results") },
               ]}
             />
             <div>
@@ -106,7 +115,7 @@ export default function SearchResults({
                 className="toggle-map"
                 appareance="secondary"
               >
-                Back to list
+                {t("filters.backToList")}
               </Button>
             </div>
           </div>

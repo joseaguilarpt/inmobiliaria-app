@@ -147,7 +147,8 @@ const Multiselect: React.FC<MultiselectProps> = ({
           id={id + "-multiselect"}
           name={label + "-multiselect"}
           type="text"
-          placeholder={selectedOptions.length > 0 ? '' : placeholder}
+          placeholder={selectedOptions.length > 0 ? '' : t(placeholder ?? '')}
+
           aria-label={placeholder ?? label}
           value={query}
           onChange={handleChange}
