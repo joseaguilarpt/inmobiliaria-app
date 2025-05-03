@@ -4,6 +4,16 @@
   overflow: hidden;
   position: relative;
 
+  &__number {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: none;
+    &.--show {
+      display: block;
+    }
+  }
+
   .slides {
     display: flex;
     transition: transform 0.5s ease;
@@ -34,19 +44,15 @@
   .next {
     position: absolute;
     top: 50%;
+    background-color: transparent;
     transform: translateY(-50%);
-    background-color: var(--accent-color);
-    color: var(--button-color);
+    color:  var(--accent-color);
     border: none;
     cursor: pointer;
     outline: none;
     font-size: 20px;
     padding: 10px;
     z-index: 1;
-
-    &:hover {
-      background-color: var(--accent-color);
-    }
   }
 
   .prev {
@@ -73,7 +79,7 @@
       cursor: pointer;
 
       &.active {
-        background-color: rgba(255, 255, 255, 1);
+        background-color: var(--accent-color);
       }
     }
   }

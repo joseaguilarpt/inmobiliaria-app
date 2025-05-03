@@ -71,14 +71,10 @@ const Navbar = ({
       <ContentContainer>
         <GridContainer alignItems="center" justifyContent="space-between">
           <GridItem>
-            <Button appareance="link" onClick={() => navigate('/')}>
-            <Heading
-              level={1}
-              appearance={6}
-              color={"white"}
-            >
-              {t("pageName")}
-            </Heading>
+            <Button appareance="link" onClick={() => navigate("/")}>
+              <Heading level={1} appearance={6} color={"white"}>
+                {t("pageName")}
+              </Heading>
             </Button>
           </GridItem>
           <GridContainer justifyContent="flex-end">
@@ -123,7 +119,15 @@ const Navbar = ({
           items={options}
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
-        />
+        >
+          <InputSelect
+            options={dropdownOptions}
+            label="Language"
+            className="mobile--language"
+            initialValue={locale}
+            onSelect={handleChangeLanguage}
+          />{" "}
+        </Sidebar>
       </ContentContainer>
     </nav>
   );

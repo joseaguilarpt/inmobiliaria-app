@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./ImageSlider.scss";
 import Image from "../Image/Image";
+import Button from "../Button/Button";
+import classNames from "classnames";
 
 interface ImageSliderProps {
   images: string[];
   autoSlideInterval?: number;
   initialValue?: number;
+  showTotal?: boolean;
+  onSelectSlider?: (v: number) => void;
+  onTotalClick?: (v: number) => void;
   defaultBackgroundColor?: string;
 }
 
@@ -13,6 +18,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
   images,
   autoSlideInterval = 310000,
   initialValue = 0,
+  showTotal = false,
+  onSelectSlider,
+  onTotalClick = () => {}, 
   defaultBackgroundColor = "#f0f0f0", // Default background color if not provided
 }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(initialValue);
@@ -70,6 +78,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
     isDragging = false;
   };
 
+  const handleClick = (v: number)=> {
+    if (onSelectSlider) {
+      onSelectSlider(v)
+    }
+  }
+
   // Set up event listeners for drag events
   useEffect(() => {
     const slider = sliderRef.current;
@@ -113,7 +127,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         style={{ transform: `translateX(${-currentIndex * 100}%)` }}
       >
         {images.map((image, index) => (
-          <div className="slides__image-item" key={index}>
+          <div onClick={() => handleClick(index)} className="slides__image-item" key={index}>
             {currentIndex === index && (
               <Image
                 src={image}
@@ -123,6 +137,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           </div>
         ))}
       </div>
+      <div className={classNames("image-slider__number", showTotal && '--show')}>
+          <Button onClick={() => onTotalClick(currentIndex)} leftIcon='FaPhotoVideo' size="small">{images.length} Fotos</Button>
+        </div>
       <button className="prev" onClick={prevSlide}>
         &#10094;
       </button>
@@ -135,6 +152,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
             key={index}
             className={`dot ${currentIndex === index ? "active" : ""}`}
             onClick={(e) => {
+              e.stopPropagation();
               e.preventDefault()
               goToSlide(index)
             }}

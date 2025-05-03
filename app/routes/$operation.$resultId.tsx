@@ -58,10 +58,12 @@ export default function ProductPage() {
       <Navbar autoScrolled />
       <ProductDetails product={product} />
 
-      <BackToTop />
+      <div className="product-details__back-to-top">
+        <BackToTop />
+      </div>
       <Footer
         {...FOOTER}
-        className='product-details__footer'
+        className="product-details__footer"
         backgroundImageUrl={image}
         socialNetworks={[
           { label: "Facebook", icon: "FaFacebook", href: "#" },

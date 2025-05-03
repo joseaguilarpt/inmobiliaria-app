@@ -69,14 +69,19 @@
 
   &--outlined {
     background-color: transparent;
-    color: var(--default-color);
+    color: var(--accent-color);
     border: 2px solid var(--accent-color);
     padding: var(--input-padding);
     text-decoration: none;
+    font-weight: bolder;
+
+    svg {
+      color: var(--accent-color);
+    }
+
 
     &:hover {
-      background-color: none;
-      font-weight: bolder;
+      background-color: #f4c64d78;
       color: var(--accent-color);
     }
 

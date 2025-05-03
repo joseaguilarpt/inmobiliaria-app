@@ -1,5 +1,6 @@
 .map__popup-wrapper {
   width: 300px;
+  z-index: 300;
 }
 .map__popup-wrapper .leaflet-popup-content-wrapper {
   background-color: var(--background-color);
@@ -68,6 +69,10 @@
   visibility: visible; /* Visible on hover */
   color: var(--button-color);
   padding: 10px;
+}
+
+.leaflet-bottom {
+  z-index: 400 !important;
 }
 
 /*# sourceMappingURL=Map.css.map */

@@ -40,6 +40,9 @@
   &__buttons {
     button {
       border: 1.5px solid $contrast-color-light;
+      svg {
+        padding-right: 0 !important;
+      }
     }
   }
 

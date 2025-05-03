@@ -55,7 +55,7 @@ const GetInTouchSection = () => {
         </GridItem>
         <GridItem xs={12} lg={6} animation="slide-in-bottom">
           <Box>
-            <div className="u-pt2 u-pb2 u-pl5">
+            <div className="u-pt2 u-pb2">
               <Text size="small" color="secondary" textWeight="semi-bold">
                 {t("getInTouch_form.title")}
               </Text>

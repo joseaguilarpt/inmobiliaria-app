@@ -21,12 +21,15 @@ import { useI18n } from "~/context/i18nContext"; // Assuming you have an i18nCon
 import { useNavigate } from "@remix-run/react";
 import Modal from "../Modal/Modal";
 import ThumbnailSlider from "../ThumbnailSlider/ThumbnailSlider";
+import Sidebar from "../Sidebar/Sidebar";
 
 export default function ProductDetails({ product }: { product: Property }) {
   const { t } = useI18n(); // Hook for accessing translations
   const [isClient, setIsClient] = React.useState(false);
   const [selectedImage, setSelectedImage] = React.useState(0);
   const [isOpenPictures, setOpenPictures] = React.useState(false);
+  const [isCallFormOpen, setIsCallFormOpen] = React.useState(false);
+  const [isContactFormOpen, setIsContactFormOpen] = React.useState(false);
 
   const navigate = useNavigate();
   const breadcrumbs = [
@@ -91,6 +94,11 @@ export default function ProductDetails({ product }: { product: Property }) {
     setSelectedImage(v);
   };
 
+  const handleOpenPicturesModal = (v: number) => {
+    setSelectedImage(v);
+    setOpenPictures(true);
+  };
+
   const pictures = product.pictures ?? [];
 
   return (
@@ -104,10 +112,15 @@ export default function ProductDetails({ product }: { product: Property }) {
         <GridContainer>
           <GridItem xs={12} md={8}>
             {product.pictures && (
-              <div  className="product-details__pictures">
-                <div  onClick={() => setOpenPictures(true)}>
-                <ImageSlider initialValue={selectedImage} images={pictures} />
-
+              <div className="product-details__pictures">
+                <div>
+                  <ImageSlider
+                    initialValue={selectedImage}
+                    onTotalClick={handleOpenPicturesModal}
+                    onSelectSlider={handleOpenPicturesModal}
+                    showTotal
+                    images={pictures}
+                  />
                 </div>
                 <ThumbnailSlider
                   onSelect={handleImageSelect}
@@ -280,9 +293,17 @@ export default function ProductDetails({ product }: { product: Property }) {
           <GridItem className="" xs={12} md={4}>
             <Box className="product-details__contact">
               <div>
-                <Text className="u-pb3">
-                  {t("productDetails.contactAdvertiser")}
-                </Text>
+                <GridContainer className="u-pt5 u-mb3">
+                  <GridItem xs={2}>
+                    <Icon size="large" color="secondary" icon="FaUserCircle" />
+                  </GridItem>
+                  <GridItem xs={10}>
+                    <Text size="large" textWeight="bold">
+                      Contacta al anunciante:
+                    </Text>
+                    <Text>{product.updated_by}</Text>
+                  </GridItem>
+                </GridContainer>
                 <GridContainer>
                   <GridItem className="u-pb2" xs={12}>
                     <ContactWithCall phoneNumber={product.phone} />
@@ -319,12 +340,107 @@ export default function ProductDetails({ product }: { product: Property }) {
           </>
         </Modal>
       </ContentContainer>
-      <div>
-        <GridContainer>
-          <GridItem><Button>Contacto</Button></GridItem>
-          <GridItem><Button>Contacto</Button></GridItem>
-        </GridContainer>
+      <div className="product-details__mobile">
+        <ContentContainer>
+          <GridContainer justifyContent="space-between">
+            <GridItem className="u-pr1" xs={6}>
+              <Button
+                onClick={() => setIsContactFormOpen(true)}
+                appareance="outlined"
+                leftIcon="FaVoicemail"
+                fitContainer
+              >
+                Enviar Email
+              </Button>
+            </GridItem>
+            <GridItem className="u-pl1" xs={6}>
+              <Button
+                onClick={() => setIsCallFormOpen(true)}
+                leftIcon="FaWhatsapp"
+                fitContainer
+              >
+                Llamar / Escribir
+              </Button>
+            </GridItem>
+          </GridContainer>
+        </ContentContainer>
       </div>
+      <Sidebar
+        className="product-details__contact-mobile"
+        isOpen={isContactFormOpen}
+        position="bottom"
+        onClose={() => setIsContactFormOpen(false)}
+      >
+        <ContentContainer>
+          <Button
+            className="__close"
+            appareance="link"
+            size="small"
+            ariaLabel="Close contact form"
+            onClick={() => setIsContactFormOpen(false)}
+          >
+            <Icon icon="FaTimes" />
+          </Button>
+          <GridContainer className="u-pt5">
+            <GridItem xs={2}>
+              <Icon size="large" color="secondary" icon="FaUserCircle" />
+            </GridItem>
+            <GridItem xs={8}>
+              <Text size="large" textWeight="bold">
+                Contacta al anunciante:
+              </Text>
+              <Text>{product.updated_by}</Text>
+            </GridItem>
+          </GridContainer>
+          <FormField
+            id={formId}
+            isLoading={false}
+            {...params}
+            inputs={params.inputs.slice(1)}
+            onSubmit={() => {}}
+          />
+        </ContentContainer>
+      </Sidebar>
+      <Sidebar
+        className="product-details__contact-mobile"
+        isOpen={isCallFormOpen}
+        position="bottom"
+        onClose={() => setIsCallFormOpen(false)}
+      >
+        <ContentContainer>
+          <Button
+            className="__close"
+            appareance="link"
+            size="small"
+            ariaLabel="Close contact form"
+            onClick={() => setIsCallFormOpen(false)}
+          >
+            <Icon icon="FaTimes" />
+          </Button>
+          <GridContainer className="u-pt5">
+            <GridItem xs={2}>
+              <Icon size="large" color="secondary" icon="FaUserCircle" />
+            </GridItem>
+            <GridItem xs={8}>
+              <Text size="large" textWeight="bold">
+                Contacta al anunciante:
+              </Text>
+              <Text>{product.updated_by}</Text>
+            </GridItem>
+          </GridContainer>
+          <GridContainer className="u-mb6 u-pt3">
+            <GridItem className="u-pb2" xs={12}>
+              <ContactWithCall phoneNumber={product.phone} />
+            </GridItem>
+            <GridItem xs={12}>
+              <ContactWithWhatsapp
+                phoneNumber={product.phone}
+                message={t("productDetails.defaultMessage")}
+              />
+            </GridItem>
+          </GridContainer>
+        </ContentContainer>
+      </Sidebar>
     </div>
   );
 }

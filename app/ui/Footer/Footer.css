@@ -421,6 +421,9 @@
 .footer__buttons button {
   border: 1.5px solid #ffffff;
 }
+.footer__buttons button svg {
+  padding-right: 0 !important;
+}
 .footer__links {
   list-style: none;
   padding: 0;

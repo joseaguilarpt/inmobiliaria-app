@@ -447,14 +447,17 @@
 }
 .button--outlined {
   background-color: transparent;
-  color: var(--default-color);
+  color: var(--accent-color);
   border: 2px solid var(--accent-color);
   padding: var(--input-padding);
   text-decoration: none;
+  font-weight: bolder;
+}
+.button--outlined svg {
+  color: var(--accent-color);
 }
 .button--outlined:hover {
-  background-color: none;
-  font-weight: bolder;
+  background-color: rgba(244, 198, 77, 0.4705882353);
   color: var(--accent-color);
 }
 .button--outlined.button--disabled {

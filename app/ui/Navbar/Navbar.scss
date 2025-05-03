@@ -217,3 +217,10 @@ $font-color: #333;
     }
   }
 }
+
+.mobile--language {
+  button {
+    color: var(--font-color) !important;
+
+  }
+}

@@ -1,5 +1,6 @@
 .map__popup-wrapper {
   width: 300px;
+  z-index: 300;
   .leaflet-popup-content-wrapper {
     background-color: var(--background-color);
 
@@ -83,4 +84,8 @@
       }
     }
   }
+}
+
+.leaflet-bottom {
+  z-index: 400 !important;
 }
