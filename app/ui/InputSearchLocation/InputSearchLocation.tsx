@@ -80,7 +80,7 @@ export function InputSearchLocation({
   });
 
   const handleSubmit = async (q: string) => {
-    let params: { [key: string]: any } = { q, radius: 20, limit: 10 };
+    let params: { [key: string]: any } = { q, radius: 40, limit: 10 };
     try {
       const geo = getItem("geo");
       if (

@@ -61,6 +61,7 @@ export default function Filters({
 
   const handleClear = () => {
     setFilters([]);
+    setIsOpenModal(false);
     if (onClear) {
       onClear(formData);
     }

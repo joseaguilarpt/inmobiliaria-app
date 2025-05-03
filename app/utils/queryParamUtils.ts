@@ -10,10 +10,11 @@ export function parseQueryParams(searchParams: URLSearchParams) {
 
 export const encodeSearch = (formData: any, restart?: boolean) => {
   const params: any = {
-    radius: "20",
+    radius: "40",
     ...formData,
   };
 
+  console.log(params, 'params')
   const url = new URLSearchParams("");
   Object.entries(params).forEach(([key, value]) => {
     if (key === 'location') {

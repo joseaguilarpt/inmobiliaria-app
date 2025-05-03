@@ -394,6 +394,9 @@
   min-height: calc(100vh - 80px);
   position: relative;
 }
+.search-results .sad-icon {
+  text-align: center;
+}
 .search-results .product-card.horizontal {
   padding-top: 0;
 }

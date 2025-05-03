@@ -18,6 +18,8 @@ import { useI18n } from "~/context/i18nContext"; // Assuming you have an i18nCon
 import mapImage from "../../img/map-layer.jpg";
 import InputSelect from "../InputSelect/InputSelect";
 import omit from "lodash/omit";
+import Box from "../Box/Box";
+import Icon from "../Icon/Icon";
 
 export default function SearchResults({ data }: { data: any }) {
   const { t } = useI18n(); // Hook for accessing translations
@@ -28,7 +30,7 @@ export default function SearchResults({ data }: { data: any }) {
     ? t(`searchResults.propertiesTorentOrBuy`)
     : t(`searchResults.propertiesTo${queryParams.operation}`);
 
-  const locationType = queryParams.location ?? "";
+  const locationType = queryParams.location ?? "Costa Rica";
   const navigate = useNavigate();
 
   const [formData, setFormData] = React.useState({});
@@ -55,6 +57,7 @@ export default function SearchResults({ data }: { data: any }) {
   }, []);
 
   const handleSort = (p: any) => {
+    setFormData({ ...formData, sort: p });
     const updatedParams = new URLSearchParams(searchParams);
     updatedParams.delete("sort");
     updatedParams.append("sort", p);
@@ -139,8 +142,7 @@ export default function SearchResults({ data }: { data: any }) {
                 <GridContainer justifyContent="space-between">
                   <GridItem xs={12} md={7}>
                     <Heading appearance={6} level={2}>
-                      {operationType}{" "}
-                      {locationType ? ` ${locationType}` : ""}
+                      {operationType}: {locationType ? ` ${locationType}` : ""}
                     </Heading>
                     <Text>
                       {initialProduct === 0 ? 1 : initialProduct} -{" "}
@@ -175,12 +177,28 @@ export default function SearchResults({ data }: { data: any }) {
                       <ProductCard layout="horizontal" property={item} />
                     </GridItem>
                   ))}
-                  <Pagination
-                    totalPages={Math.ceil(data.total / data.size)}
-                    currentPage={data.page}
-                    onPageChange={handlePageChange}
-                  />
+                  {data.total > 0 && (
+                    <Pagination
+                      totalPages={Math.ceil(data.total / data.size)}
+                      currentPage={data.page}
+                      onPageChange={handlePageChange}
+                    />
+                  )}
                 </GridContainer>
+                {properties.length === 0 && (
+                  <GridContainer alignItems="center" justifyContent="center">
+                    <GridItem className="sad-icon" xs={3} md={2}>
+                      <Icon icon="FaSadCry" size="xlarge" />
+                    </GridItem>
+                    <GridItem xs={9}>
+                      <Heading level={3} appearance={6}>
+                        {" "}
+                        No hay resultados para tu busqueda
+                      </Heading>
+                      <Text>Prueba ajustando tus criterios de busqueda.</Text>
+                    </GridItem>
+                  </GridContainer>
+                )}
               </GridItem>
             </GridContainer>
           </ContentContainer>

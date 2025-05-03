@@ -2,13 +2,12 @@
 import "./Map.scss";
 
 import React from "react";
-import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
+import { MapContainer, TileLayer, useMap, useMapEvents } from "react-leaflet";
 
 import "leaflet/dist/leaflet.css";
 import CustomMarker from "./CustomMarker";
 import { Property } from "~/constants/mockData";
 import MapPopup from "./MapPopup";
-import { parseQueryParams } from "~/utils/queryParamUtils";
 import { useSearchParams } from "@remix-run/react";
 
 interface MapWithLocationsProps {
@@ -16,23 +15,45 @@ interface MapWithLocationsProps {
   initialCoordinates?: {
     lat: string;
     lng: string;
-  }
+  };
 }
 
-const MapWithLocations: React.FC<MapWithLocationsProps> = ({ locations, initialCoordinates }) => {
-  const [searchParams] = useSearchParams();
-  const queryParams: Record<string, string> = parseQueryParams(searchParams);
-  const [position, setPosition] = React.useState<L.LatLng | null>(null);
+const MapContent = ({
+  locations,
+  queryLat,
+  queryLng,
+}: {
+  locations: Property[];
+  queryLat: any;
+  queryLng: any;
+}) => {
+  const map = useMap();
 
-  const initialPosition = {
-    lat: queryParams.lat ? parseFloat(queryParams.lat) : 9.9281,
-    lng: queryParams.lng ? parseFloat(queryParams.lng) : -84.0907,
-  };
-  if (initialCoordinates) {
-    initialPosition.lat = parseFloat(initialCoordinates.lat)
-    initialPosition.lng = parseFloat(initialCoordinates.lng)
-  }
+  React.useEffect(() => {
+    if (queryLat && queryLng) {
+      map.setView([queryLat, queryLng], map.getZoom());
+    }
+  }, [queryLat, queryLng]);
+  return (
+    <>
+      {locations &&
+        locations?.map((property) => (
+          <CustomMarker
+            key={property.id}
+            position={[property?.lat ?? 0, property?.lng ?? 0]}
+            icon="FaHome" // Example icon, you can customize this per property
+            size="large"
+            color="primary"
+          >
+            <MapPopup property={property} />
+          </CustomMarker>
+        ))}
+    </>
+  );
+};
 
+const MapWithLocations: React.FC<MapWithLocationsProps> = ({ locations }) => {
+  const [position, setPosition] = React.useState<any>({ lat: 9.9281, lng: -84.0907 });
   const MapEvents = () => {
     useMapEvents({
       click(e) {
@@ -42,19 +63,37 @@ const MapWithLocations: React.FC<MapWithLocationsProps> = ({ locations, initialC
     return null;
   };
 
-  if (!initialPosition.lat || !initialPosition.lng) {
+  const [searchParams] = useSearchParams();
+
+  const queryLat = searchParams.get("lat")
+    ? parseFloat(searchParams.get("lat") ?? "")
+    : null;
+  const queryLng = searchParams.get("lng")
+    ? parseFloat(searchParams.get("lng") ?? "")
+    : null;
+
+  React.useEffect(() => {
+    if (
+      queryLat &&
+      queryLng &&
+      queryLat !== position?.lat &&
+      queryLng !== position?.lng
+    ) {
+      setPosition({ lat: queryLat, lng: queryLng });
+    }
+  }, [queryLat, queryLng]);
+
+  if (!position?.lat || !position?.lng) {
     return null;
   }
 
   return (
     <MapContainer
-      center={[
-        position?.lat ?? initialPosition?.lat,
-        position?.lng ?? initialPosition?.lng,
-      ]}
+      className="map-container"
+      center={[position?.lat, position?.lng]}
       touchZoom={true}
       scrollWheelZoom={false}
-      zoom={7.5}
+      zoom={11}
       minZoom={5}
       style={{ height: "100%", width: "100%" }}
     >
@@ -63,18 +102,11 @@ const MapWithLocations: React.FC<MapWithLocationsProps> = ({ locations, initialC
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       <MapEvents />
-
-      {locations && locations?.map((property) => (
-        <CustomMarker
-          key={property.id}
-          position={[property?.lat ?? 0, property?.lng ?? 0]}
-          icon="FaHome" // Example icon, you can customize this per property
-          size="large"
-          color="primary"
-        >
-          <MapPopup property={property} />
-        </CustomMarker>
-      ))}
+      <MapContent
+        queryLat={queryLat}
+        queryLng={queryLng}
+        locations={locations}
+      />
     </MapContainer>
   );
 };

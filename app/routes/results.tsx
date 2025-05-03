@@ -5,7 +5,7 @@ import { FOOTER } from "~/constants/content";
 import { SEARCH_RESULTS, getSearchResultsQuery } from "~/api/queries";
 import { queryClient } from "~/root";
 import ResultsSection from "./ResultsPage/ResultSection";
-import { LoaderFunctionArgs } from "@remix-run/node";
+import { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import image from '../img/real-state.jpg';
 
@@ -48,6 +48,11 @@ const generateMeta = (data: any) => {
       content: `https://cr-real-estate.netlify.app`,
     },
   ];
+};
+
+export let meta: MetaFunction = ({ data }) => {
+  const { results } = data;
+  return generateMeta(results);
 };
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {

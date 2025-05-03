@@ -6,6 +6,10 @@
   min-height: calc(100vh - 80px);
   position: relative;
 
+  .sad-icon {
+    text-align: center;
+  }
+
   .product-card {
     &.horizontal {
       padding-top: 0;

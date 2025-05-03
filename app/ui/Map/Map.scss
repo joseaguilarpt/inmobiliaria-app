@@ -89,3 +89,11 @@
 .leaflet-bottom {
   z-index: 400 !important;
 }
+
+.map-container {
+  position: relative;
+}
+
+.map-container * {
+  touch-action: none;
+}

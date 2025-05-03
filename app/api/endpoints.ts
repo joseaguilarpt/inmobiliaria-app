@@ -78,7 +78,7 @@ const sortProperties = (properties: Property[], sortBy: string): Property[] => {
       // Implement your relevance criteria sorting here, if applicable
       return properties; // Example: return properties.sort(...);
     case "newest":
-      return properties.sort((a, b) => b.updated_at.getTime() - a.updated_at.getTime());
+      return properties.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
     case "smallest":
       return properties.sort((a, b) => a.area - b.area);
     case "biggest":
@@ -92,10 +92,11 @@ const sortProperties = (properties: Property[], sortBy: string): Property[] => {
 export interface FilterCriteria {
   category?: string;
   operation?: string;
-  min_price?: number;
-  max_price?: number;
-  min_rooms?: number;
-  max_rooms?: number;
+  price_from?: number;
+  price_to?: number;
+  rooms?: number;
+  area_from?: number;
+  area_to?: number;
   city?: string;
   promotional?: boolean;
   lat?: number;
@@ -140,10 +141,11 @@ const fakeAxios = {
         const criteria: FilterCriteria = {
           category: params.get('category') || undefined,
           operation: params.get('operation') || undefined,
-          min_price: params.get('min_price') ? parseFloat(params.get('min_price')!) : undefined,
-          max_price: params.get('max_price') ? parseFloat(params.get('max_price')!) : undefined,
-          min_rooms: params.get('min_rooms') ? parseInt(params.get('min_rooms')!) : undefined,
-          max_rooms: params.get('max_rooms') ? parseInt(params.get('max_rooms')!) : undefined,
+          price_from: params.get('price_from') ? parseFloat(params.get('price_from')!) : undefined,
+          price_to: params.get('price_to') ? parseFloat(params.get('price_to')!) : undefined,
+          area_from: params.get('area_from') ? parseFloat(params.get('area_from')!) : undefined,
+          area_to: params.get('area_to') ? parseFloat(params.get('area_to')!) : undefined,
+          rooms: params.get('rooms') ? parseInt(params.get('rooms')!) : undefined,
           city: params.get('city') || undefined,
           promotional: params.get('promotional') ? params.get('promotional') === 'true' : undefined,
           lat: params.get('lat') ? parseFloat(params.get('lat')!) : undefined,
@@ -163,16 +165,19 @@ const fakeAxios = {
           if (criteria.operation && property.operation !== criteria.operation) {
             return false;
           }
-          if (criteria.min_price !== undefined && property.price < criteria.min_price) {
+          if (criteria.area_from !== undefined && property.area < criteria.area_from) {
             return false;
           }
-          if (criteria.max_price !== undefined && property.price > criteria.max_price) {
+          if (criteria.area_to !== undefined && property.price > criteria.area_to) {
             return false;
           }
-          if (criteria.min_rooms !== undefined && property.rooms < criteria.min_rooms) {
+          if (criteria.price_from !== undefined && property.price < criteria.price_from) {
             return false;
           }
-          if (criteria.max_rooms !== undefined && property.rooms > criteria.max_rooms) {
+          if (criteria.price_to !== undefined && property.price > criteria.price_to) {
+            return false;
+          }
+          if (criteria.rooms !== undefined && property.rooms >= criteria.rooms) {
             return false;
           }
           if (criteria.city && property.city !== criteria.city) {
