@@ -1,7 +1,13 @@
-import React, { useRef, forwardRef, useImperativeHandle, useEffect, useState } from 'react';
-import classNames from 'classnames';
-import './InputText.scss';
-import { useI18n } from '~/context/i18nContext';
+import React, {
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  useEffect,
+  useState,
+} from "react";
+import classNames from "classnames";
+import "./InputText.scss";
+import { useI18n } from "~/context/i18nContext";
 
 export interface InputTextProps {
   id?: string;
@@ -22,7 +28,7 @@ export interface InputTextProps {
   validateFormat?: (value: string) => boolean;
   error?: string; // Add error prop
   className?: string; // Optional class name
-  autoComplete?: 'no'| 'yes';
+  autoComplete?: "no" | "yes";
 }
 
 export interface InputTextRef {
@@ -31,12 +37,15 @@ export interface InputTextRef {
   getValue: () => string;
 }
 
-const InputText: React.ForwardRefRenderFunction<InputTextRef, InputTextProps> = (
+const InputText: React.ForwardRefRenderFunction<
+  InputTextRef,
+  InputTextProps
+> = (
   {
     id,
-    type = 'text',
+    type = "text",
     label,
-    placeholder = '',
+    placeholder = "",
     isLabelVisible = true,
     isRequired = false,
     isDisabled = false,
@@ -44,14 +53,14 @@ const InputText: React.ForwardRefRenderFunction<InputTextRef, InputTextProps> = 
     clearButton = false,
     leftIcon,
     value,
-    defaultValue = '',
+    defaultValue = "",
     onChange,
     onFocus,
     onBlur,
     validateFormat,
     error,
     className,
-    autoComplete = 'no'
+    autoComplete = "no",
   },
   ref
 ) => {
@@ -87,7 +96,7 @@ const InputText: React.ForwardRefRenderFunction<InputTextRef, InputTextProps> = 
   // Imperative handle methods for external access
   useImperativeHandle(ref, () => ({
     validate: () => {
-      const value = inputRef.current ? inputRef.current.value : '';
+      const value = inputRef.current ? inputRef.current.value : "";
       if (isRequired && !value.trim()) {
         if (inputRef.current) {
           inputRef.current.focus();
@@ -103,35 +112,45 @@ const InputText: React.ForwardRefRenderFunction<InputTextRef, InputTextProps> = 
       return true;
     },
     clear: () => {
-      setInputValue('');
+      setInputValue("");
       if (onChange) {
-        onChange('');
+        onChange("");
       }
     },
     getValue: () => {
-      return inputRef.current ? inputRef.current.value : '';
+      return inputRef.current ? inputRef.current.value : "";
     },
   }));
 
   // Update input value if controlled prop changes
   useEffect(() => {
-    setInputValue(value ?? '');
-
+    setInputValue(value ?? "");
   }, [value]);
 
   return (
-    <div className={classNames('input-text', className)}>
-      <label className={classNames('input-text__label', { 'input-text__label--hidden': !isLabelVisible })} htmlFor={id}>
+    <div className={classNames("input-text", className)}>
+      <label
+        className={classNames("input-text__label", {
+          "input-text__label--hidden": !isLabelVisible,
+        })}
+        htmlFor={id}
+      >
         {t(label)} {isRequired && <span aria-hidden="true">*</span>}
       </label>
-      <div className={classNames('input-text__wrapper', { 'input-text__wrapper--error': error })}>
+      <div
+        className={classNames("input-text__wrapper", {
+          "input-text__wrapper--error": error,
+        })}
+      >
         {leftIcon && <div className="input-text__icon">{leftIcon}</div>}
         <input
           ref={inputRef}
           type={type}
           id={id}
           name={id}
-          className={classNames('input-text__input', { 'input-text__input--error': error })}
+          className={classNames("input-text__input", {
+            "input-text__input--error": error,
+          })}
           placeholder={t(placeholder)}
           value={inputValue}
           onChange={handleChange}
@@ -144,16 +163,16 @@ const InputText: React.ForwardRefRenderFunction<InputTextRef, InputTextProps> = 
           aria-label={t(label)}
           defaultValue={value}
           data-id={id}
-          autoComplete={autoComplete}
+          autoComplete="off" // Disable autocomplete
         />
         {clearButton && (
           <button
             type="button"
             className="input-text__clear-button"
             onClick={() => {
-              setInputValue('');
+              setInputValue("");
               if (onChange) {
-                onChange('');
+                onChange("");
               }
             }}
             aria-label="Clear text input"

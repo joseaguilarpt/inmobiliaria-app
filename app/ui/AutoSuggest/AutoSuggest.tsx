@@ -133,7 +133,6 @@ const AutoSuggest: React.FC<AutoSuggestProps> = ({
           </div>
         )}
         <input
-          autoComplete="no"
           className={classNames(
             "auto-suggest__input",
             leftIcon && "__left-icon"
@@ -141,6 +140,7 @@ const AutoSuggest: React.FC<AutoSuggestProps> = ({
           id={id + "-autosugget"}
           name={label + "-autosugget"}
           type="text"
+          autoComplete="off"
           placeholder={t(placeholder ?? "")}
           aria-label={placeholder ?? label}
           value={query}

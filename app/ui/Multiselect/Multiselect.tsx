@@ -139,7 +139,7 @@ const Multiselect: React.FC<MultiselectProps> = ({
           </div>
         )}
         <input
-          autoComplete="no"
+          autoComplete="off"
           className={classNames(
             "multiselect__input",
             leftIcon && "__left-icon"
