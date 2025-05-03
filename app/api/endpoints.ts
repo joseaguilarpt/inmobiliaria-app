@@ -26,7 +26,7 @@ export async function searchLocation({
 }) {
   try {
     const { data } = await axios.get(
-      `https://nominatim.openstreetmap.org/search?&countrycodes=cr&format=jsonv2&${params}`,
+      `https://nominatim.openstreetmap.org/search?&class=place&countrycodes=cr&format=jsonv2&${params}`,
       { signal }
     );
     return data ?? [];
