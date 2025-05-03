@@ -8,7 +8,7 @@ export default function CarouselSection() {
       buttonText: 'carousel.slide1.buttonText',
       buttonLink: '/about',
       href: '/',
-      backgroundImage: '../../img/hero-carousel/hero-carousel-1.jpg',
+      backgroundImage: '../img/hero-carousel/hero-carousel-1.jpg',
     },
     {
       title: 'carousel.slide2.title',
@@ -16,7 +16,7 @@ export default function CarouselSection() {
       buttonText: 'carousel.slide2.buttonText',
       buttonLink: '/services',
       href: '/',
-      backgroundImage: '../../img/hero-carousel/hero-carousel-2.jpg',
+      backgroundImage: '../img/hero-carousel/hero-carousel-2.jpg',
     },
     {
       title: 'carousel.slide3.title',
@@ -24,7 +24,7 @@ export default function CarouselSection() {
       buttonText: 'carousel.slide3.buttonText',
       buttonLink: '/join',
       href: '/',
-      backgroundImage: '../../img/hero-carousel/hero-carousel-3.jpg',
+      backgroundImage: '../img/hero-carousel/hero-carousel-3.jpg',
     },
   ];
   return (

@@ -16,13 +16,14 @@ import React from "react";
 import GetInTouchSection from "./IndexPage/GetInTouchSection";
 import OfferSection from "./IndexPage/OffersSection";
 import CompanyBlogSection from "./IndexPage/CompanyBlogSection";
+import image from '../img/real-state.jpg';
 
 export default function MapPage() {
   const { t } = useI18n();
 
   const slides: CarouselSlide[] = [
     {
-      backgroundImage: "../../img/real-state.jpg",
+      backgroundImage: image,
     },
   ];
 
@@ -82,7 +83,7 @@ export default function MapPage() {
       <BackToTop />
       <Footer
         {...FOOTER}
-        backgroundImageUrl={t("footer.backgroundImageUrl")}
+        backgroundImageUrl={image}
         socialNetworks={[
           { label: "Facebook", icon: "FaFacebook", href: "#" },
           { label: "Twitter", icon: "FaTwitter", href: "#" },

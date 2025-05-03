@@ -6,6 +6,7 @@ import CompanyGoalSection from "./IndexPage/CompanyGoalSection";
 import CompanyServicesSection from "./IndexPage/CompanyServicesSection";
 import CompanyMissionSection from "./IndexPage/CompanyMissionSection";
 import { FOOTER } from "~/constants/content";
+import image from '../img/hero-carousel/hero-carousel-3.jpg';
 
 export default function AboutPage() {
   return (
@@ -20,7 +21,7 @@ export default function AboutPage() {
       <BackToTop />
       <Footer
         {...FOOTER}
-        backgroundImageUrl="../../img/hero-carousel/hero-carousel-3.jpg"
+        backgroundImageUrl={image}
         socialNetworks={[
           { label: "Facebook", icon: "FaFacebook", href: "#" },
           { label: "Twitter", icon: "FaTwitter", href: "#" },

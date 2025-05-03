@@ -5,7 +5,7 @@ export default function CarouselSection() {
   const slides: CarouselSlide[] = [
     {
       title: "contact",
-      backgroundImage: "../../img/hero-carousel/hero-carousel-3.jpg",
+      backgroundImage: "../img/hero-carousel/hero-carousel-3.jpg",
     },
   ];
   const { t } = useI18n();

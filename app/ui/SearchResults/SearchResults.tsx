@@ -16,6 +16,7 @@ import Pagination from "../Pagination/Pagination";
 import MapWithLocations from "~/ui/Map/Map.client";
 import { useI18n } from "~/context/i18nContext"; // Assuming you have an i18nContext for translation
 import { Property } from "~/constants/mockData";
+import mapImage from '../../img/map-layer.jpg';
 
 export default function SearchResults({
   properties,
@@ -50,7 +51,7 @@ export default function SearchResults({
             <GridContainer>
               <GridItem xs={12} lg={3}>
                 <div className="search-results__map-trigger u-pt2">
-                  <Image alt="Open Map" src="../../img/map-layer.jpg" />
+                  <Image alt="Open Map" src={mapImage} />
 
                   <Button
                     onClick={() => setMapScreen(true)}

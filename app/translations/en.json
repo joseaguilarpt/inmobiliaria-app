@@ -29,7 +29,7 @@
     }
   },
   "carouselSlide1": {
-    "backgroundImage": "../../img/real-state.jpg"
+    "backgroundImage": "../img/real-state.jpg"
   },
   "heading": "Find your perfect place now",
   "getInTouch": {
@@ -372,7 +372,7 @@
     "phone": "+1 5589 55488 55",
     "email": "info@example.com",
     "copyright": "© Copyright UpConstruction. All Rights Reserved",
-    "backgroundImageUrl": "../../img/hero-carousel/hero-carousel-3.jpg"
+    "backgroundImageUrl": "../img/hero-carousel/hero-carousel-3.jpg"
   },
   "getInTouch_form": {
     "title": "Contact Form",

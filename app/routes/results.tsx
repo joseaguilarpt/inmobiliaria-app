@@ -8,6 +8,7 @@ import ResultsSection from "./ResultsPage/ResultSection";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Property } from "~/constants/mockData";
+import image from '../img/hero-carousel/hero-carousel-3.jpg';
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const url = new URL(request.url);
@@ -27,7 +28,7 @@ export default function ResultsPage() {
       <BackToTop />
       <Footer
         {...FOOTER}
-        backgroundImageUrl="../../img/hero-carousel/hero-carousel-3.jpg"
+        backgroundImageUrl={image}
         socialNetworks={[
           { label: "Facebook", icon: "FaFacebook", href: "#" },
           { label: "Twitter", icon: "FaTwitter", href: "#" },
