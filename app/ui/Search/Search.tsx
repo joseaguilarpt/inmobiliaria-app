@@ -19,7 +19,7 @@ export default function Search({ params }: { params: any }) {
   };
 
   return (
-    <Card className="u-mt2 search-container">
+    <Card unstyled className="u-mt2 search-container">
       <FormField
         className="main-form"
         id={formId}

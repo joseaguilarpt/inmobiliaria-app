@@ -390,6 +390,9 @@
   min-height: calc(100vh - 80px);
   position: relative;
 }
+.search-results .product-card.horizontal {
+  padding-top: 0;
+}
 .search-results__map-trigger {
   border-radius: var(--input-border-radius);
   position: relative;

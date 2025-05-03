@@ -2,7 +2,7 @@ import Navbar from "~/ui/Navbar/Navbar";
 import Footer from "~/ui/Footer/Footer";
 import BackToTop from "~/ui/BackToTop/BackToTop";
 import { FOOTER } from "~/constants/content";
-import { getSearchResultsQuery } from "~/api/queries";
+import { SEARCH_RESULTS, getSearchResultsQuery } from "~/api/queries";
 import { queryClient } from "~/root";
 import ResultsSection from "./ResultsPage/ResultSection";
 import { LoaderFunctionArgs } from "@remix-run/node";
@@ -16,6 +16,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const results: Property[] = await queryClient.fetchQuery(
     getSearchResultsQuery({ params })
   );
+  await queryClient.invalidateQueries({
+    queryKey: [SEARCH_RESULTS],
+  });
   return { results };
 };
 

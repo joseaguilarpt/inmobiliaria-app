@@ -262,7 +262,7 @@ export default function ProductDetails({ product }: { product: Property }) {
               </GridItem>
             </GridContainer>
           </GridItem>
-          <GridItem className="u-pl4" xs={12} md={4}>
+          <GridItem className="" xs={12} md={4}>
             <Box className="product-details__contact">
               <div>
                 <Text className="u-pb3">

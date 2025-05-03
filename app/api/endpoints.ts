@@ -79,13 +79,6 @@ const fakeAxios = {
       console.log(propertyId, 'vwcv')
       if (propertyId !== 'properties' && propertyId !== 'filter') {
         const property = properties.find(prop => prop.id === parseFloat(propertyId));
-        console.log(property, 'p')
-        console.log(property, 'p')
-        console.log(property, 'p')
-        console.log(property, 'p')
-        console.log(property, 'p')
-        console.log(property, 'p')
-        console.log(property, 'p')
         if (property) {
           return {
             data: property,

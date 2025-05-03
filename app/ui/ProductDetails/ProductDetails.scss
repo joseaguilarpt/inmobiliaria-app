@@ -1,3 +1,5 @@
+@import '../../styles/media-queries';
+
 .product-details {
   .breadcrumbs-container {
     padding-top: 80px;
@@ -42,6 +44,9 @@
   &__contact {
     .form-field {
       padding-top: 10px;
+    }
+    @include media-query(medium) {
+      margin-left: 30px !important;
     }
   }
 }

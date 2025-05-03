@@ -14,10 +14,11 @@ $font-size-large: 20px;
 
 // Light Theme Variables
 $background-color-light: #ffffff;
+$input-background-color-light: #F2F4F4;;
 $font-color-light: #212121;
 $default-color-light: #757575;
 $heading-color-light: #424242;
-$accent-color-light: #00ffaf; // Base color
+$accent-color-light: #51b293; // Base color
 $accent-color-light-darken: #{darken($accent-color-light, 15%)};
 
 $contrast-color-light: #ffffff;
@@ -26,16 +27,18 @@ $error-color-light: #f44336;
 $carousel-overlay-light: rgb(87 170 144 / 85%);
 
 // Dark Theme Variables
-$background-color-dark: #121212;
+$background-color-dark: #2d372d;
+$input-background-color-dark: #2d372d;
 $font-color-dark: #ffffff;
-$default-color-dark: #8e8e8e;
+$default-color-dark: #cfcfcf;
 $heading-color-dark: #ffffff;
-$accent-color-dark: #57AA90; // Base color
-$accent-color-dark-darken: #{darken($accent-color-dark, 15%)};
-$contrast-color-dark: #121212;
+$accent-color-dark: #438973; // Base color
+$accent-color-dark-darken: #{lighten($accent-color-dark, 10%)};
+$contrast-color-dark: #2d372d;
 $shadow-color-dark: rgba(0, 0, 0, 0.1);
 $error-color-dark: #cf6679;
 $carousel-overlay-dark: rgb(81 123 110 / 85%);
+
 
 // Nav Menu Colors
 $nav-color-light: #ffffff;

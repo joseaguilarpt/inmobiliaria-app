@@ -36,6 +36,11 @@
 .product-details__contact .form-field {
   padding-top: 10px;
 }
+@media (min-width: 768px) {
+  .product-details__contact {
+    margin-left: 30px !important;
+  }
+}
 
 .pictures-modal {
   padding-top: 50px;

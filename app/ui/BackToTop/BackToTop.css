@@ -397,7 +397,7 @@
   transition: opacity 0.3s, visibility 0.3s;
   border-radius: var(--border-radius);
   box-shadow: 0 2px 4px var(--shadow-color);
-  background-color: #00ffaf;
+  background-color: #51b293;
   color: var(--font-color);
   border: none;
 }
@@ -409,7 +409,7 @@
   visibility: visible;
 }
 .back-to-top:hover {
-  background-color: #00ffaf;
+  background-color: #51b293;
   cursor: pointer;
   box-shadow: 0 4px 8px var(--hover-shadow-color);
 }

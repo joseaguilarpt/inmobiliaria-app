@@ -411,7 +411,6 @@ body {
   --border-radius: 4px;
   --input-border-radius: 0px;
   --input-font-size: 1.15rem;
-  --input-background-color: #F2F4F4;
   --input-padding: 0.65rem;
   /* Font Sizes */
   --font-size-small: 12px;
@@ -422,12 +421,13 @@ body {
   --font-color: #212121;
   --default-color: #757575;
   --heading-color: #424242;
-  --accent-color: #00ffaf;
-  --accent-color-darken: #00b37b;
+  --accent-color: #51b293;
+  --accent-color-darken: #387f68;
   --contrast-color: #ffffff;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --error-color: #f44336;
   --carousel-overlay: rgba(87, 170, 144, 0.85);
+  --input-background-color: #F2F4F4;
   /* Nav Menu Colors */
   --nav-color: #ffffff;
   --placeholder-color: #757575;
@@ -441,13 +441,13 @@ body {
 
 /* Dark Mode */
 body.dark-mode {
-  --background-color: #121212;
+  --background-color: #2d372d;
   --font-color: #ffffff;
-  --default-color: #8e8e8e;
+  --default-color: #cfcfcf;
   --heading-color: #ffffff;
-  --accent-color: #57AA90;
-  --accent-color-darken: #3d7865;
-  --contrast-color: #121212;
+  --accent-color: #438973;
+  --accent-color-darken: #54ab90;
+  --contrast-color: #2d372d;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --error-color: #cf6679;
   --carousel-overlay: rgba(81, 123, 110, 0.85);
@@ -460,6 +460,7 @@ body.dark-mode {
   --nav-dropdown-background-color: #121212;
   --nav-dropdown-color: #ffffff;
   --nav-dropdown-hover-color: #ffffff;
+  --input-background-color: #2d372d;
 }
 
 :root {

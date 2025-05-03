@@ -40,10 +40,10 @@ export default function Filters() {
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
+  const handleSubmit = (p: any) => {
     const url = encodeSearch(formData);
     setIsOpenModal(false);
-    navigate(`/results?${url}`);
+      navigate(`/results?${url}`);
   };
 
   const handleClear = () => {

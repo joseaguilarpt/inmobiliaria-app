@@ -6,6 +6,12 @@
   min-height: calc(100vh - 80px);
   position: relative;
 
+  .product-card {
+    &.horizontal {
+      padding-top: 0;
+    }
+  }
+
   &__map-trigger {
     border-radius: var(--input-border-radius);
     position: relative;

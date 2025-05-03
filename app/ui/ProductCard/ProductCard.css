@@ -8,6 +8,7 @@
 .product-card.horizontal {
   padding-top: 140px;
   height: auto;
+  margin-left: 0px;
 }
 .product-card.horizontal .__details {
   margin-left: 0px;
