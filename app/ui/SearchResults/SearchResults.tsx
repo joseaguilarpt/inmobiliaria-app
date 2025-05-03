@@ -102,28 +102,42 @@ export default function SearchResults({ data }: { data: any }) {
   const finalProduct = data.size * data.page;
   return (
     <div className="search-results">
-      {!isMapScreen && (
-        <>
-          <ContentContainer className="bg-color-secondary">
-            <Breadcrumb
-              paths={[
-                { label: t("home"), href: "/" },
-                { label: t("searchResults.results") },
-              ]}
+      <>
+        <ContentContainer className="bg-color-secondary">
+          <Breadcrumb
+            paths={[
+              { label: t("home"), href: "/" },
+              { label: t("searchResults.results") },
+            ]}
+          />
+          <div>
+            <Filters
+              onClear={handleClear}
+              onFormDataChange={handleChange}
+              onSubmit={handleSubmit}
+              formData={formData}
+              onRemoveFilter={handleRemoveFilter}
+              initialValue={initialValue}
+              onToggleMap={() => setMapScreen(true)}
+              isMapOpen={isMapScreen}
             />
-            <div>
-              <Filters
-                onClear={handleClear}
-                onFormDataChange={handleChange}
-                onSubmit={handleSubmit}
-                formData={formData}
-                onRemoveFilter={handleRemoveFilter}
-                initialValue={initialValue}
-                onToggleMap={() => setMapScreen(true)}
-                isMapOpen={isMapScreen}
-              />
+          </div>
+        </ContentContainer>
+        {isMapScreen ? (
+          <div className="search-results__map-container">
+            <MapWithLocations locations={properties} />
+            <div className="back-to-list__wrapper">
+              <Button
+                onClick={() => setMapScreen(false)}
+                leftIcon="FaList"
+                className="toggle-map"
+                appareance="secondary"
+              >
+                {t("filters.backToList")}
+              </Button>
             </div>
-          </ContentContainer>
+          </div>
+        ) : (
           <ContentContainer>
             <GridContainer>
               <GridItem className="search-results__map--desktop" xs={12} lg={3}>
@@ -158,7 +172,11 @@ export default function SearchResults({ data }: { data: any }) {
                       label={t("filters.sort")}
                       initialValue={queryParams?.sort}
                       options={[
-                        { label: t("sort1.label"), value: "price-asc", id: 0 },
+                        {
+                          label: t("sort1.label"),
+                          value: "price-asc",
+                          id: 0,
+                        },
                         { label: t("sort2.label"), value: "relevant", id: 1 },
                         { label: t("sort3.label"), value: "newest", id: 2 },
                         { label: t("sort4.label"), value: "smallest", id: 3 },
@@ -202,45 +220,8 @@ export default function SearchResults({ data }: { data: any }) {
               </GridItem>
             </GridContainer>
           </ContentContainer>
-        </>
-      )}
-      {isMapScreen && (
-        <>
-          <ContentContainer className="bg-color-secondary">
-            <Breadcrumb
-              paths={[
-                { label: t("home"), href: "/" },
-                { label: t("searchResults.results") },
-              ]}
-            />
-            <div>
-              <Filters
-                onClear={handleClear}
-                onFormDataChange={handleChange}
-                onSubmit={handleSubmit}
-                formData={formData}
-                onRemoveFilter={handleRemoveFilter}
-                initialValue={initialValue}
-                onToggleMap={() => setMapScreen(false)}
-                isMapOpen={isMapScreen}
-              />
-            </div>
-          </ContentContainer>
-          <div className="search-results__map-container">
-            <MapWithLocations locations={properties} />
-            <div className="back-to-list__wrapper">
-              <Button
-                onClick={() => setMapScreen(false)}
-                leftIcon="FaList"
-                className="toggle-map"
-                appareance="secondary"
-              >
-                {t("filters.backToList")}
-              </Button>
-            </div>
-          </div>
-        </>
-      )}
+        )}
+      </>
     </div>
   );
 }

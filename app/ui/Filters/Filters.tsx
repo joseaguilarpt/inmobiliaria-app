@@ -10,7 +10,7 @@ import ContentContainer from "../ContentContainer/ContentContainer";
 import { useI18n } from "~/context/i18nContext";
 import Pills from "../Pills/Pills";
 import omit from "lodash/omit";
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from "lodash/isEmpty";
 
 export default function Filters({
   onToggleMap,
@@ -37,19 +37,21 @@ export default function Filters({
 
   const handleSetFilters = (p: any) => {
     const query = omit(p, ["radius"]);
-    const params: any = Object.keys(query).map((key) => {
-      const current = FILTERS.inputs.find((item) => item.id === key);
-      return {
-        label: current?.label ?? current?.placeholder ?? "",
-        id: current?.id ?? current?.placeholder ?? "",
-      };
-    }).filter((v) => !isEmpty(v.label));
+    const params: any = Object.keys(query)
+      .map((key) => {
+        const current = FILTERS.inputs.find((item) => item.id === key);
+        return {
+          label: current?.label ?? current?.placeholder ?? "",
+          id: current?.id ?? current?.placeholder ?? "",
+        };
+      })
+      .filter((v) => !isEmpty(v.label));
     setFilters(params);
   };
 
   React.useEffect(() => {
-    handleSetFilters(initialValue)
-  }, [initialValue])
+    handleSetFilters(initialValue);
+  }, [initialValue]);
 
   const handleSubmit = () => {
     handleSetFilters(formData);
@@ -76,7 +78,6 @@ export default function Filters({
     setFilters(filtersData);
     onRemoveFilter(filter);
   };
-
 
   return (
     <div className="filters-container">
@@ -133,11 +134,24 @@ export default function Filters({
               </Button>
             </div>
           </GridItem>
+          {filters.length > 0 && (
+            <GridItem className="filters-button__wrapper" xs={12}>
+              <div className="u-mr1">
+                <Button
+                  className="filters-button"
+                  appareance="outlined"
+                  size="small"
+                  leftIcon='FaRemoveFormat'
+                  fitContainer
+                  onClick={handleClear}
+                >
+                  {t('filters.clearFilters')}
+                </Button>
+              </div>
+            </GridItem>
+          )}
         </GridContainer>
-        <Pills
-          items={filters}
-          onPillRemove={handleRemoveFilter}
-        />
+        <Pills items={filters} onPillRemove={handleRemoveFilter} />
       </div>
       <Modal
         className="modal-filters-container"

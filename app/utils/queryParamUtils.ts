@@ -25,10 +25,17 @@ export const encodeSearch = (formData: any, restart?: boolean) => {
         url.append('location', location);
 
     }
+    else if ((typeof value === 'string')) {
+      if (value !== '') {
+        url.append(key, value);
+      }
+      return;
+    }
     else if (typeof value === "object") {
       const data = value?.value ?? value?.display_name ?? value?.id ?? value?.label ?? "";
       url.append(key, data);
     } else {
+      console.log(key)
       url.append(key, value);
     }
   });
