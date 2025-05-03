@@ -31,7 +31,6 @@ export default function ProductDetails({ product }: { product: Property }) {
   const [isCallFormOpen, setIsCallFormOpen] = React.useState(false);
   const [isContactFormOpen, setIsContactFormOpen] = React.useState(false);
 
-  console.log(product, 'product')
   const navigate = useNavigate();
   const breadcrumbs = [
     { label: t("home"), href: "/" },
@@ -85,7 +84,7 @@ export default function ProductDetails({ product }: { product: Property }) {
 
   let mapParams: any = {};
   if (product.lat && product.lng) {
-    mapParams.initialCoords = {
+    mapParams.initialCoordinates = {
       lat: product.lat,
       lng: product.lng,
     };
